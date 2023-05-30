@@ -16,9 +16,15 @@ name: Java CI with Maven
 
 on:
   push:
-    branches: [master]
+    branches: [main]
+    paths-ignore:
+      - '**/*.md'
+      - '**/*.txt'
   pull_request:
-    branches: [master]
+    branches: [main]
+    paths-ignore:
+      - '**/*.md'
+      - '**/*.txt'
 
 jobs:
   build:
