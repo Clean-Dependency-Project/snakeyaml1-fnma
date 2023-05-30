@@ -48,7 +48,7 @@ jobs:
       - name: Set up JDK ${{ matrix.jdk }}
         uses: actions/setup-java@v3
         with:
-          distribution: 'temurin'
+          distribution: 'adopt'
           java-version: ${{ matrix.jdk }}
           cache: 'maven'
       - name: Build with Maven
