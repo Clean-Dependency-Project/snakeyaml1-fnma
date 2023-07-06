@@ -479,8 +479,8 @@
         <profile>
             <id>with-java8-tests</id>
             <properties>
-                <maven.compiler.testSource>1.8</maven.compiler.testSource>
-                <maven.compiler.testTarget>1.8</maven.compiler.testTarget>
+                <maven.compiler.testSource>8</maven.compiler.testSource>
+                <maven.compiler.testTarget>8</maven.compiler.testTarget>
             </properties>
             <build>
                 <plugins>
