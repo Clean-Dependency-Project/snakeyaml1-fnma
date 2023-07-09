@@ -1,7 +1,7 @@
 # Clean Dependency Project - snakeyam1-fnma : Cleaner Version of snakeyaml1.x
 
 [![snakeyaml1-fnma](https://api.securityscorecards.dev/projects/github.com/Clean-Dependency-Project/snakeyaml1-fnma/badge)](https://api.securityscorecards.dev/projects/github.com/Clean-Dependency-Project/snakeyaml1-fnma)
-[![OpenSSF Best Practices](https://bestpractices.coreinfrastructure.org/projects/5621/badge)](https://bestpractices.coreinfrastructure.org/projects/5621)
+[![OpenSSF Best Practices](https://bestpractices.coreinfrastructure.org/projects/7554/badge)](https://bestpractices.coreinfrastructure.org/projects/7554)
 ![build](https://github.com/github.com/Clean-Dependency-Project/snakeyaml1-fnma/workflows/build/badge.svg?branch=main)
 ![CodeQL](https://github.com/Clean-Dependency-Project/snakeyaml1-fnma/workflows/CodeQL/badge.svg?branch=main)
 
