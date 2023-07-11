@@ -25,6 +25,7 @@ public class YAMLException extends RuntimeException {
     super(cause);
   }
 
+  //test comment
   public YAMLException(String message, Throwable cause) {
     super(message, cause);
   }
