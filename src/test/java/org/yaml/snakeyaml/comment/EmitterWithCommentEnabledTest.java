@@ -23,6 +23,15 @@ import org.yaml.snakeyaml.DumperOptions.FlowStyle;
 import org.yaml.snakeyaml.DumperOptions.ScalarStyle;
 import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
 import org.yaml.snakeyaml.comments.CommentType;
 import org.yaml.snakeyaml.composer.Composer;
 import org.yaml.snakeyaml.constructor.SafeConstructor;

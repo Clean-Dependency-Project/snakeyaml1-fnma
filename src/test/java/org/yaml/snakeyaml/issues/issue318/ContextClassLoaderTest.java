@@ -28,7 +28,17 @@ import java.util.Properties;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
 
 public class ContextClassLoaderTest {
 
@@ -133,7 +143,7 @@ public class ContextClassLoaderTest {
     DomainBean bean = new DomainBean();
     bean.setValue(13);
 
-    Object yaml = yamlClass.newInstance();
+    Object yaml = new Yaml(new LoaderOptions());
 
     Method dumpMethod = yaml.getClass().getMethod("dump", Object.class);
     String dump = dumpMethod.invoke(yaml, bean).toString();

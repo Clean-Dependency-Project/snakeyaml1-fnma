@@ -15,7 +15,17 @@ package org.yaml.snakeyaml.constructor;
 
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.DumperOptions;
+import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
 import org.yaml.snakeyaml.error.YAMLException;
 
 public class IncompleteBeanConstructorTest extends TestCase {
@@ -33,7 +43,7 @@ public class IncompleteBeanConstructorTest extends TestCase {
   public void testConstructor() {
     String className =
         "!!" + this.getClass().getPackage().getName() + ".IncompleteJavaBean {number: 2}";
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new LoaderOptions());
     IncompleteJavaBean bean = yaml.load(className);
     assertNotNull(bean);
     assertEquals("No name", bean.getName());
@@ -43,7 +53,7 @@ public class IncompleteBeanConstructorTest extends TestCase {
   public void testConstructor2() {
     String className = "!!" + this.getClass().getPackage().getName()
         + ".IncompleteJavaBean {number: 2, name: Bill}";
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new LoaderOptions());
     try {
       yaml.load(className);
       fail("'name' property does not have setter.");

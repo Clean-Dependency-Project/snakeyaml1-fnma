@@ -24,6 +24,15 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.junit.Test;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
 import org.yaml.snakeyaml.constructor.Constructor;
 
 public class YamlExecuteProcessContextTest {

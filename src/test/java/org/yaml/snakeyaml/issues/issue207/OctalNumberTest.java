@@ -18,12 +18,21 @@ import static org.junit.Assert.assertEquals;
 import java.util.Map;
 import org.junit.Test;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
 
 public class OctalNumberTest {
 
   @Test
   public void testOctalNumbersMoreThenSeven() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     assertEquals(Integer.valueOf(7), yaml.load("07"));
     assertEquals(Integer.valueOf(63), yaml.load("077"));
     assertEquals(Integer.valueOf(0), yaml.load("0"));

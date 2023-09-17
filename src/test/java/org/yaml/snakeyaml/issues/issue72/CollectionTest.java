@@ -17,16 +17,26 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import junit.framework.TestCase;
+import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
 
 public class CollectionTest extends TestCase {
 
   public void testCollectionList() {
     CollectionList bean = new CollectionList();
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     String doc = yaml.dumpAsMap(bean);
     // System.out.println(doc);
-    Yaml beanLoader = new Yaml();
+    Yaml beanLoader = new Yaml(new LoaderOptions());
     CollectionList parsed = beanLoader.loadAs(doc, CollectionList.class);
     assertTrue(parsed.getNames().contains("aaa"));
     assertTrue(parsed.getNames().contains("bbb"));
@@ -54,10 +64,10 @@ public class CollectionTest extends TestCase {
 
   public void testCollectionSet() {
     CollectionSet bean = new CollectionSet();
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     String doc = yaml.dumpAsMap(bean);
     // System.out.println(doc);
-    Yaml beanLoader = new Yaml();
+    Yaml beanLoader = new Yaml(new LoaderOptions());
     CollectionSet parsed = beanLoader.loadAs(doc, CollectionSet.class);
     assertTrue(parsed.getRoles().contains(11));
     assertTrue(parsed.getRoles().contains(13));

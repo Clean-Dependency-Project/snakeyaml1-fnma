@@ -16,13 +16,14 @@ package org.yaml.snakeyaml;
 import junit.framework.TestCase;
 import org.junit.Test;
 import org.yaml.snakeyaml.constructor.Constructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
 import org.yaml.snakeyaml.introspector.PropertyUtils;
 import org.yaml.snakeyaml.representer.Representer;
 
 public class PropertyUtilsSharingTest extends TestCase {
 
   public void testYamlDefaults() {
-    Yaml yaml1 = new Yaml();
+    Yaml yaml1 = new Yaml(new SafeConstructor());
     assertSame(yaml1.constructor.getPropertyUtils(), yaml1.representer.getPropertyUtils());
 
     Yaml yaml2 = new Yaml(new Constructor(new LoaderOptions()));

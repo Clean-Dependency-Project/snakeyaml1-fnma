@@ -21,18 +21,19 @@ import java.util.List;
 import java.util.Map;
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.constructor.Constructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
 
 public class EnumTest extends TestCase {
 
   // Dumping
   public void testDumpEnum() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new DumperOptions());
     String output = yaml.dump(Suit.CLUBS);
     assertEquals("!!org.yaml.snakeyaml.Suit 'CLUBS'\n", output);
   }
 
   public void testDumpOverriddenToString() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new DumperOptions());
     String output = yaml.dump(DumperOptions.FlowStyle.BLOCK);
     assertEquals("!!org.yaml.snakeyaml.DumperOptions$FlowStyle 'BLOCK'\n", output);
   }
@@ -116,20 +117,20 @@ public class EnumTest extends TestCase {
 
   // Loading
   public void testLoadEnum() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new LoaderOptions());
     Suit suit = yaml.load("!!org.yaml.snakeyaml.Suit 'CLUBS'\n");
     assertEquals(Suit.CLUBS, suit);
   }
 
   public void testLoadOverridenToString() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new LoaderOptions());
     assertEquals(DumperOptions.FlowStyle.BLOCK,
         yaml.load("!!org.yaml.snakeyaml.DumperOptions$FlowStyle 'BLOCK'\n"));
   }
 
   @SuppressWarnings("unchecked")
   public void testLoadEnumList() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new LoaderOptions());
     List<Suit> list = yaml.load(
         "- !!org.yaml.snakeyaml.Suit 'CLUBS'\n- !!org.yaml.snakeyaml.Suit 'DIAMONDS'\n- !!org.yaml.snakeyaml.Suit 'HEARTS'\n- !!org.yaml.snakeyaml.Suit 'SPADES'");
     assertEquals(4, list.size());
@@ -141,7 +142,7 @@ public class EnumTest extends TestCase {
 
   @SuppressWarnings("unchecked")
   public void testLoadEnumMap() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new LoaderOptions());
     Map<Integer, Suit> map =
         yaml.load("1: !!org.yaml.snakeyaml.Suit 'HEARTS'\n2: !!org.yaml.snakeyaml.Suit 'DIAMONDS'");
     assertEquals(2, map.size());
@@ -150,7 +151,7 @@ public class EnumTest extends TestCase {
   }
 
   public void testLoadEnumBean() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new LoaderOptions());
     EnumBean bean = yaml.load(
         "!!org.yaml.snakeyaml.EnumBean\nid: 174\nmap:\n  !!org.yaml.snakeyaml.Suit 'CLUBS': 1\n  !!org.yaml.snakeyaml.Suit 'DIAMONDS': 2\nsuit: CLUBS");
 
@@ -182,7 +183,7 @@ public class EnumTest extends TestCase {
   }
 
   public void testLoadWrongEnum() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new LoaderOptions());
     try {
       yaml.load("1: !!org.yaml.snakeyaml.Suit 'HEARTS'\n2: !!org.yaml.snakeyaml.Suit 'KOSYR'");
       fail("KOSYR is not Suit");

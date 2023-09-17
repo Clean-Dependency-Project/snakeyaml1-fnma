@@ -22,6 +22,15 @@ import org.junit.Test;
 import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.TypeDescription;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
 import org.yaml.snakeyaml.constructor.Constructor;
 import org.yaml.snakeyaml.error.YAMLException;
 import org.yaml.snakeyaml.introspector.BeanAccess;
@@ -67,14 +76,14 @@ public class YamlSortedSetTest {
         "!!org.yaml.snakeyaml.issues.issue97.Blog\n" + "posts:\n" + "  - text: Dummy\n"
             + "    title: Test\n" + "  - text: Creative\n" + "    title: Highly\n";
     // System.out.println(serialized);
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     yaml.setBeanAccess(BeanAccess.FIELD);
     Blog rehydrated = yaml.loadAs(serialized, Blog.class);
     checkTestBlog(rehydrated);
   }
 
   protected Yaml constructYamlParser2() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     yaml.addTypeDescription(new TypeDescription(SortedSet.class) {
       @Override
       public Object newInstance(Node node) {
@@ -86,7 +95,7 @@ public class YamlSortedSetTest {
   }
 
   protected Yaml constructYamlParser3() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     yaml.setBeanAccess(BeanAccess.FIELD);
     yaml.addTypeDescription(new TypeDescription(SortedSet.class, TreeSet.class));
     return yaml;

@@ -15,25 +15,36 @@ package org.yaml.snakeyaml.types;
 
 import java.util.Map;
 import junit.framework.TestCase;
+import org.yaml.snakeyaml.DumperOptions;
+import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
 
 public abstract class AbstractTest extends TestCase {
 
   @SuppressWarnings("unchecked")
   protected Map<String, Object> getMap(String data) {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new LoaderOptions());
     Map<String, Object> nativeData = yaml.load(data);
     return nativeData;
   }
 
   protected Object load(String data) {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new LoaderOptions());
     Object obj = yaml.load(data);
     return obj;
   }
 
   protected String dump(Object data) {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new DumperOptions());
     return yaml.dump(data);
   }
 

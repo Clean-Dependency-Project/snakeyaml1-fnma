@@ -16,10 +16,19 @@ package org.yaml.snakeyaml.issues.issue397;
 import java.util.List;
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
 
 public class ColonInFlowContextInListTest extends TestCase {
 
-  private final Yaml loader = new Yaml();
+  private final Yaml loader = new Yaml(new SafeConstructor());
 
   public void testList() {
     List<String> list = loader.load("[ http://foo ]");

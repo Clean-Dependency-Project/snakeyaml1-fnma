@@ -15,7 +15,17 @@ package org.yaml.snakeyaml.issues.issue73;
 
 import java.util.ArrayList;
 import junit.framework.TestCase;
+import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
 
 /**
  * Test bean when the implementation is defined: ArrayList instead of just the interface List
@@ -30,7 +40,7 @@ public class ArrayListTest extends TestCase {
     list.add("xxx");
     list.add("ccc");
     bean.setList(list);
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new LoaderOptions());
     String doc = yaml.dump(bean);
     // System.out.println(doc);
     Bean1 loaded = yaml.load(doc);

@@ -14,6 +14,15 @@
 package org.yaml.snakeyaml.issues.issue193;
 
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
 
 public class TestYaml {
 
@@ -53,7 +62,7 @@ public class TestYaml {
     BeanA1 b = new BeanA1();
     b.setId(2L);
     b.setName("name1");
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     String dump = yaml.dump(b);
 
     dump = "!!org.yaml.snakeyaml.issues.issue193.TestYaml$BeanA1 {id: 2, name: name1}";

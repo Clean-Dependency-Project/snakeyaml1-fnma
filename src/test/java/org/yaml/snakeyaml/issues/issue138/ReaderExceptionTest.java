@@ -15,13 +15,22 @@ package org.yaml.snakeyaml.issues.issue138;
 
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
 import org.yaml.snakeyaml.reader.ReaderException;
 
 public class ReaderExceptionTest extends TestCase {
 
   public void testGetters() {
     try {
-      new Yaml().load("012\u0019");
+      new Yaml(new SafeConstructor()).load("012\u0019");
       fail();
     } catch (ReaderException e) {
       assertEquals(3, e.getPosition());

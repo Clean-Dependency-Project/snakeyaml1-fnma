@@ -23,7 +23,8 @@ import org.yaml.snakeyaml.DumperOptions.ScalarStyle;
  */
 public class Chapter2_3Test extends TestCase {
 
-  public void testExample_2_13() {
+  public void
+  testExample_2_13() {
     YamlDocument document = new YamlDocument("example2_13.yaml");
     String data = (String) document.getNativeData();
     assertEquals("\\//||\\/||\n// ||  ||__\n", data);

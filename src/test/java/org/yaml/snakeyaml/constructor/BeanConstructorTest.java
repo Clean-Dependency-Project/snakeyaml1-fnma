@@ -16,8 +16,18 @@ package org.yaml.snakeyaml.constructor;
 import java.math.BigInteger;
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.DumperOptions;
+import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.Util;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
 import org.yaml.snakeyaml.error.YAMLException;
 
 public class BeanConstructorTest extends TestCase {
@@ -56,7 +66,7 @@ public class BeanConstructorTest extends TestCase {
     String output = yamlToDump.dump(result);
     TestBean1 result2 = yaml.load(output);
     assertNotNull(result2);
-    TestBean1 result3 = new Yaml().load(output);
+    TestBean1 result3 = new Yaml(new LoaderOptions()).load(output);
     assertNotNull(result3);
   }
 

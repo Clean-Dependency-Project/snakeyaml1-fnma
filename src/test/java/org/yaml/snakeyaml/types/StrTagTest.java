@@ -26,6 +26,15 @@ import java.util.Map;
 import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.DumperOptions.ScalarStyle;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
 
 /**
  * @see <a href="http://yaml.org/type/str.html">str</a>
@@ -163,7 +172,7 @@ public class StrTagTest extends AbstractTest {
   public void testDumpUtf16() throws UnsupportedEncodingException {
     String str = "xxx";
     assertEquals(3, str.length());
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new DumperOptions());
     Charset charset = StandardCharsets.UTF_16;
     ByteArrayOutputStream stream = new ByteArrayOutputStream();
     Writer writer = new OutputStreamWriter(stream, charset);

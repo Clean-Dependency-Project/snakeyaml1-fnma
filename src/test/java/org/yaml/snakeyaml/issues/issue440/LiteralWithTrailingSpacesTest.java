@@ -16,6 +16,15 @@ package org.yaml.snakeyaml.issues.issue440;
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
 
 public class LiteralWithTrailingSpacesTest extends TestCase {
 
@@ -30,7 +39,7 @@ public class LiteralWithTrailingSpacesTest extends TestCase {
   }
 
   public void testTrimTrailingWhiteSpace() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     assertEquals("trailing", yaml.load("trailing "));
     assertEquals("trailing", yaml.load("trailing\r"));
     assertEquals("trailing", yaml.load("trailing\n"));

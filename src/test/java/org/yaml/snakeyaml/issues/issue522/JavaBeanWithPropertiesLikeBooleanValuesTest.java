@@ -16,7 +16,17 @@ package org.yaml.snakeyaml.issues.issue522;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
+import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
 
 public class JavaBeanWithPropertiesLikeBooleanValuesTest {
 
@@ -32,7 +42,7 @@ public class JavaBeanWithPropertiesLikeBooleanValuesTest {
 
   @Test
   public void deserialize() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new LoaderOptions());
 
     String strYaml = "on: This is on\n" + "off: This is off\n" + "y: This is y\n" + "n: This is n\n"
         + "yes: This is yes\n" + "no: This is no\n";

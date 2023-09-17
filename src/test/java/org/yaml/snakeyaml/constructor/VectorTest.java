@@ -16,6 +16,15 @@ package org.yaml.snakeyaml.constructor;
 import java.util.Vector;
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
 
 public class VectorTest extends TestCase {
 
@@ -28,7 +37,7 @@ public class VectorTest extends TestCase {
     srcVector.add("a");
     srcVector.add("test");
     // System.out.println("Source Vector: " + srcVector);
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     String instance = yaml.dump(srcVector);
     // System.out.println("YAML String: " + instance);
     yaml = new Yaml(new Constructor("java.util.Vector"));

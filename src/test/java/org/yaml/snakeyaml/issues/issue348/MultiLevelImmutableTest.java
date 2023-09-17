@@ -20,8 +20,18 @@ import static org.junit.Assert.assertThat;
 import java.util.List;
 import java.util.Map;
 import org.junit.Test;
+import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.Util;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
 import org.yaml.snakeyaml.issues.issue348.model.Bar;
 import org.yaml.snakeyaml.issues.issue348.model.Baz;
 import org.yaml.snakeyaml.issues.issue348.model.Foo;
@@ -30,7 +40,7 @@ public class MultiLevelImmutableTest {
 
   @Test
   public void testUnexpectedRecursive() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new LoaderOptions());
     String data = Util.getLocalResource("issues/issue348.yaml");
     Map<?, ?> loadedMap = yaml.loadAs(data, Map.class);
 

@@ -15,12 +15,21 @@ package org.yaml.snakeyaml.issues.issue517;
 
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
 
 public class TrailingTabTest extends TestCase {
 
   public void testTrailingTab() {
     String str = "'bar'\t";
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     try {
       Object obj = yaml.load(str);
       fail("Issue 517"); // TODO FIXME trailing TAB should be ignored

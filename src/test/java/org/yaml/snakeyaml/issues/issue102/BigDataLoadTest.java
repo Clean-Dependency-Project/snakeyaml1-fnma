@@ -21,6 +21,15 @@ import java.util.Map;
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
 
 public class BigDataLoadTest extends TestCase {
 
@@ -45,7 +54,7 @@ public class BigDataLoadTest extends TestCase {
 
   private String getLongYamlDocument(int size) {
     List<DataBean> beans = new ArrayList<DataBean>();
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     StringBuilder builder = new StringBuilder();
     for (int i = 0; i < size; i++) {
       List<String> list = new ArrayList<String>();

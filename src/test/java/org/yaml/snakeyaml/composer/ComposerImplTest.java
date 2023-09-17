@@ -18,6 +18,15 @@ import static org.junit.Assert.assertNotEquals;
 import java.io.StringReader;
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
 import org.yaml.snakeyaml.nodes.MappingNode;
 import org.yaml.snakeyaml.nodes.Node;
 import org.yaml.snakeyaml.nodes.NodeId;
@@ -26,7 +35,7 @@ public class ComposerImplTest extends TestCase {
 
   public void testGetNode() {
     String data = "american:\n  - Boston Red Sox";
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     Node node = yaml.compose(new StringReader(data));
     assertNotNull(node);
     assertTrue(node instanceof MappingNode);
@@ -39,7 +48,7 @@ public class ComposerImplTest extends TestCase {
   public void testComposeBean() {
     String data =
         "!!org.yaml.snakeyaml.composer.ComposerImplTest$BeanToCompose {name: Bill, age: 18}";
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     Node node = yaml.compose(new StringReader(data));
     assertNotNull(node);
     assertTrue(node instanceof MappingNode);
@@ -51,7 +60,7 @@ public class ComposerImplTest extends TestCase {
 
   public void testNodeAnchor() {
     String data = "--- &113\n{name: Bill, age: 18}";
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     Node node = yaml.compose(new StringReader(data));
     assertNotNull(node);
     assertTrue(node instanceof MappingNode);

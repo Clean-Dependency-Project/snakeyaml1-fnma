@@ -15,7 +15,17 @@ package org.yaml.snakeyaml.issues.issue47;
 
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.DumperOptions;
+import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
 import org.yaml.snakeyaml.error.YAMLException;
 
 public class ReadOnlyPropertiesTest extends TestCase {
@@ -23,12 +33,12 @@ public class ReadOnlyPropertiesTest extends TestCase {
   public void testBean1() {
     IncompleteBean bean = new IncompleteBean();
     bean.setName("lunch");
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new DumperOptions());
     String output = yaml.dumpAsMap(bean);
     // System.out.println(output);
     assertEquals("name: lunch\n", output);
     //
-    Yaml loader = new Yaml();
+    Yaml loader = new Yaml(new DumperOptions());
     IncompleteBean parsed = loader.loadAs(output, IncompleteBean.class);
     assertEquals(bean.getName(), parsed.getName());
   }
@@ -43,7 +53,7 @@ public class ReadOnlyPropertiesTest extends TestCase {
     // System.out.println(output);
     assertEquals("id: 10\nname: lunch\n", output);
     //
-    Yaml loader = new Yaml();
+    Yaml loader = new Yaml(new LoaderOptions());
     try {
       loader.loadAs(output, IncompleteBean.class);
       fail("Setter is missing.");

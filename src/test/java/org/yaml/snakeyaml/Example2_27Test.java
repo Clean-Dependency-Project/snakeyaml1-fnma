@@ -15,6 +15,7 @@ package org.yaml.snakeyaml;
 
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.constructor.Constructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
 
 /**
  * Test Example 2.27 from the YAML specification
@@ -27,7 +28,7 @@ public class Example2_27Test extends TestCase {
     assertNotNull(invoice);
     Person billTo = invoice.billTo;
     assertEquals("Dumars", billTo.family);
-    yaml = new Yaml();
+    yaml = new Yaml(new DumperOptions());
     String output = yaml.dump(invoice);
     String etalon = Util.getLocalResource("specification/example2_27_dumped.yaml");
     assertEquals(etalon, output);

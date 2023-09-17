@@ -16,11 +16,14 @@ package examples;
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
 
 public class CollectionStyleTest extends TestCase {
 
   public void testNestedStyle() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     String document = "  a: 1\n  b:\n    c: 3\n    d: 4\n";
     assertEquals("a: 1\nb: {c: 3, d: 4}\n", yaml.dump(yaml.load(document)));
   }

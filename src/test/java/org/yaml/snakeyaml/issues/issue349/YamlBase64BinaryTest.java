@@ -18,6 +18,15 @@ import java.io.InputStream;
 import java.util.Map;
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
 
 public class YamlBase64BinaryTest extends TestCase {
 
@@ -29,7 +38,7 @@ public class YamlBase64BinaryTest extends TestCase {
   }
 
   public void toBeTested(String name) throws IOException {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     InputStream inputStream =
         YamlBase64BinaryTest.class.getResourceAsStream("/issues/issue349-" + name + ".yaml");
     Map<String, Object> bean = yaml.load(inputStream);

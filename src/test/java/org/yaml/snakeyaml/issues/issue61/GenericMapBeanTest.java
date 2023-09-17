@@ -16,14 +16,25 @@ package org.yaml.snakeyaml.issues.issue61;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import junit.framework.TestCase;
+import org.yaml.snakeyaml.DumperOptions;
+import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.Util;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
 
 public class GenericMapBeanTest extends TestCase {
 
   @SuppressWarnings("unchecked")
   public void testGenericMap() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new DumperOptions());
     MapProvider<String, Integer> listProvider = new MapProvider<String, Integer>();
     listProvider.getMap().put("foo", 17);
     listProvider.getMap().put("bar", 19);
@@ -31,7 +42,7 @@ public class GenericMapBeanTest extends TestCase {
     // System.out.println(s);
     assertEquals("map:\n  foo: 17\n  bar: 19\n", s);
     // parse
-    Yaml loader = new Yaml();
+    Yaml loader = new Yaml(new LoaderOptions());
     MapProvider<String, Integer> listProvider2 = loader.loadAs(s, MapProvider.class);
     assertEquals(Integer.valueOf(17), listProvider2.getMap().get("foo"));
     assertEquals(Integer.valueOf(19), listProvider2.getMap().get("bar"));
@@ -40,7 +51,7 @@ public class GenericMapBeanTest extends TestCase {
 
   @SuppressWarnings("rawtypes")
   public void testGenericBean() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new DumperOptions());
     MapProvider<String, Bean> listProvider = new MapProvider<String, Bean>();
     Bean foo = new Bean();
     foo.setName("foo");
@@ -54,7 +65,7 @@ public class GenericMapBeanTest extends TestCase {
     String etalon = Util.getLocalResource("issues/issue61-2.yaml");
     assertEquals(etalon, s);
     // parse
-    Yaml loader = new Yaml();
+    Yaml loader = new Yaml(new DumperOptions());
     MapProvider listProvider2 = loader.loadAs(s, MapProvider.class);
     Bean foo2 = (Bean) listProvider2.getMap().get("foo");
     assertEquals("foo", foo2.getName());

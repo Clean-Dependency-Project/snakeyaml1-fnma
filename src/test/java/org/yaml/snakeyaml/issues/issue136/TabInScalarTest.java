@@ -15,33 +15,42 @@ package org.yaml.snakeyaml.issues.issue136;
 
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
 
 public class TabInScalarTest extends TestCase {
 
   public void testTab() {
-    String data = new Yaml().load("L\tD");
+    String data = new Yaml(new SafeConstructor()).load("L\tD");
     assertEquals("L\tD", data);
   }
 
   public void testNoTab() {
-    String data = new Yaml().load("L D");
+    String data = new Yaml(new SafeConstructor()).load("L D");
     assertEquals("L D", data);
   }
 
   public void testTabDoubleQuotes() {
-    String data = new Yaml().load("\"L\tD\"");
+    String data = new Yaml(new SafeConstructor()).load("\"L\tD\"");
     // System.out.println(data);
     assertEquals("L\tD", data);
   }
 
   public void testTabSingleQuotes() {
-    String data = new Yaml().load("'L\tD'");
+    String data = new Yaml(new SafeConstructor()).load("'L\tD'");
     // System.out.println(data);
     assertEquals("L\tD", data);
   }
 
   public void testDumpTab() {
-    String data = new Yaml().dump("L\tD");
+    String data = new Yaml(new SafeConstructor()).dump("L\tD");
     // System.out.println(data);
     assertEquals("\"L\\tD\"\n", data);
   }

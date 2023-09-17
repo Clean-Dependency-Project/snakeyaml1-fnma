@@ -21,6 +21,15 @@ import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.TypeDescription;
 import org.yaml.snakeyaml.Util;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
 import org.yaml.snakeyaml.error.YAMLException;
 import org.yaml.snakeyaml.nodes.Tag;
 import org.yaml.snakeyaml.representer.Representer;
@@ -37,7 +46,7 @@ public class ClassTagsTest extends TestCase {
       wheels.add(wheel);
     }
     car.setWheels(wheels);
-    assertEquals(Util.getLocalResource("constructor/car-with-tags.yaml"), new Yaml().dump(car));
+    assertEquals(Util.getLocalResource("constructor/car-with-tags.yaml"), new Yaml(new SafeConstructor()).dump(car));
   }
 
   public void testDumpClassTag() {
@@ -60,7 +69,7 @@ public class ClassTagsTest extends TestCase {
 
   public void testLoadUnknounClassTag() {
     try {
-      Yaml yaml = new Yaml();
+      Yaml yaml = new Yaml(new LoaderOptions());
       yaml.load(Util.getLocalResource("constructor/car-without-tags.yaml"));
       fail("Must fail because of unknown tag: !car");
     } catch (YAMLException e) {

@@ -19,8 +19,8 @@ import java.text.NumberFormat;
 import java.text.ParseException;
 import java.util.Locale;
 import org.junit.Test;
+import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.Yaml;
-
 
 public class NumberAsJavaBeanPropertyTest {
 
@@ -34,7 +34,7 @@ public class NumberAsJavaBeanPropertyTest {
     original.number = 1.1;
     assertEquals(Double.class, original.number.getClass());
 
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new DumperOptions());
     String str = yaml.dump(original);
 
     AmbiguousNumberType interpreted = yaml.load(str);
@@ -54,7 +54,7 @@ public class NumberAsJavaBeanPropertyTest {
     original.number = 1;
     assertEquals(Integer.class, original.number.getClass());
 
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new DumperOptions());
     String str = yaml.dump(original);
 
     AmbiguousNumberType interpreted = yaml.load(str);
@@ -68,7 +68,7 @@ public class NumberAsJavaBeanPropertyTest {
     original.number = 1L;
     assertEquals(Long.class, original.number.getClass());
 
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new DumperOptions());
     String str = yaml.dump(original);
 
     AmbiguousNumberType interpreted = yaml.load(str);

@@ -16,12 +16,21 @@ package org.yaml.snakeyaml.issues.issue163;
 import java.util.Map;
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
 
 public class LinearScalaTralingTest extends TestCase {
 
   public void testClipChomping() throws Exception {
     String data = "testnode: |\n   This is line 1\n   This is line 2\n";
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     @SuppressWarnings("unchecked")
     Map<String, String> payload = yaml.load(data);
     assertEquals("This is line 1\nThis is line 2\n", payload.get("testnode"));
@@ -30,7 +39,7 @@ public class LinearScalaTralingTest extends TestCase {
   public void testStripChomping() throws Exception {
     // mind the trailing '|-' to indicate strip chomping
     String data = "testnode: |-\n   This is line 1\n   This is line 2\n";
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     @SuppressWarnings("unchecked")
     Map<String, String> payload = yaml.load(data);
     assertEquals("No traling line break expected.", "This is line 1\nThis is line 2",

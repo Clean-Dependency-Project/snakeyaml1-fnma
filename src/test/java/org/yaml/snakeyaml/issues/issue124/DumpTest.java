@@ -17,12 +17,21 @@ import junit.framework.TestCase;
 import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.DumperOptions.FlowStyle;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
 import org.yaml.snakeyaml.nodes.Tag;
 
 public class DumpTest extends TestCase {
 
   public void testDumperOptionsSideEffect() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     Bean124 bean = new Bean124();
     String output0 = yaml.dump(bean);
     // System.out.println(output0);
@@ -37,28 +46,28 @@ public class DumpTest extends TestCase {
   }
 
   public void testDumperDifferentTag() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     Bean124 bean = new Bean124();
     String output1 = yaml.dumpAs(bean, new Tag("!!foo.bar"), FlowStyle.BLOCK);
     assertEquals("!!foo.bar\na: aaa\nnumbers:\n- 1\n- 2\n- 3\n", output1);
   }
 
   public void testDumperFlowStyle() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     Bean124 bean = new Bean124();
     String output1 = yaml.dumpAs(bean, new Tag("!!foo.bar"), FlowStyle.FLOW);
     assertEquals("!!foo.bar {a: aaa, numbers: [1, 2, 3]}\n", output1);
   }
 
   public void testDumperAutoStyle() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     Bean124 bean = new Bean124();
     String output1 = yaml.dumpAs(bean, new Tag("!!foo.bar"), FlowStyle.AUTO);
     assertEquals("!!foo.bar\na: aaa\nnumbers: [1, 2, 3]\n", output1);
   }
 
   public void testDumperNullStyle() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     Bean124 bean = new Bean124();
     String output1 = yaml.dumpAs(bean, new Tag("!!foo.bar"), null);
     assertEquals("!!foo.bar\na: aaa\nnumbers: [1, 2, 3]\n", output1);
@@ -74,7 +83,7 @@ public class DumpTest extends TestCase {
   }
 
   public void testDumperNullTag() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     Bean124 bean = new Bean124();
     String output1 = yaml.dumpAs(bean, null, FlowStyle.BLOCK);
     assertEquals("!!org.yaml.snakeyaml.issues.issue124.Bean124\na: aaa\nnumbers:\n- 1\n- 2\n- 3\n",

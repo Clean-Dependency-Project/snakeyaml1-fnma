@@ -21,14 +21,24 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Map;
 import org.junit.Test;
+import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
 
 public class MergedOrderTest {
 
   @SuppressWarnings("rawtypes")
   @Test
   public void mergedLinkedMapOrder() throws IOException {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new LoaderOptions());
     InputStream inputStream = MergedOrderTest.class.getResourceAsStream("/issues/issue351_1.yaml");
     Map<?, ?> bean = yaml.loadAs(inputStream, Map.class);
 

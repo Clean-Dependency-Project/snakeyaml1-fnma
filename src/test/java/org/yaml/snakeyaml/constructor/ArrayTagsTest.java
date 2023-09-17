@@ -21,6 +21,15 @@ import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.TypeDescription;
 import org.yaml.snakeyaml.Util;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
 
 public class ArrayTagsTest extends TestCase {
 
@@ -35,7 +44,7 @@ public class ArrayTagsTest extends TestCase {
     }
     car.setWheels(wheels);
     assertEquals(Util.getLocalResource("constructor/cararray-with-tags-flow-auto.yaml"),
-        new Yaml().dump(car));
+        new Yaml(new SafeConstructor()).dump(car));
   }
 
   public void testFlowBlock() {

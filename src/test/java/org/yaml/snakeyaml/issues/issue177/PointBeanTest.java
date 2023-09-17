@@ -14,15 +14,25 @@
 package org.yaml.snakeyaml.issues.issue177;
 
 import junit.framework.TestCase;
+import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.Util;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
 
 public class PointBeanTest extends TestCase {
 
   public void testNoSingleQuoteForBlockStyle() throws Exception {
     String input = Util.getLocalResource("issues/issue177-1.yaml");
     try {
-      Yaml yaml = new Yaml();
+      Yaml yaml = new Yaml(new LoaderOptions());
       yaml.load(input);
       fail();
     } catch (Exception e) {

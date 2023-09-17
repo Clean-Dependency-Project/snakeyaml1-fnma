@@ -18,6 +18,15 @@ import junit.framework.TestCase;
 import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.DumperOptions.ScalarStyle;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
 import org.yaml.snakeyaml.reader.ReaderException;
 
 public class PrintableUnicodeTest extends TestCase {
@@ -71,7 +80,7 @@ public class PrintableUnicodeTest extends TestCase {
 
       String result;
       try {
-        result = new Yaml().load(serialized).toString();
+        result = new Yaml(new SafeConstructor()).load(serialized).toString();
       } catch (ReaderException e) {
         fail(String.format(
             "U+%04x: Deserialization threw ReaderException for an acceptable character\n", c));
@@ -92,7 +101,7 @@ public class PrintableUnicodeTest extends TestCase {
 
       String result;
       try {
-        result = new Yaml().load(serialized).toString();
+        result = new Yaml(new SafeConstructor()).load(serialized).toString();
       } catch (ReaderException e) {
         fail(String.format(
             "U+%04x: Deserialization threw ReaderException for an acceptable escaped character\n",

@@ -15,17 +15,18 @@ package org.yaml.snakeyaml;
 
 import java.util.Iterator;
 import junit.framework.TestCase;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
 import org.yaml.snakeyaml.error.YAMLException;
 
 public class YamlTest extends TestCase {
 
   public void testSetNoName() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     assertTrue(yaml.toString().matches("Yaml:\\d+"));
   }
 
   public void testSetName() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     yaml.setName("REST");
     assertEquals("REST", yaml.getName());
     assertEquals("REST", yaml.toString());
@@ -35,7 +36,7 @@ public class YamlTest extends TestCase {
    * Check that documents are parsed only when they are asked to be loaded.
    */
   public void testOneDocument() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     String doc = "--- a\n--- [:]";
     Iterator<Object> loaded = yaml.loadAll(doc).iterator();
     assertTrue(loaded.hasNext());
@@ -55,7 +56,7 @@ public class YamlTest extends TestCase {
   }
 
   public void testOnlyOneDocument() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new LoaderOptions());
     String doc = "--- a\n--- b";
     try {
       yaml.load(doc);

@@ -18,7 +18,18 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import junit.framework.TestCase;
+import org.yaml.snakeyaml.DumperOptions;
+import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
 
 public class PreserveTypeTest extends TestCase {
 
@@ -65,7 +76,7 @@ public class PreserveTypeTest extends TestCase {
   }
 
   private void check(String doc) {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new LoaderOptions());
     @SuppressWarnings("unchecked")
     Map<String, Object> loaded = yaml.load(doc);
     Object myBean2 = loaded.get("myBean");
@@ -73,13 +84,13 @@ public class PreserveTypeTest extends TestCase {
   }
 
   public void testPreserveType1() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new DumperOptions());
     String s = yaml.dump(createData(true));
     check(s);
   }
 
   public void testPreserveType2() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new DumperOptions());
     String s = yaml.dump(createData(false));
     check(s);
   }

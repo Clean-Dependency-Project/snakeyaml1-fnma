@@ -15,32 +15,41 @@ package org.yaml.snakeyaml.issues.issue468;
 
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
 
 public class NonAsciiAnchorTest extends TestCase {
 
   private final String NON_ANCHORS = ":,[]{}*&./";
 
   public void testNonAsciiAnchor() {
-    Yaml loader = new Yaml();
+    Yaml loader = new Yaml(new SafeConstructor());
     String value = loader.load("&something_タスク タスク");
     assertEquals("タスク", value);
   }
 
   public void testUnderscore() {
-    Yaml loader = new Yaml();
+    Yaml loader = new Yaml(new SafeConstructor());
     String value = loader.load("&_ タスク");
     assertEquals("タスク", value);
   }
 
   public void testSmile() {
-    Yaml loader = new Yaml();
+    Yaml loader = new Yaml(new SafeConstructor());
     String value = loader.load("&\uD83D\uDE01 v1");
     // System.out.println("&\uD83D\uDE01 v1");
     assertEquals("v1", value);
   }
 
   public void testAlpha() {
-    Yaml loader = new Yaml();
+    Yaml loader = new Yaml(new SafeConstructor());
     String value = loader.load("&kääk v1");
     assertEquals("v1", value);
   }
@@ -59,7 +68,7 @@ public class NonAsciiAnchorTest extends TestCase {
   }
 
   private void loadWith(char c) {
-    Yaml loader = new Yaml();
+    Yaml loader = new Yaml(new SafeConstructor());
     loader.load("&" + c + " value");
   }
 }

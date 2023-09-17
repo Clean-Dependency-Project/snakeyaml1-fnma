@@ -14,7 +14,18 @@
 package org.yaml.snakeyaml.immutable.primitives;
 
 import junit.framework.TestCase;
+import org.yaml.snakeyaml.DumperOptions;
+import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
 import org.yaml.snakeyaml.error.YAMLException;
 
 public class ImmutablePrimitivesTest extends TestCase {
@@ -29,7 +40,7 @@ public class ImmutablePrimitivesTest extends TestCase {
   }
 
   public void testPrimitivesLong() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new LoaderOptions());
     String dump =
         "!!org.yaml.snakeyaml.immutable.primitives.BunchOfPrimitives [10000000000, 40.0, true]";
     BunchOfPrimitives bunch = yaml.load(dump);
@@ -38,7 +49,7 @@ public class ImmutablePrimitivesTest extends TestCase {
   }
 
   public void testPrimitivesException() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new DumperOptions());
     String dump = "!!org.yaml.snakeyaml.immutable.primitives.BunchOfPrimitives [10, 40, true]";
     try {
       yaml.load(dump);

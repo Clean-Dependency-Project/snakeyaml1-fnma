@@ -19,6 +19,7 @@ import org.junit.Test;
 import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.TypeDescription;
 import org.yaml.snakeyaml.Yaml;
+
 import org.yaml.snakeyaml.constructor.AbstractConstruct;
 import org.yaml.snakeyaml.constructor.Construct;
 import org.yaml.snakeyaml.constructor.Constructor;
@@ -56,7 +57,7 @@ public class ChangeRuntimeClassTest {
     String yamlText =
         "!!org.yaml.snakeyaml.issues.issue94.Entity\n" + "name: Matt\n" + "nickName: Java\n";
 
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new LoaderOptions());
     yaml.addTypeDescription(new TypeDescription(Entity.class, EntityLoadingProxy.class));
 
     Entity loadedEntity = null;
@@ -84,7 +85,7 @@ public class ChangeRuntimeClassTest {
   @Test
   public void testNoTagWithTypeDescription() {
     String yamlText = "name: Matt\n" + "nickName: Java\n";
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new LoaderOptions());
     yaml.addTypeDescription(new TypeDescription(Entity.class, EntityLoadingProxy.class));
     Entity loadedEntity = null;
     loadedEntity = yaml.loadAs(yamlText, Entity.class);

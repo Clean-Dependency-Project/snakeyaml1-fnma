@@ -19,6 +19,15 @@ import junit.framework.TestSuite;
 import org.yaml.snakeyaml.Invoice;
 import org.yaml.snakeyaml.Util;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
 import org.yaml.snakeyaml.constructor.Constructor;
 
 public class StressTest extends TestCase {
@@ -44,14 +53,14 @@ public class StressTest extends TestCase {
     float duration = (time2 - time1) / 1000000;
     System.out.println("Init was " + duration + " ms.");
 
-    Yaml loader = new Yaml();
+    Yaml loader = new Yaml(new SafeConstructor());
     time1 = System.nanoTime();
     loader.loadAs(doc, Invoice.class);
     time2 = System.nanoTime();
     duration = (time2 - time1) / 1000000;
     System.out.println("\nSingle load was " + duration + " ms.");
 
-    loader = new Yaml();
+    loader = new Yaml(new SafeConstructor());
     int[] range = new int[] {1000, 2000 /* , 4000, 8000 */};
     System.out.println("\nOne instance.");
     for (int number : range) {
@@ -73,7 +82,7 @@ public class StressTest extends TestCase {
     for (int number : range) {
       time1 = System.nanoTime();
       for (int i = 0; i < number; i++) {
-        loader = new Yaml();
+        loader = new Yaml(new SafeConstructor());
         loader.loadAs(doc, Invoice.class);
       }
       time2 = System.nanoTime();

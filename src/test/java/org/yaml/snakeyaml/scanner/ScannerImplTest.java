@@ -18,6 +18,15 @@ import junit.framework.TestCase;
 import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
 import org.yaml.snakeyaml.error.Mark;
 import org.yaml.snakeyaml.reader.StreamReader;
 import org.yaml.snakeyaml.tokens.BlockEndToken;
@@ -53,7 +62,7 @@ public class ScannerImplTest extends TestCase {
   }
 
   public void testWrongTab() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     try {
       yaml.load("\t  data: 1");
       fail("TAB cannot start a token.");

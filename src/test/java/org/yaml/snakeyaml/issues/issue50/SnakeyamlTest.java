@@ -15,6 +15,15 @@ package org.yaml.snakeyaml.issues.issue50;
 
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
 
 /**
  * test issue 50.
@@ -66,7 +75,7 @@ public class SnakeyamlTest extends TestCase {
 
   public void testIntrospector() {
     SomeBean someBean = new SomeBeanImpl("value1", "value2");
-    Yaml dumper = new Yaml();
+    Yaml dumper = new Yaml(new SafeConstructor());
     String output = dumper.dump(someBean);
     // System.out.println(output);
     assertEquals(

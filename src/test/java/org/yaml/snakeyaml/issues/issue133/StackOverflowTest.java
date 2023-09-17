@@ -21,6 +21,15 @@ import java.awt.Point;
 import org.junit.Test;
 import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
 import org.yaml.snakeyaml.introspector.Property;
 import org.yaml.snakeyaml.nodes.NodeTuple;
 import org.yaml.snakeyaml.nodes.Tag;
@@ -37,7 +46,7 @@ public class StackOverflowTest {
     org.junit.Assume.assumeTrue(System.getProperty("java.version").startsWith("1.6"));
 
     try {
-      Yaml yaml = new Yaml();
+      Yaml yaml = new Yaml(new DumperOptions());
       // by default it must fail with StackOverflow
       yaml.dump(new Point());
       fail("getLocation() is recursive.");

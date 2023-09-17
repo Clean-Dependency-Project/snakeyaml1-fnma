@@ -15,7 +15,17 @@ package org.yaml.snakeyaml.issues.issue67;
 
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.DumperOptions;
+import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
 import org.yaml.snakeyaml.nodes.Tag;
 import org.yaml.snakeyaml.representer.Representer;
 
@@ -27,13 +37,13 @@ public class NonAsciiCharsInClassNameTest extends TestCase {
     Académico obj = new Académico();
     obj.setId(1);
     obj.setName("Foo bar baz");
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new DumperOptions());
     String result = yaml.dump(obj);
     assertEquals(PREFIX + "Acad%C3%A9mico {\n  id: 1, name: Foo bar baz}\n", result);
   }
 
   public void testLoad() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new DumperOptions());
     Académico obj = yaml.load(PREFIX + "Acad%C3%A9mico {id: 3, name: Foo bar}");
     assertEquals(3, obj.getId());
     assertEquals("Foo bar", obj.getName());
@@ -41,7 +51,7 @@ public class NonAsciiCharsInClassNameTest extends TestCase {
 
   public void testLoadInvalidPattern() {
     try {
-      Yaml yaml = new Yaml();
+      Yaml yaml = new Yaml(new LoaderOptions());
       yaml.load(PREFIX + "Acad%WZ%A9mico {id: 3, name: Foo bar}");
       fail("Illegal hex characters in escape (%) pattern must not be accepted.");
     } catch (Exception e) {

@@ -17,12 +17,21 @@ import java.util.Map;
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
 import org.yaml.snakeyaml.constructor.DuplicateKeyException;
 
 public class NullDuplicateKeyTest extends TestCase {
 
   public void testDuplicateKeyIsAllowed() {
-    Yaml loader = new Yaml();
+    Yaml loader = new Yaml(new SafeConstructor());
     Map<String, String> duplicateMap = loader.load("~: foo\n" + "~: bar");
     assertEquals(1, duplicateMap.size());
     assertEquals("bar", duplicateMap.get(null));

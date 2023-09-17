@@ -15,11 +15,20 @@ package org.yaml.snakeyaml.issues.issue467;
 
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
 
 public class MergeTest extends TestCase {
 
   public void testMergeAsScalar() {
-    Yaml loader = new Yaml();
+    Yaml loader = new Yaml(new SafeConstructor());
     String data =
         "test-list:\n" + " - &1\n" + "   a: 1\n" + "   b: 2\n" + " - &2 <<: *1\n" + " - <<: *2";
     try {

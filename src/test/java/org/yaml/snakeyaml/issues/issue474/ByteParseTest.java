@@ -14,12 +14,22 @@
 package org.yaml.snakeyaml.issues.issue474;
 
 import junit.framework.TestCase;
+import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
 
 public class ByteParseTest extends TestCase {
 
   public void testParseBytes() {
-    Yaml yamlProcessor = new Yaml();
+    Yaml yamlProcessor = new Yaml(new LoaderOptions());
     Byte[] lb = yamlProcessor.loadAs("[0x01,0x02,0xff,0x7f_ee_00_11]", Byte[].class);
 
     assertEquals(4, lb.length);
@@ -31,7 +41,7 @@ public class ByteParseTest extends TestCase {
   }
 
   public void testParseShorts() {
-    Yaml yamlProcessor = new Yaml();
+    Yaml yamlProcessor = new Yaml(new LoaderOptions());
     Short[] lb = yamlProcessor.loadAs("[0x0102,0x7ffe,33000,0x8fff,65000]", Short[].class);
 
     assertEquals(5, lb.length);

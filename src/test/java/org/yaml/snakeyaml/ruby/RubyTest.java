@@ -14,10 +14,16 @@
 package org.yaml.snakeyaml.ruby;
 
 import junit.framework.TestCase;
-import org.yaml.snakeyaml.DumperOptions;
-import org.yaml.snakeyaml.TypeDescription;
-import org.yaml.snakeyaml.Util;
-import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.*;
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
 import org.yaml.snakeyaml.constructor.Constructor;
 import org.yaml.snakeyaml.nodes.Tag;
 import org.yaml.snakeyaml.representer.Representer;
@@ -42,7 +48,7 @@ public class RubyTest extends TestCase {
     assertFalse("No tags expected.", output.contains("Sub1"));
     // System.out.println(output);
     // parse back. Without tags it shall still work
-    Yaml beanLoader = new Yaml();
+    Yaml beanLoader = new Yaml(new LoaderOptions());
     TestObject result2 = beanLoader.loadAs(output, TestObject.class);
     assertEquals(0, result2.getSub1().getAtt2());
     assertEquals("MyString", result2.getSub2().getAtt1());

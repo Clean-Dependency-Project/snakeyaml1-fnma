@@ -16,14 +16,24 @@ package org.yaml.snakeyaml.issues.issue55;
 import java.util.LinkedList;
 import java.util.List;
 import junit.framework.TestCase;
+import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.Util;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
 import org.yaml.snakeyaml.introspector.BeanAccess;
 
 public class FieldListTest extends TestCase {
 
   public void testYaml() {
-    Yaml beanLoader = new Yaml();
+    Yaml beanLoader = new Yaml(new LoaderOptions());
     beanLoader.setBeanAccess(BeanAccess.FIELD);
     BlogField rehydrated =
         beanLoader.loadAs(Util.getLocalResource("issues/issue55_2.txt"), BlogField.class);
@@ -31,7 +41,7 @@ public class FieldListTest extends TestCase {
   }
 
   public void testFailureWithoutFieldAccess() {
-    Yaml beanLoader = new Yaml();
+    Yaml beanLoader = new Yaml(new LoaderOptions());
     try {
       beanLoader.loadAs(Util.getLocalResource("issues/issue55_2.txt"), BlogField.class);
       fail("Private field must not be available");

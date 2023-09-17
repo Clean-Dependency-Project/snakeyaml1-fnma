@@ -17,11 +17,20 @@ import junit.framework.TestCase;
 import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.Util;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
 
 public class DumpStackTraceTest extends TestCase {
 
   public void testJavaStackTrace() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     String input = Util.getLocalResource("representer/stacktrace1.txt");
     String result = yaml.dump(input);
     // System.out.println(result);
@@ -41,7 +50,7 @@ public class DumpStackTraceTest extends TestCase {
   }
 
   public void testJavaStackTraceWithTabs() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     String input = Util.getLocalResource("representer/stacktrace3.txt");
     assertEquals(-1, input.indexOf(':'));
     assertTrue("Tabs must be used.", input.indexOf('\t') > 0);
@@ -51,7 +60,7 @@ public class DumpStackTraceTest extends TestCase {
   }
 
   public void testJavaStackTraceWithoutTabs() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     String input = Util.getLocalResource("representer/stacktrace1.txt");
     String result = yaml.dump(input);
     // System.out.println(result);

@@ -16,6 +16,7 @@ package org.yaml.snakeyaml;
 import java.sql.Timestamp;
 import java.util.Date;
 import junit.framework.TestCase;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
 import org.yaml.snakeyaml.nodes.Node;
 import org.yaml.snakeyaml.nodes.Tag;
 import org.yaml.snakeyaml.representer.Represent;
@@ -27,13 +28,13 @@ public class JavaBeanWithNullValuesTest extends TestCase {
 
   @Override
   protected void setUp() {
-    loader = new Yaml();
+    loader = new Yaml(new LoaderOptions());
   }
 
   public void testNotNull() {
     String dumpStr = dumpJavaBeanWithNullValues(false);
     // System.out.println(dumpStr);
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new LoaderOptions());
     JavaBeanWithNullValues parsed = yaml.load(dumpStr);
     assertNotNull(parsed.getString());
     assertNotNull(parsed.getBoolean1());
@@ -59,7 +60,7 @@ public class JavaBeanWithNullValuesTest extends TestCase {
 
   public void testNull() {
     String dumpStr = dumpJavaBeanWithNullValues(true);
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new LoaderOptions());
     JavaBeanWithNullValues parsed = yaml.load(dumpStr);
     assertNull(parsed.getString());
     //
@@ -86,7 +87,7 @@ public class JavaBeanWithNullValuesTest extends TestCase {
 
     String dumpStr = yaml.dump(javaBeanWithNullValues);
     // System.out.println(dumpStr);
-    yaml = new Yaml();
+    yaml = new Yaml(new LoaderOptions());
     JavaBeanWithNullValues parsed = yaml.load(dumpStr);
     assertNull(" expect null, got " + parsed.getBoolean1(), parsed.getBoolean1());
     assertNull(" expect null, got " + parsed.getString(), parsed.getString());

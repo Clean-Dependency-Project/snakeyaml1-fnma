@@ -21,6 +21,15 @@ import junit.framework.TestCase;
 import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.Util;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
 import org.yaml.snakeyaml.YamlDocument;
 import org.yaml.snakeyaml.constructor.AbstractConstruct;
 import org.yaml.snakeyaml.constructor.Constructor;
@@ -54,7 +63,7 @@ public class YamlBase64Test extends TestCase {
 
   @SuppressWarnings("unchecked")
   public void testYamlBase64Loading() throws IOException {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new LoaderOptions());
     InputStream inputStream =
         YamlBase64Test.class.getResourceAsStream("/issues/issue99-base64_double_quoted.yaml");
     Map<String, Object> bean = yaml.load(inputStream);
@@ -86,7 +95,7 @@ public class YamlBase64Test extends TestCase {
    * @throws IOException
    */
   public void testYamlBase64LoadingLiteral() throws IOException {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new LoaderOptions());
     InputStream inputStream =
         YamlBase64Test.class.getResourceAsStream("/issues/issue99-base64_literal.yaml");
     Map<String, Object> bean = yaml.load(inputStream);

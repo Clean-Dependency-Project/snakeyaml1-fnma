@@ -15,7 +15,17 @@ package org.yaml.snakeyaml.javabeans;
 
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.DumperOptions;
+import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
 import org.yaml.snakeyaml.nodes.Tag;
 import org.yaml.snakeyaml.representer.Representer;
 
@@ -65,7 +75,7 @@ public class LongTest extends TestCase {
   public void testLongConstructor() {
     String doc = "!!org.yaml.snakeyaml.javabeans.LongTest$Foo\n\"bar\": !!int \"42\"";
     // System.out.println(doc);
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new LoaderOptions());
     Foo foo2 = yaml.load(doc);
     assertEquals(Long.valueOf(42L), foo2.getBar());
   }

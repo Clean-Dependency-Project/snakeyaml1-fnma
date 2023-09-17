@@ -14,12 +14,22 @@
 package org.yaml.snakeyaml.issues.issue145;
 
 import junit.framework.TestCase;
+import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
 
 public class LineNumberInExceptionTest extends TestCase {
 
   public void testLineReport() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new LoaderOptions());
     try {
       yaml.load("---\n!!org.yaml.snakeyaml.issues.issue145.AbstractThing { id: QQQ }");
       fail("Instances for abstract classes cannot be created");
@@ -36,14 +46,14 @@ public class LineNumberInExceptionTest extends TestCase {
   }
 
   public void testCompleteThing() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new LoaderOptions());
     CompleteThing thing =
         yaml.load("---\n!!org.yaml.snakeyaml.issues.issue145.CompleteThing { id: QQQ }");
     assertEquals("QQQ", thing.getId());
   }
 
   public void testWrongParameter() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new LoaderOptions());
     try {
       yaml.load("---\n!!org.yaml.snakeyaml.issues.issue145.CompleteThing { id2: QQQ }");
       fail("Invalid parameter");

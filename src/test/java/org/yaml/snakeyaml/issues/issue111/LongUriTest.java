@@ -16,6 +16,15 @@ package org.yaml.snakeyaml.issues.issue111;
 import java.io.StringReader;
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
 import org.yaml.snakeyaml.nodes.Node;
 import org.yaml.snakeyaml.nodes.ScalarNode;
 
@@ -25,7 +34,7 @@ public class LongUriTest extends TestCase {
    * Try loading a tag with a very long escaped URI section (over 256 bytes' worth).
    */
   public void testLongURIEscape() {
-    Yaml loader = new Yaml();
+    Yaml loader = new Yaml(new SafeConstructor());
     // Create a long escaped string by exponential growth...
     String longEscURI = "%41"; // capital A...
     for (int i = 0; i < 10; ++i) {

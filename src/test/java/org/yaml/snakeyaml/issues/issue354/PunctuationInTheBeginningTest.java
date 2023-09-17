@@ -20,6 +20,15 @@ import java.util.Map;
 import org.junit.Test;
 import org.yaml.snakeyaml.Util;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
 
 /**
  * The test does not fix anything. It just proves that SnakeYAML works as it should according to the
@@ -30,7 +39,7 @@ public class PunctuationInTheBeginningTest {
   @Test
   public void testBacktickAndAtSign() throws IOException {
     String input = Util.getLocalResource("issues/issue354.yaml");
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     Map<String, Object> bean = yaml.load(input);
     assertEquals("This is\n`a literal\n", bean.get("foo"));
     assertEquals("And\n@this\n", bean.get("bar"));

@@ -18,6 +18,15 @@ import junit.framework.TestCase;
 import org.yaml.snakeyaml.TypeDescription;
 import org.yaml.snakeyaml.Util;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
 import org.yaml.snakeyaml.constructor.Constructor;
 
 public class Human_WithArrayOfChildrenTest extends TestCase {
@@ -156,7 +165,7 @@ public class Human_WithArrayOfChildrenTest extends TestCase {
   }
 
   public void testDumpChildrenArrayWithoutRootTag() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     Human_WithArrayOfChildren son = createSon();
     String output = yaml.dumpAsMap(son);
     // System.out.println(output);
