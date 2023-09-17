@@ -13,14 +13,6 @@
  */
 package org.yaml.snakeyaml.issues.issue82;
 
-import static org.junit.Assert.assertNotEquals;
-
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.LoaderOptions;
@@ -29,6 +21,10 @@ import org.yaml.snakeyaml.Yaml;
 import org.yaml.snakeyaml.constructor.Constructor;
 import org.yaml.snakeyaml.nodes.Tag;
 import org.yaml.snakeyaml.representer.Representer;
+
+import java.util.*;
+
+import static org.junit.Assert.assertNotEquals;
 
 /**
  * issue 82: property order influence when aliased in generic collection
@@ -116,7 +112,7 @@ public class PropOrderInfluenceWhenAliasedInGenericCollectionTest extends TestCa
     customerAB.aAll = all;
     customerAB.bGeneral = general;
 
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new LoaderOptions());
     String dump = yaml.dump(customerAB);
     // System.out.println(dump);
     CustomerAB parsed = yaml.load(dump);
@@ -138,7 +134,7 @@ public class PropOrderInfluenceWhenAliasedInGenericCollectionTest extends TestCa
     customerAB.aAll = all;
     customerAB.bGeneral = general;
 
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new LoaderOptions());
     String dump = yaml.dump(customerAB);
     // System.out.println(dump);
     CustomerAB parsed = yaml.load(dump);
@@ -242,10 +238,10 @@ public class PropOrderInfluenceWhenAliasedInGenericCollectionTest extends TestCa
     customerAB.aAll = all;
     customerAB.bGeneral = general;
 
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new DumperOptions());
     String dump2 = yaml.dumpAsMap(customerAB);
     // System.out.println(dump2);
-    Yaml loader = new Yaml();
+    Yaml loader = new Yaml(new DumperOptions());
     CustomerAB parsed = loader.loadAs(dump2, CustomerAB.class);
     assertNotNull(parsed);
   }
@@ -265,7 +261,7 @@ public class PropOrderInfluenceWhenAliasedInGenericCollectionTest extends TestCa
     customerAB_mapValue.aAll = all;
     customerAB_mapValue.bGeneralMap = generalMap;
 
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new LoaderOptions());
     String dump = yaml.dump(customerAB_mapValue);
     // System.out.println(dump);
     CustomerAB_MapValue parsed = yaml.load(dump);
@@ -287,7 +283,7 @@ public class PropOrderInfluenceWhenAliasedInGenericCollectionTest extends TestCa
     customerAB_mapKey.aAll = all;
     customerAB_mapKey.bGeneralMap = generalMap;
 
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new LoaderOptions());
     String dump = yaml.dump(customerAB_mapKey);
     // System.out.println(dump);
     CustomerAB_MapKey parsed = yaml.load(dump);
@@ -309,7 +305,7 @@ public class PropOrderInfluenceWhenAliasedInGenericCollectionTest extends TestCa
     customerBA.aGeneral = general;
     customerBA.bAll = all;
 
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new LoaderOptions());
     String dump = yaml.dump(customerBA);
     // System.out.println(dump);
     //

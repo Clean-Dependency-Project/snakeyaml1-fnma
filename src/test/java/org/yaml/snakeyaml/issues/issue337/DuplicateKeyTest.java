@@ -13,16 +13,17 @@
  */
 package org.yaml.snakeyaml.issues.issue337;
 
-import static junit.framework.TestCase.assertTrue;
-import static org.junit.Assert.assertEquals;
-
-import java.util.LinkedHashMap;
-import java.util.Map;
 import org.junit.Test;
 import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.Util;
 import org.yaml.snakeyaml.Yaml;
 import org.yaml.snakeyaml.constructor.DuplicateKeyException;
+
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+import static junit.framework.TestCase.assertTrue;
+import static org.junit.Assert.assertEquals;
 
 public class DuplicateKeyTest {
 
@@ -98,7 +99,7 @@ public class DuplicateKeyTest {
   @Test
   public void defaultConfigurationNoErrorsWithDuplicates() {
     String input = Util.getLocalResource("issues/issue337-duplicate-keys.yaml");
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new LoaderOptions());
     MapProvider<String, FooEntry> testdata = yaml.loadAs(input, MapProvider.class);
     assertEquals("has-dup-keys", testdata.getName());
     assertEquals(1, testdata.getMap().size());
@@ -147,7 +148,7 @@ public class DuplicateKeyTest {
   @Test
   public void defaultConfigUniqueKeysWorks() {
     String input = Util.getLocalResource("issues/issue337-duplicate-keys-no-dups.yaml");
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new LoaderOptions());
     MapProvider<String, FooEntry> testdata = yaml.loadAs(input, MapProvider.class);
     assertEquals("no-dups-test", testdata.getName());
     assertEquals(3, testdata.getMap().size());

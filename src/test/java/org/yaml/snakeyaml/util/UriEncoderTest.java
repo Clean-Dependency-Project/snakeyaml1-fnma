@@ -13,9 +13,10 @@
  */
 package org.yaml.snakeyaml.util;
 
+import junit.framework.TestCase;
+
 import java.nio.ByteBuffer;
 import java.nio.charset.CharacterCodingException;
-import junit.framework.TestCase;
 
 public class UriEncoderTest extends TestCase {
 

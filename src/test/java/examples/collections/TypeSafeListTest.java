@@ -16,8 +16,12 @@ package examples.collections;
 import java.util.ArrayList;
 import java.util.List;
 import junit.framework.TestCase;
+import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.Util;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
 
 /**
  * Test ListBean->List<Developer> developers <br/>
@@ -35,7 +39,7 @@ public class TypeSafeListTest extends TestCase {
     developers.add(new Developer("Fred", "creator"));
     developers.add(new Developer("John", "committer"));
     bean.setDevelopers(developers);
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     String output = yaml.dumpAsMap(bean);
     // System.out.println(output);
     String etalon = Util.getLocalResource("examples/list-bean-1.yaml");
@@ -45,7 +49,7 @@ public class TypeSafeListTest extends TestCase {
   public void testLoadList() {
     String output = Util.getLocalResource("examples/list-bean-1.yaml");
     // System.out.println(output);
-    Yaml beanLoader = new Yaml();
+    Yaml beanLoader = new Yaml(new LoaderOptions());
     ListBean1 parsed = beanLoader.loadAs(output, ListBean1.class);
     assertNotNull(parsed);
     List<String> list2 = parsed.getChildren();

@@ -13,15 +13,18 @@
  */
 package org.yaml.snakeyaml.issues.issue112;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-
-import java.io.IOException;
-import java.io.InputStream;
 import org.junit.Test;
+import org.yaml.snakeyaml.DumperOptions;
+import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.Util;
 import org.yaml.snakeyaml.Yaml;
 import org.yaml.snakeyaml.constructor.Constructor;
+
+import java.io.IOException;
+import java.io.InputStream;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 public class ParameterisedTypeLoadingTestCase {
 
@@ -32,14 +35,14 @@ public class ParameterisedTypeLoadingTestCase {
     check(obj);
 
     // dump the object
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new DumperOptions());
     String output = yaml.dumpAsMap(obj);
     assertEquals(Util.getLocalResource("issues/issue112-2.yaml"), output);
   }
 
   @Test
   public void testJavaBeanLoader() throws IOException {
-    Yaml yamlParser = new Yaml();
+    Yaml yamlParser = new Yaml(new LoaderOptions());
     MyCompositeObject obj = yamlParser.loadAs(getInput(), MyCompositeObject.class);
     check(obj);
   }

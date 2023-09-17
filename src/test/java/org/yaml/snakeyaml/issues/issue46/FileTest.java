@@ -13,9 +13,6 @@
  */
 package org.yaml.snakeyaml.issues.issue46;
 
-import java.io.File;
-import java.util.HashMap;
-import java.util.Map;
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.Yaml;
@@ -23,6 +20,10 @@ import org.yaml.snakeyaml.nodes.Node;
 import org.yaml.snakeyaml.nodes.Tag;
 import org.yaml.snakeyaml.representer.Represent;
 import org.yaml.snakeyaml.representer.Representer;
+
+import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Issue 46: Dump a java.io.File object

@@ -17,6 +17,7 @@ import junit.framework.TestCase;
 import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.Yaml;
 
+
 public class TagsTest extends TestCase {
 
   public void testGetGlobalTagForClass() {

@@ -13,9 +13,13 @@
  */
 package org.yaml.snakeyaml.javabeans;
 
-import java.io.Serializable;
 import junit.framework.TestCase;
+import org.yaml.snakeyaml.DumperOptions;
+import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.Yaml;
+
+import java.io.Serializable;
+
 
 public class ConstructEmptyBeanTest extends TestCase {
 
@@ -23,7 +27,7 @@ public class ConstructEmptyBeanTest extends TestCase {
    * standard Yaml
    */
   public void testEmptyBean() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new LoaderOptions());
     EmptyBean bean =
         yaml.load("!!org.yaml.snakeyaml.javabeans.ConstructEmptyBeanTest$EmptyBean {}");
     assertNotNull(bean);
@@ -35,7 +39,7 @@ public class ConstructEmptyBeanTest extends TestCase {
    * global tag is correct (but ignored)
    */
   public void testEmptyBean1() {
-    Yaml beanLoader = new Yaml();
+    Yaml beanLoader = new Yaml(new LoaderOptions());
     EmptyBean bean = beanLoader.loadAs(
         "!!org.yaml.snakeyaml.javabeans.ConstructEmptyBeanTest$EmptyBean {}", EmptyBean.class);
     assertNotNull(bean);
@@ -47,7 +51,7 @@ public class ConstructEmptyBeanTest extends TestCase {
    * global tag is ignored
    */
   public void testEmptyBean2() {
-    Yaml beanLoader = new Yaml();
+    Yaml beanLoader = new Yaml(new DumperOptions());
     EmptyBean bean = beanLoader.loadAs("!!Bla-bla-bla {}", EmptyBean.class);
     assertNotNull(bean);
     assertNull(bean.getFirstName());
@@ -58,7 +62,7 @@ public class ConstructEmptyBeanTest extends TestCase {
    * no tag
    */
   public void testEmptyBean3() {
-    Yaml beanLoader = new Yaml();
+    Yaml beanLoader = new Yaml(new LoaderOptions());
     EmptyBean bean = beanLoader.loadAs("{   }", EmptyBean.class);
     assertNotNull(bean);
     assertNull(bean.getFirstName());
@@ -69,7 +73,7 @@ public class ConstructEmptyBeanTest extends TestCase {
    * empty document
    */
   public void testEmptyBean4() {
-    Yaml beanLoader = new Yaml();
+    Yaml beanLoader = new Yaml(new LoaderOptions());
     EmptyBean bean = beanLoader.loadAs("", EmptyBean.class);
     assertNull(bean);
   }
@@ -78,7 +82,7 @@ public class ConstructEmptyBeanTest extends TestCase {
    * local tag is ignored
    */
   public void testEmptyBean5() {
-    Yaml beanLoader = new Yaml();
+    Yaml beanLoader = new Yaml(new LoaderOptions());
     EmptyBean bean = beanLoader.loadAs("!Bla-bla-bla {}", EmptyBean.class);
     assertNotNull(bean);
     assertNull(bean.getFirstName());
@@ -89,7 +93,7 @@ public class ConstructEmptyBeanTest extends TestCase {
    * invalid document
    */
   public void testEmptyBean6() {
-    Yaml beanLoader = new Yaml();
+    Yaml beanLoader = new Yaml(new LoaderOptions());
     try {
       beanLoader.loadAs("{", EmptyBean.class);
       fail("Invalid document provided.");

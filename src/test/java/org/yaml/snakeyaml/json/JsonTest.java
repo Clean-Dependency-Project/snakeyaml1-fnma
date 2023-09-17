@@ -13,13 +13,16 @@
  */
 package org.yaml.snakeyaml.json;
 
-import java.util.Map;
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import java.util.Map;
+
 
 public class JsonTest extends TestCase {
 
-  private final Yaml loader = new Yaml();
+  private final Yaml loader = new Yaml(new SafeConstructor());
 
 
   public void testLooksLikeJson() {

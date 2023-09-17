@@ -13,8 +13,9 @@
  */
 package org.yaml.snakeyaml.types;
 
-import java.util.Map;
 import org.yaml.snakeyaml.YamlDocument;
+
+import java.util.Map;
 
 /**
  * @see <a href="http://yaml.org/type/omap.html">omap</a>

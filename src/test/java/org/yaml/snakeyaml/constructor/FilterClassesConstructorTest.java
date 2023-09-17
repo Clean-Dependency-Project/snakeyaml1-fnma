@@ -17,6 +17,7 @@ import junit.framework.TestCase;
 import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.Yaml;
 
+
 public class FilterClassesConstructorTest extends TestCase {
 
   public void testGetClassForName() {

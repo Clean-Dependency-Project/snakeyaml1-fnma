@@ -13,8 +13,6 @@
  */
 package org.yaml.snakeyaml.issues.issue29;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.DumperOptions.ScalarStyle;
@@ -23,6 +21,9 @@ import org.yaml.snakeyaml.Yaml;
 import org.yaml.snakeyaml.nodes.Node;
 import org.yaml.snakeyaml.nodes.ScalarNode;
 import org.yaml.snakeyaml.representer.Representer;
+
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 /**
  * to test http://code.google.com/p/snakeyaml/issues/detail?id=29

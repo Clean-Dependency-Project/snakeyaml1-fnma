@@ -13,13 +13,13 @@
  */
 package org.yaml.snakeyaml.issues.issue529;
 
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
-
 import org.junit.Test;
 import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.Yaml;
 import org.yaml.snakeyaml.error.YAMLException;
+
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 // StringIndexOutOfBoundsException [OSS-Fuzz 47028]
 public class Fuzzy47028Test {

@@ -17,13 +17,14 @@ import junit.framework.TestCase;
 import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.Yaml;
 
+
 /**
  * to test http://code.google.com/p/snakeyaml/issues/detail?id=8
  */
 public class PrattleRepresenterTest extends TestCase {
 
   public void test() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new DumperOptions());
     Person person = new Person("Alan", "Gutierrez", 9);
     String etalon =
         "!!org.yaml.snakeyaml.issues.issue8.Person {firstName: Alan, hatSize: 9, lastName: Gutierrez}\n";

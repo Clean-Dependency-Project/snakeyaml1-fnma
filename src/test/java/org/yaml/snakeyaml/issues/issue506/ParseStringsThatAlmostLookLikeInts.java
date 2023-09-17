@@ -13,59 +13,61 @@
  */
 package org.yaml.snakeyaml.issues.issue506;
 
-import java.util.regex.Pattern;
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
 import org.yaml.snakeyaml.resolver.Resolver;
+
+import java.util.regex.Pattern;
 
 public class ParseStringsThatAlmostLookLikeInts extends TestCase {
 
   public void testHexPrefixedString() {
     String in = "0x_";
     String expected = "0x_";
-    Object out = new Yaml().load(in);
+    Object out = new Yaml(new SafeConstructor()).load(in);
     assertEquals(expected, out);
   }
 
   public void testHexInt() {
     String in = "0x_AB";
     Integer expected = 171;
-    Object out = new Yaml().load(in);
+    Object out = new Yaml(new SafeConstructor()).load(in);
     assertEquals(expected, out);
   }
 
   public void testOctalPrefixedString() {
     String in = "0_";
     String expected = "0_";
-    Object out = new Yaml().load(in);
+    Object out = new Yaml(new SafeConstructor()).load(in);
     assertEquals(expected, out);
   }
 
   public void testOctalInt() {
     String in = "0_123";
     Integer expected = 83;
-    Object out = new Yaml().load(in);
+    Object out = new Yaml(new SafeConstructor()).load(in);
     assertEquals(expected, out);
   }
 
   public void testBinaryPrefixedString() {
     String in = "0b_";
     String expected = "0b_";
-    Object out = new Yaml().load(in);
+    Object out = new Yaml(new SafeConstructor()).load(in);
     assertEquals(expected, out);
   }
 
   public void testBinaryInt() {
     String in = "0b_101";
     Integer expected = 5;
-    Object out = new Yaml().load(in);
+    Object out = new Yaml(new SafeConstructor()).load(in);
     assertEquals(expected, out);
   }
 
   public void testDecimalish() {
     String in = "-_";
     String expected = "-_";
-    Object out = new Yaml().load(in);
+    Object out = new Yaml(new SafeConstructor()).load(in);
     assertEquals(expected, out);
   }
 

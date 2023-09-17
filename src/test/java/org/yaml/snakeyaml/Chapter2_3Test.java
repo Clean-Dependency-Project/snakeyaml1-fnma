@@ -13,17 +13,19 @@
  */
 package org.yaml.snakeyaml;
 
-import java.io.InputStream;
-import java.util.Map;
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.DumperOptions.ScalarStyle;
+
+import java.io.InputStream;
+import java.util.Map;
 
 /**
  * Test Chapter 2.3 from the YAML specification
  */
 public class Chapter2_3Test extends TestCase {
 
-  public void testExample_2_13() {
+  public void
+  testExample_2_13() {
     YamlDocument document = new YamlDocument("example2_13.yaml");
     String data = (String) document.getNativeData();
     assertEquals("\\//||\\/||\n// ||  ||__\n", data);

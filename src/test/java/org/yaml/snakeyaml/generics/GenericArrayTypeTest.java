@@ -13,16 +13,20 @@
  */
 package org.yaml.snakeyaml.generics;
 
-import java.beans.IntrospectionException;
 import junit.framework.TestCase;
+import org.yaml.snakeyaml.DumperOptions;
+import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.Util;
 import org.yaml.snakeyaml.Yaml;
+
+import java.beans.IntrospectionException;
+
 
 public class GenericArrayTypeTest extends TestCase {
 
   public void testClasses() throws IntrospectionException {
     GenericArray ga = new GenericArray();
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new DumperOptions());
     String doc = yaml.dump(ga);
     // System.out.println(doc);
     String etalon = "!!org.yaml.snakeyaml.generics.GenericArrayTypeTest$GenericArray\n"
@@ -61,12 +65,12 @@ public class GenericArrayTypeTest extends TestCase {
     ArrayBean bean = new ArrayBean();
     bean.setId("ID556677");
     bean.setGa(ga);
-    Yaml dumper = new Yaml();
+    Yaml dumper = new Yaml(new DumperOptions());
     String doc = dumper.dumpAsMap(bean);
     // System.out.println(doc);
     assertEquals(Util.getLocalResource("javabeans/genericArray-1.yaml"), doc);
     //
-    Yaml beanLoader = new Yaml();
+    Yaml beanLoader = new Yaml(new LoaderOptions());
     ArrayBean loaded = beanLoader.loadAs(doc, ArrayBean.class);
     assertEquals("ID556677", loaded.getId());
     assertEquals("Array3", loaded.getGa().getName());

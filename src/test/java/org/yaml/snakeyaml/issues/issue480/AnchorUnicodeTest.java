@@ -13,16 +13,17 @@
  */
 package org.yaml.snakeyaml.issues.issue480;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.Yaml;
 import org.yaml.snakeyaml.emitter.EmitterException;
 import org.yaml.snakeyaml.nodes.Node;
 import org.yaml.snakeyaml.serializer.AnchorGenerator;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class AnchorUnicodeTest extends TestCase {
 

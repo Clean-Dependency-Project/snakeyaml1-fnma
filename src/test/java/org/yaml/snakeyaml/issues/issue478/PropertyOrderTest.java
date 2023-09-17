@@ -13,14 +13,15 @@
  */
 package org.yaml.snakeyaml.issues.issue478;
 
-import java.util.Iterator;
-import java.util.Set;
-import java.util.TreeSet;
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.Yaml;
 import org.yaml.snakeyaml.introspector.Property;
 import org.yaml.snakeyaml.representer.Representer;
+
+import java.util.Iterator;
+import java.util.Set;
+import java.util.TreeSet;
 
 public class PropertyOrderTest extends TestCase {
 

@@ -13,8 +13,6 @@
  */
 package org.yaml.snakeyaml.issues.issue310;
 
-import static org.junit.Assert.assertEquals;
-
 import org.junit.Test;
 import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.Yaml;
@@ -22,6 +20,8 @@ import org.yaml.snakeyaml.introspector.BeanAccess;
 import org.yaml.snakeyaml.nodes.Node;
 import org.yaml.snakeyaml.representer.Represent;
 import org.yaml.snakeyaml.representer.Representer;
+
+import static org.junit.Assert.assertEquals;
 
 public class PropertyWithPrivateConstructorTest {
 

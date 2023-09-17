@@ -13,12 +13,14 @@
  */
 package org.yaml.snakeyaml.env;
 
-import static org.yaml.snakeyaml.env.EnvScalarConstructor.ENV_FORMAT;
-
-import java.io.StringReader;
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
 import org.yaml.snakeyaml.nodes.Node;
+
+import java.io.StringReader;
+
+import static org.yaml.snakeyaml.env.EnvScalarConstructor.ENV_FORMAT;
 
 /**
  * test that implicit resolver assigns the tag
@@ -26,7 +28,7 @@ import org.yaml.snakeyaml.nodes.Node;
 public class EnvTagTest extends TestCase {
 
   public void testImplicitResolverForEnvConstructor() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     yaml.addImplicitResolver(EnvScalarConstructor.ENV_TAG, ENV_FORMAT, "$");
     Node loaded = yaml.compose(new StringReader("${PATH}"));
     assertEquals(EnvScalarConstructor.ENV_TAG, loaded.getTag());

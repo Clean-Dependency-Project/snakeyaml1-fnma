@@ -13,18 +13,19 @@
  */
 package org.yaml.snakeyaml.javabeans;
 
-import static org.junit.Assert.assertArrayEquals;
-
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.Yaml;
+
+import static org.junit.Assert.assertArrayEquals;
+
 
 public class StringArrayTest extends TestCase {
 
   public void testStrings() {
     A a = new A();
     a.setNames(new String[] {"aaa", "bbb", "ccc"});
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new DumperOptions());
     String output = yaml.dump(a);
     assertEquals("!!org.yaml.snakeyaml.javabeans.StringArrayTest$A\nnames: [aaa, bbb, ccc]\n",
         output);

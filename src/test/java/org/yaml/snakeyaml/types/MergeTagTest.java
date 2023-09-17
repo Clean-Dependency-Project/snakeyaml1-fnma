@@ -13,9 +13,10 @@
  */
 package org.yaml.snakeyaml.types;
 
+import org.yaml.snakeyaml.YamlDocument;
+
 import java.util.List;
 import java.util.Map;
-import org.yaml.snakeyaml.YamlDocument;
 
 /**
  * @see <a href="http://yaml.org/type/merge.html">merge</a>

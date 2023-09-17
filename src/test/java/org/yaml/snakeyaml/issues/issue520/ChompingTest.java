@@ -13,15 +13,18 @@
  */
 package org.yaml.snakeyaml.issues.issue520;
 
-import java.util.Map;
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import java.util.Map;
+
 
 public class ChompingTest extends TestCase {
 
   public void testChomp() {
     String input = "description: |+\n" + "  line\n\n";
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     Map<String, String> obj = yaml.load(input);
     assertEquals("line\n\n", obj.get("description"));
 

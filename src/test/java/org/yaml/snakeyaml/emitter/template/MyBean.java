@@ -13,9 +13,10 @@
  */
 package org.yaml.snakeyaml.emitter.template;
 
+import org.yaml.snakeyaml.immutable.Point;
+
 import java.util.ArrayList;
 import java.util.List;
-import org.yaml.snakeyaml.immutable.Point;
 
 public class MyBean {
 

@@ -26,7 +26,7 @@ public class MissingPropertyTest extends TestCase {
   private Yaml yaml;
 
   public void setUp() {
-    yaml = new Yaml();
+    yaml = new Yaml(new LoaderOptions());
   }
 
   /**

@@ -13,10 +13,6 @@
  */
 package org.yaml.snakeyaml.comment;
 
-import static org.junit.Assert.assertEquals;
-
-import java.io.IOException;
-import java.io.StringWriter;
 import org.junit.Test;
 import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.DumperOptions.FlowStyle;
@@ -27,22 +23,17 @@ import org.yaml.snakeyaml.comments.CommentType;
 import org.yaml.snakeyaml.composer.Composer;
 import org.yaml.snakeyaml.constructor.SafeConstructor;
 import org.yaml.snakeyaml.emitter.Emitter;
-import org.yaml.snakeyaml.events.CommentEvent;
-import org.yaml.snakeyaml.events.DocumentEndEvent;
-import org.yaml.snakeyaml.events.DocumentStartEvent;
-import org.yaml.snakeyaml.events.ImplicitTuple;
-import org.yaml.snakeyaml.events.MappingEndEvent;
-import org.yaml.snakeyaml.events.MappingStartEvent;
-import org.yaml.snakeyaml.events.ScalarEvent;
-import org.yaml.snakeyaml.events.SequenceEndEvent;
-import org.yaml.snakeyaml.events.SequenceStartEvent;
-import org.yaml.snakeyaml.events.StreamEndEvent;
-import org.yaml.snakeyaml.events.StreamStartEvent;
+import org.yaml.snakeyaml.events.*;
 import org.yaml.snakeyaml.parser.ParserImpl;
 import org.yaml.snakeyaml.reader.StreamReader;
 import org.yaml.snakeyaml.representer.Representer;
 import org.yaml.snakeyaml.resolver.Resolver;
 import org.yaml.snakeyaml.serializer.Serializer;
+
+import java.io.IOException;
+import java.io.StringWriter;
+
+import static org.junit.Assert.assertEquals;
 
 public class EmitterWithCommentEnabledTest {
 

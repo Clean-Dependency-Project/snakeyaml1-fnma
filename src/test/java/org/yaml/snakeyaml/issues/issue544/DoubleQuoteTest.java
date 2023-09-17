@@ -13,11 +13,6 @@
  */
 package org.yaml.snakeyaml.issues.issue544;
 
-import static org.junit.Assert.assertEquals;
-
-import java.io.StringWriter;
-import java.util.ArrayList;
-import java.util.List;
 import org.junit.Test;
 import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.DumperOptions.FlowStyle;
@@ -27,6 +22,12 @@ import org.yaml.snakeyaml.nodes.MappingNode;
 import org.yaml.snakeyaml.nodes.NodeTuple;
 import org.yaml.snakeyaml.nodes.ScalarNode;
 import org.yaml.snakeyaml.nodes.Tag;
+
+import java.io.StringWriter;
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
 
 public class DoubleQuoteTest {
 

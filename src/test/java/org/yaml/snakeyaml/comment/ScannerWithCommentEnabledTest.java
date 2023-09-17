@@ -13,15 +13,6 @@
  */
 package org.yaml.snakeyaml.comment;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertSame;
-import static org.junit.Assert.assertTrue;
-
-import java.io.StringReader;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
 import org.junit.Test;
 import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.reader.StreamReader;
@@ -31,6 +22,13 @@ import org.yaml.snakeyaml.tokens.CommentToken;
 import org.yaml.snakeyaml.tokens.ScalarToken;
 import org.yaml.snakeyaml.tokens.Token;
 import org.yaml.snakeyaml.tokens.Token.ID;
+
+import java.io.StringReader;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
+
+import static org.junit.Assert.*;
 
 public class ScannerWithCommentEnabledTest {
 

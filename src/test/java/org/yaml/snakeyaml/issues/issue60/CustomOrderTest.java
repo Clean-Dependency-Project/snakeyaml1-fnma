@@ -13,11 +13,6 @@
  */
 package org.yaml.snakeyaml.issues.issue60;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.LinkedHashSet;
-import java.util.Set;
-import java.util.TreeSet;
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.Util;
@@ -26,6 +21,8 @@ import org.yaml.snakeyaml.introspector.BeanAccess;
 import org.yaml.snakeyaml.introspector.Property;
 import org.yaml.snakeyaml.introspector.PropertyUtils;
 import org.yaml.snakeyaml.representer.Representer;
+
+import java.util.*;
 
 // issue 59
 public class CustomOrderTest extends TestCase {

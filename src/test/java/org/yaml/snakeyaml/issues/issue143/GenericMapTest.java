@@ -17,6 +17,7 @@ import junit.framework.TestCase;
 import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.Yaml;
 
+
 public class GenericMapTest extends TestCase {
 
   public void testMap() throws Exception {

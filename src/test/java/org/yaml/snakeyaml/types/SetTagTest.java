@@ -13,10 +13,12 @@
  */
 package org.yaml.snakeyaml.types;
 
-import java.util.Map;
-import java.util.Set;
+import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.Yaml;
 import org.yaml.snakeyaml.YamlDocument;
+
+import java.util.Map;
+import java.util.Set;
 
 /**
  * @see <a href="http://yaml.org/type/set.html">set</a>
@@ -42,7 +44,7 @@ public class SetTagTest extends AbstractTest {
   }
 
   public void testSetNull() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new LoaderOptions());
     Set<Object> set = yaml.load("!!set {1, 2, null}");
     assertTrue(set.contains(1));
     assertTrue(set.contains(2));
