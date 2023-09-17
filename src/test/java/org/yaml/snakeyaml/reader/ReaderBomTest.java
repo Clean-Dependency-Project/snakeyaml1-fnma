@@ -13,16 +13,11 @@
  */
 package org.yaml.snakeyaml.reader;
 
-import java.io.ByteArrayInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.Reader;
-import java.io.StringReader;
+import junit.framework.TestCase;
+
+import java.io.*;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
-import junit.framework.TestCase;
 
 public class ReaderBomTest extends TestCase {
 

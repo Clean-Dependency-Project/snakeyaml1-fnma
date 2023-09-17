@@ -13,21 +13,15 @@
  */
 package org.yaml.snakeyaml.emitter;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.DumperOptions.FlowStyle;
 import org.yaml.snakeyaml.Yaml;
-import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
 import org.yaml.snakeyaml.constructor.SafeConstructor;
 
-import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
-import org.yaml.snakeyaml.constructor.SafeConstructor;
-
-import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
-import org.yaml.snakeyaml.constructor.SafeConstructor;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 
 public class EmitterMultiLineTest extends TestCase {

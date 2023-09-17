@@ -13,22 +13,14 @@
  */
 package org.yaml.snakeyaml.immutable;
 
-import java.awt.Color;
-import java.awt.Insets;
-import java.awt.Rectangle;
-import javax.swing.BorderFactory;
-import javax.swing.border.MatteBorder;
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.Yaml;
-import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
-import org.yaml.snakeyaml.constructor.SafeConstructor;
 
-import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
-import org.yaml.snakeyaml.constructor.SafeConstructor;
-
-import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
-import org.yaml.snakeyaml.constructor.SafeConstructor;
+import javax.swing.*;
+import javax.swing.border.MatteBorder;
+import java.awt.Color;
+import java.awt.*;
 
 
 public class MoreImmutablesTest extends TestCase {

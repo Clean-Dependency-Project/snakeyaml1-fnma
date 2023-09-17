@@ -13,20 +13,14 @@
  */
 package org.yaml.snakeyaml.issues.issue72;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.Yaml;
-import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
 import org.yaml.snakeyaml.constructor.SafeConstructor;
 
-import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
-import org.yaml.snakeyaml.constructor.SafeConstructor;
-
-import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
-import org.yaml.snakeyaml.constructor.SafeConstructor;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
 
 
 public class CollectionTest extends TestCase {

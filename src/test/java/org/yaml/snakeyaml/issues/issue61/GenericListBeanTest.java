@@ -13,13 +13,14 @@
  */
 package org.yaml.snakeyaml.issues.issue61;
 
-import java.util.ArrayList;
-import java.util.List;
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.Util;
 import org.yaml.snakeyaml.Yaml;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class GenericListBeanTest extends TestCase {
 

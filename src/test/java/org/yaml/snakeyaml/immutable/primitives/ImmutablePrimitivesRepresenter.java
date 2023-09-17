@@ -13,12 +13,13 @@
  */
 package org.yaml.snakeyaml.immutable.primitives;
 
-import java.util.Arrays;
 import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.nodes.Node;
 import org.yaml.snakeyaml.nodes.Tag;
 import org.yaml.snakeyaml.representer.Represent;
 import org.yaml.snakeyaml.representer.Representer;
+
+import java.util.Arrays;
 
 public class ImmutablePrimitivesRepresenter extends Representer {
 

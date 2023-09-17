@@ -13,14 +13,15 @@
  */
 package org.yaml.snakeyaml.issues.issue374;
 
-import static org.junit.Assert.assertEquals;
+import org.junit.Test;
+import org.yaml.snakeyaml.DumperOptions;
+import org.yaml.snakeyaml.Yaml;
 
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.util.Locale;
-import org.junit.Test;
-import org.yaml.snakeyaml.DumperOptions;
-import org.yaml.snakeyaml.Yaml;
+
+import static org.junit.Assert.assertEquals;
 
 public class NumberAsJavaBeanPropertyTest {
 

@@ -13,21 +13,12 @@
  */
 package org.yaml.snakeyaml.types;
 
-import java.util.Map;
-import java.util.Set;
-
 import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.Yaml;
-import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
-import org.yaml.snakeyaml.constructor.SafeConstructor;
-
-import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
-import org.yaml.snakeyaml.constructor.SafeConstructor;
-
-import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
-import org.yaml.snakeyaml.constructor.SafeConstructor;
-
 import org.yaml.snakeyaml.YamlDocument;
+
+import java.util.Map;
+import java.util.Set;
 
 /**
  * @see <a href="http://yaml.org/type/set.html">set</a>

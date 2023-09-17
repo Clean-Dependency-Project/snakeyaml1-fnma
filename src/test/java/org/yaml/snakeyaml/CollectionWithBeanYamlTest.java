@@ -13,12 +13,12 @@
  */
 package org.yaml.snakeyaml;
 
+import junit.framework.TestCase;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
-import junit.framework.TestCase;
-import org.yaml.snakeyaml.constructor.SafeConstructor;
 
 public class CollectionWithBeanYamlTest extends TestCase {
 

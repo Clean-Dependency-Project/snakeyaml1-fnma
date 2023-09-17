@@ -15,7 +15,6 @@ package org.yaml.snakeyaml;
 
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.constructor.Constructor;
-import org.yaml.snakeyaml.constructor.SafeConstructor;
 
 /**
  * Test Example 2.27 from the YAML specification

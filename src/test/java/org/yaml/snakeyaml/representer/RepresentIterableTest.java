@@ -13,19 +13,11 @@
  */
 package org.yaml.snakeyaml.representer;
 
-import java.util.Iterator;
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.Yaml;
-import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
 import org.yaml.snakeyaml.constructor.SafeConstructor;
 
-import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
-import org.yaml.snakeyaml.constructor.SafeConstructor;
-
-import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
-import org.yaml.snakeyaml.constructor.SafeConstructor;
-
-import org.yaml.snakeyaml.constructor.SafeConstructor;
+import java.util.Iterator;
 
 /**
  * Test @see <a href="http://code.google.com/p/snakeyaml/issues/detail?id=69">issue 69</a>

@@ -13,30 +13,23 @@
  */
 package org.yaml.snakeyaml.issues.issue383;
 
-import static org.yaml.snakeyaml.DumperOptions.FlowStyle.BLOCK;
-import static org.yaml.snakeyaml.DumperOptions.FlowStyle.FLOW;
-import static org.yaml.snakeyaml.DumperOptions.ScalarStyle.FOLDED;
-import static org.yaml.snakeyaml.DumperOptions.ScalarStyle.PLAIN;
-
-import java.util.Calendar;
-import java.util.TimeZone;
 import org.junit.Assert;
 import org.junit.Test;
 import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.Yaml;
-import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
 import org.yaml.snakeyaml.constructor.SafeConstructor;
-
-import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
-import org.yaml.snakeyaml.constructor.SafeConstructor;
-
-import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
-import org.yaml.snakeyaml.constructor.SafeConstructor;
-
 import org.yaml.snakeyaml.introspector.PropertyUtils;
 import org.yaml.snakeyaml.nodes.MappingNode;
 import org.yaml.snakeyaml.nodes.ScalarNode;
 import org.yaml.snakeyaml.representer.Representer;
+
+import java.util.Calendar;
+import java.util.TimeZone;
+
+import static org.yaml.snakeyaml.DumperOptions.FlowStyle.BLOCK;
+import static org.yaml.snakeyaml.DumperOptions.FlowStyle.FLOW;
+import static org.yaml.snakeyaml.DumperOptions.ScalarStyle.FOLDED;
+import static org.yaml.snakeyaml.DumperOptions.ScalarStyle.PLAIN;
 
 public class RepresenterConfigurationTest {
 

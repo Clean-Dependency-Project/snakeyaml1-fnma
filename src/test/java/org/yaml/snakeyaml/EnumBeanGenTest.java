@@ -13,11 +13,11 @@
  */
 package org.yaml.snakeyaml;
 
-import java.util.LinkedHashMap;
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.constructor.Constructor;
-import org.yaml.snakeyaml.constructor.SafeConstructor;
 import org.yaml.snakeyaml.introspector.PropertySubstitute;
+
+import java.util.LinkedHashMap;
 
 public class EnumBeanGenTest extends TestCase {
 

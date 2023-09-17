@@ -13,11 +13,12 @@
  */
 package org.yaml.snakeyaml.javabeans;
 
-import java.io.Serializable;
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.Yaml;
+
+import java.io.Serializable;
 
 
 public class ConstructEmptyBeanTest extends TestCase {

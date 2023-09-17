@@ -13,21 +13,14 @@
  */
 package org.yaml.snakeyaml.generics;
 
-import static org.junit.Assert.assertArrayEquals;
-
-import java.util.HashMap;
-import java.util.Map;
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.Yaml;
-import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
-import org.yaml.snakeyaml.constructor.SafeConstructor;
 
-import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
-import org.yaml.snakeyaml.constructor.SafeConstructor;
+import java.util.HashMap;
+import java.util.Map;
 
-import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
-import org.yaml.snakeyaml.constructor.SafeConstructor;
+import static org.junit.Assert.assertArrayEquals;
 
 
 public class ObjectValuesTest extends TestCase {

@@ -13,13 +13,14 @@
  */
 package org.yaml.snakeyaml;
 
-import java.io.StringReader;
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.constructor.SafeConstructor;
 import org.yaml.snakeyaml.nodes.MappingNode;
 import org.yaml.snakeyaml.nodes.Node;
 import org.yaml.snakeyaml.nodes.NodeId;
 import org.yaml.snakeyaml.nodes.ScalarNode;
+
+import java.io.StringReader;
 
 public class YamlComposeTest extends TestCase {
 

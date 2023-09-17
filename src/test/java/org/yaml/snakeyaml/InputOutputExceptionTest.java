@@ -13,12 +13,13 @@
  */
 package org.yaml.snakeyaml;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.Writer;
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.constructor.SafeConstructor;
 import org.yaml.snakeyaml.error.YAMLException;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.Writer;
 
 public class InputOutputExceptionTest extends TestCase {
 

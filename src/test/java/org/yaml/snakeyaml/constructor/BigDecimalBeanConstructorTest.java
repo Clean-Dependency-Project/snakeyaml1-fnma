@@ -13,13 +13,12 @@
  */
 package org.yaml.snakeyaml.constructor;
 
-import java.math.BigDecimal;
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.Yaml;
-import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
-import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import java.math.BigDecimal;
 
 public class BigDecimalBeanConstructorTest extends TestCase {
 

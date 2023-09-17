@@ -13,10 +13,9 @@
  */
 package org.yaml.snakeyaml;
 
-import static org.junit.Assert.assertEquals;
-
 import org.junit.Test;
-import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  * The tag "!" must force the parser to use only the node kind (scalar, sequence, mapping) (issue

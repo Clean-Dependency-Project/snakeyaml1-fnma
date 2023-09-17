@@ -13,17 +13,16 @@
  */
 package org.yaml.snakeyaml.issues.issue94;
 
-import static org.junit.Assert.assertEquals;
-
 import org.junit.Test;
 import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.TypeDescription;
 import org.yaml.snakeyaml.Yaml;
-
 import org.yaml.snakeyaml.constructor.AbstractConstruct;
 import org.yaml.snakeyaml.constructor.Construct;
 import org.yaml.snakeyaml.constructor.Constructor;
 import org.yaml.snakeyaml.nodes.Node;
+
+import static org.junit.Assert.assertEquals;
 
 public class ChangeRuntimeClassTest {
 

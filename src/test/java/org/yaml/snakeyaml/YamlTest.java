@@ -13,10 +13,11 @@
  */
 package org.yaml.snakeyaml;
 
-import java.util.Iterator;
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.constructor.SafeConstructor;
 import org.yaml.snakeyaml.error.YAMLException;
+
+import java.util.Iterator;
 
 public class YamlTest extends TestCase {
 

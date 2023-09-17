@@ -13,19 +13,11 @@
  */
 package org.yaml.snakeyaml.javabeans;
 
-import static org.junit.Assert.assertArrayEquals;
-
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.Yaml;
-import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
-import org.yaml.snakeyaml.constructor.SafeConstructor;
 
-import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
-import org.yaml.snakeyaml.constructor.SafeConstructor;
-
-import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
-import org.yaml.snakeyaml.constructor.SafeConstructor;
+import static org.junit.Assert.assertArrayEquals;
 
 
 public class StringArrayTest extends TestCase {

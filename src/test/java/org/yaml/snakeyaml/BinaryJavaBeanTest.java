@@ -14,7 +14,6 @@
 package org.yaml.snakeyaml;
 
 import junit.framework.TestCase;
-import org.yaml.snakeyaml.constructor.SafeConstructor;
 
 public class BinaryJavaBeanTest extends TestCase {
 

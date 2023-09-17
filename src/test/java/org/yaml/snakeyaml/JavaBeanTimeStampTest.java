@@ -13,11 +13,11 @@
  */
 package org.yaml.snakeyaml;
 
-import java.sql.Date;
-import java.sql.Timestamp;
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.DumperOptions.FlowStyle;
-import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import java.sql.Date;
+import java.sql.Timestamp;
 
 public class JavaBeanTimeStampTest extends TestCase {
 

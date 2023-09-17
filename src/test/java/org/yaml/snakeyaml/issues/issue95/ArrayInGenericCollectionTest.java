@@ -13,12 +13,6 @@
  */
 package org.yaml.snakeyaml.issues.issue95;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
 import junit.framework.TestCase;
 import org.junit.Assert;
 import org.yaml.snakeyaml.DumperOptions;
@@ -26,12 +20,12 @@ import org.yaml.snakeyaml.DumperOptions.FlowStyle;
 import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.TypeDescription;
 import org.yaml.snakeyaml.Yaml;
-import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
-import org.yaml.snakeyaml.constructor.SafeConstructor;
-
 import org.yaml.snakeyaml.constructor.Constructor;
 import org.yaml.snakeyaml.introspector.BeanAccess;
 import org.yaml.snakeyaml.nodes.Tag;
+
+import java.util.*;
+import java.util.Map.Entry;
 
 public class ArrayInGenericCollectionTest extends TestCase {
 

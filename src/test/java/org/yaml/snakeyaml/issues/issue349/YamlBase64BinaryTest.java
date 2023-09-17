@@ -13,19 +13,13 @@
  */
 package org.yaml.snakeyaml.issues.issue349;
 
+import junit.framework.TestCase;
+import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Map;
-import junit.framework.TestCase;
-import org.yaml.snakeyaml.Yaml;
-import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
-import org.yaml.snakeyaml.constructor.SafeConstructor;
-
-import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
-import org.yaml.snakeyaml.constructor.SafeConstructor;
-
-import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
-import org.yaml.snakeyaml.constructor.SafeConstructor;
 
 
 public class YamlBase64BinaryTest extends TestCase {

@@ -13,19 +13,13 @@
  */
 package org.yaml.snakeyaml.issues.issue141;
 
-import java.util.Date;
-import java.util.TimeZone;
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.Yaml;
-import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
 import org.yaml.snakeyaml.constructor.SafeConstructor;
 
-import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
-import org.yaml.snakeyaml.constructor.SafeConstructor;
-
-import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
-import org.yaml.snakeyaml.constructor.SafeConstructor;
+import java.util.Date;
+import java.util.TimeZone;
 
 
 public class ConfigurableTimezoneTest extends TestCase {

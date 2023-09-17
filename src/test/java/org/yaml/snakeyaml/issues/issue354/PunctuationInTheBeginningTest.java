@@ -13,21 +13,15 @@
  */
 package org.yaml.snakeyaml.issues.issue354;
 
-import static org.junit.Assert.assertEquals;
-
-import java.io.IOException;
-import java.util.Map;
 import org.junit.Test;
 import org.yaml.snakeyaml.Util;
 import org.yaml.snakeyaml.Yaml;
-import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
 import org.yaml.snakeyaml.constructor.SafeConstructor;
 
-import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
-import org.yaml.snakeyaml.constructor.SafeConstructor;
+import java.io.IOException;
+import java.util.Map;
 
-import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
-import org.yaml.snakeyaml.constructor.SafeConstructor;
+import static org.junit.Assert.assertEquals;
 
 
 /**

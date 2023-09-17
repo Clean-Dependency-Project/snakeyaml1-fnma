@@ -13,14 +13,14 @@
  */
 package org.yaml.snakeyaml;
 
-import java.sql.Timestamp;
-import java.util.Date;
 import junit.framework.TestCase;
-import org.yaml.snakeyaml.constructor.SafeConstructor;
 import org.yaml.snakeyaml.nodes.Node;
 import org.yaml.snakeyaml.nodes.Tag;
 import org.yaml.snakeyaml.representer.Represent;
 import org.yaml.snakeyaml.representer.Representer;
+
+import java.sql.Timestamp;
+import java.util.Date;
 
 public class JavaBeanWithNullValuesTest extends TestCase {
 

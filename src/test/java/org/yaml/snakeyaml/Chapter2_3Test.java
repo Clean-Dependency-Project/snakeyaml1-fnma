@@ -13,10 +13,11 @@
  */
 package org.yaml.snakeyaml;
 
-import java.io.InputStream;
-import java.util.Map;
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.DumperOptions.ScalarStyle;
+
+import java.io.InputStream;
+import java.util.Map;
 
 /**
  * Test Chapter 2.3 from the YAML specification

@@ -13,18 +13,12 @@
  */
 package org.yaml.snakeyaml.issues.issue205;
 
-import java.io.InputStream;
-import java.util.Map;
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.Yaml;
-import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
 import org.yaml.snakeyaml.constructor.SafeConstructor;
 
-import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
-import org.yaml.snakeyaml.constructor.SafeConstructor;
-
-import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
-import org.yaml.snakeyaml.constructor.SafeConstructor;
+import java.io.InputStream;
+import java.util.Map;
 
 
 public class AppleSmileTest extends TestCase {

@@ -13,6 +13,9 @@
  */
 package org.yaml.snakeyaml;
 
+import junit.framework.AssertionFailedError;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.OutputStreamWriter;
@@ -21,8 +24,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import junit.framework.AssertionFailedError;
-import org.yaml.snakeyaml.constructor.SafeConstructor;
 
 public class YamlStream {
 

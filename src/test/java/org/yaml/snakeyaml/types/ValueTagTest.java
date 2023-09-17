@@ -13,21 +13,14 @@
  */
 package org.yaml.snakeyaml.types;
 
+import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.YamlDocument;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
 import java.io.InputStream;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import org.yaml.snakeyaml.Yaml;
-import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
-import org.yaml.snakeyaml.constructor.SafeConstructor;
-
-import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
-import org.yaml.snakeyaml.constructor.SafeConstructor;
-
-import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
-import org.yaml.snakeyaml.constructor.SafeConstructor;
-
-import org.yaml.snakeyaml.YamlDocument;
 
 /**
  * @see <a href="http://yaml.org/type/value.html">value</a>
