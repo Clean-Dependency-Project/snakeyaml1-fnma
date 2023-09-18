@@ -13,26 +13,16 @@
  */
 package org.yaml.snakeyaml.recursive.generics;
 
-import java.beans.IntrospectionException;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
 import junit.framework.TestCase;
-import org.yaml.snakeyaml.DumperOptions;
-import org.yaml.snakeyaml.LoaderOptions;
-import org.yaml.snakeyaml.TypeDescription;
-import org.yaml.snakeyaml.Util;
-import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.*;
 import org.yaml.snakeyaml.constructor.Constructor;
 import org.yaml.snakeyaml.nodes.Tag;
 import org.yaml.snakeyaml.representer.Representer;
+
+import java.beans.IntrospectionException;
+import java.io.IOException;
+import java.util.*;
+import java.util.Map.Entry;
 
 public class HumanGenericsTest extends TestCase {
 
@@ -49,7 +39,7 @@ public class HumanGenericsTest extends TestCase {
     father.setPartner(mother);
     mother.setPartner(father);
     mother.setBankAccountOwner(father);
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new DumperOptions());
     String output = yaml.dump(father);
     String etalon = Util.getLocalResource("recursive/generics/no-children-1.yaml");
     assertEquals(etalon, output);
@@ -80,12 +70,12 @@ public class HumanGenericsTest extends TestCase {
     father.setPartner(mother);
     mother.setPartner(father);
     mother.setBankAccountOwner(father);
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new DumperOptions());
     String output = yaml.dumpAsMap(father);
     String etalon = Util.getLocalResource("recursive/generics/no-children-2.yaml");
     assertEquals(etalon, output);
     //
-    Yaml loader = new Yaml();
+    Yaml loader = new Yaml(new LoaderOptions());
     HumanGen father2 = loader.loadAs(etalon, HumanGen.class);
     assertNotNull(father2);
     assertEquals("Father", father2.getName());
@@ -455,7 +445,7 @@ public class HumanGenericsTest extends TestCase {
     man2.setBankAccountOwner(man3);
     man3.setBankAccountOwner(man1);
     //
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new DumperOptions());
     String output = yaml.dump(man1);
     // System.out.println(output);
     String etalon = Util.getLocalResource("recursive/generics/beanring-3.yaml");

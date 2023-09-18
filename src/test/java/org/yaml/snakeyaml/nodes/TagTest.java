@@ -13,9 +13,9 @@
  */
 package org.yaml.snakeyaml.nodes;
 
-import static org.junit.Assert.assertNotEquals;
-
 import junit.framework.TestCase;
+
+import static org.junit.Assert.assertNotEquals;
 
 public class TagTest extends TestCase {
 

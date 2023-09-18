@@ -13,16 +13,20 @@
  */
 package org.pyyaml;
 
-import java.io.IOException;
-import java.io.Reader;
-import java.util.Iterator;
 import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.Yaml;
 import org.yaml.snakeyaml.composer.Composer;
 import org.yaml.snakeyaml.error.YAMLException;
 
+import java.io.IOException;
+import java.io.Reader;
+import java.util.Iterator;
+
 public class CanonicalLoader extends Yaml {
 
+  public CanonicalLoader(){
+    super(new LoaderOptions());
+  }
   @Override
   public Object load(Reader yaml) {
     try {

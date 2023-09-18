@@ -13,13 +13,14 @@
  */
 package org.yaml.snakeyaml.issues.issue103;
 
-import java.util.List;
-import java.util.Map;
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.Util;
 import org.yaml.snakeyaml.Yaml;
 import org.yaml.snakeyaml.constructor.Constructor;
+
+import java.util.List;
+import java.util.Map;
 
 public class MergingTest extends TestCase {
 
@@ -27,7 +28,7 @@ public class MergingTest extends TestCase {
   public void testMergeWithDefaultMap() {
     String input = Util.getLocalResource("issues/issue103.yaml");
     // System.out.println(input);
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new LoaderOptions());
 
     check((Map) yaml.load(input));
   }

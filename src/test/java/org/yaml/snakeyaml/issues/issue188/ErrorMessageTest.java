@@ -15,13 +15,15 @@ package org.yaml.snakeyaml.issues.issue188;
 
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
 
 public class ErrorMessageTest extends TestCase {
 
   public void testErrorMessage() throws Exception {
 
     try {
-      Yaml yaml = new Yaml();
+      Yaml yaml = new Yaml(new SafeConstructor());
       String doc = "templates:\n" + "  master:\n" + "    type: Compute : invalid123";
       yaml.load(doc);
       fail();

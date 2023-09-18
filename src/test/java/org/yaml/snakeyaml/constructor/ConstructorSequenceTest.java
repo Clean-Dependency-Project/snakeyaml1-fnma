@@ -13,8 +13,6 @@
  */
 package org.yaml.snakeyaml.constructor;
 
-import java.util.ArrayList;
-import java.util.List;
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.Yaml;
@@ -23,6 +21,9 @@ import org.yaml.snakeyaml.parser.Parser;
 import org.yaml.snakeyaml.parser.ParserImpl;
 import org.yaml.snakeyaml.reader.StreamReader;
 import org.yaml.snakeyaml.resolver.Resolver;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ConstructorSequenceTest extends TestCase {
 
@@ -44,7 +45,7 @@ public class ConstructorSequenceTest extends TestCase {
     List<Integer> l = new ArrayList<Integer>(2);
     l.add(1);
     l.add(2);
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     String result = yaml.dump(l);
     assertEquals("[1, 2]\n", result);
   }
@@ -53,7 +54,7 @@ public class ConstructorSequenceTest extends TestCase {
     List<Integer> l = new ArrayList<Integer>(2);
     l.add(1);
     l.add(1);
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     String result = yaml.dump(l);
     assertEquals("[1, 1]\n", result);
   }

@@ -13,12 +13,14 @@
  */
 package org.yaml.snakeyaml.types;
 
+import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.YamlDocument;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
 import java.io.InputStream;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import org.yaml.snakeyaml.Yaml;
-import org.yaml.snakeyaml.YamlDocument;
 
 /**
  * @see <a href="http://yaml.org/type/value.html">value</a>
@@ -32,7 +34,7 @@ public class ValueTagTest extends AbstractTest {
   public void testValue() {
     InputStream input = YamlDocument.class.getClassLoader()
         .getResourceAsStream(YamlDocument.ROOT + "types/value.yaml");
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     Iterator<Object> iter = yaml.loadAll(input).iterator();
     Map<String, List<String>> oldSchema = (Map<String, List<String>>) iter.next();
     assertEquals(1, oldSchema.size());

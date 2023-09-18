@@ -13,28 +13,25 @@
  */
 package org.yaml.snakeyaml.emitter;
 
-import java.io.IOException;
-import java.io.StringWriter;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.DumperOptions.FlowStyle;
 import org.yaml.snakeyaml.DumperOptions.ScalarStyle;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
 import org.yaml.snakeyaml.events.DocumentStartEvent;
 import org.yaml.snakeyaml.events.ImplicitTuple;
 import org.yaml.snakeyaml.events.ScalarEvent;
 import org.yaml.snakeyaml.events.StreamStartEvent;
 
+import java.io.IOException;
+import java.io.StringWriter;
+import java.util.*;
+
 public class EmitterTest extends TestCase {
 
   public void testNumberishStringsAreEmittedWithQuotes() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     assertEquals("string that looks like octal, but is not", "'083'\n", yaml.dump("083"));
     assertEquals("string that would be interpreted as octal, were it not quoted", "'0123'\n",
         yaml.dump("0123"));

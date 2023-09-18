@@ -13,22 +13,25 @@
  */
 package org.yaml.snakeyaml.issues.issue351;
 
-import static org.hamcrest.CoreMatchers.instanceOf;
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertThat;
+import org.junit.Test;
+import org.yaml.snakeyaml.LoaderOptions;
+import org.yaml.snakeyaml.Yaml;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Map;
-import org.junit.Test;
-import org.yaml.snakeyaml.Yaml;
+
+import static org.hamcrest.CoreMatchers.instanceOf;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertThat;
+
 
 public class MergedOrderTest {
 
   @SuppressWarnings("rawtypes")
   @Test
   public void mergedLinkedMapOrder() throws IOException {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new LoaderOptions());
     InputStream inputStream = MergedOrderTest.class.getResourceAsStream("/issues/issue351_1.yaml");
     Map<?, ?> bean = yaml.loadAs(inputStream, Map.class);
 

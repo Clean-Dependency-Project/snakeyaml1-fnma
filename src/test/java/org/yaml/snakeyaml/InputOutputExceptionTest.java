@@ -13,17 +13,19 @@
  */
 package org.yaml.snakeyaml;
 
+import junit.framework.TestCase;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+import org.yaml.snakeyaml.error.YAMLException;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Writer;
-import junit.framework.TestCase;
-import org.yaml.snakeyaml.error.YAMLException;
 
 public class InputOutputExceptionTest extends TestCase {
 
   public void testIOExceptionOnLoad() {
     try {
-      new Yaml().load(new BrokenInputStream());
+      new Yaml(new SafeConstructor()).load(new BrokenInputStream());
       fail("Input must be broken.");
     } catch (YAMLException e) {
       assertTrue(e.getCause() instanceof IOException);
@@ -33,7 +35,7 @@ public class InputOutputExceptionTest extends TestCase {
 
   public void testIOExceptionOnDump() {
     try {
-      new Yaml().dump("something", new BrokenWriter());
+      new Yaml(new SafeConstructor()).dump("something", new BrokenWriter());
       fail("Output must be broken.");
     } catch (YAMLException e) {
       assertTrue(e.getCause() instanceof IOException);

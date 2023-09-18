@@ -13,21 +13,24 @@
  */
 package org.yaml.snakeyaml.issues.issue386;
 
+import org.junit.Test;
+import org.yaml.snakeyaml.Util;
+import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import java.util.Map;
+
 import static org.hamcrest.CoreMatchers.hasItems;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-import java.util.Map;
-import org.junit.Test;
-import org.yaml.snakeyaml.Util;
-import org.yaml.snakeyaml.Yaml;
 
 public class DuplicateKeysOrderTest {
 
   @Test
   public void deleteDuplicatKeysInCorrectOrder() {
     String input = Util.getLocalResource("issues/issue386-duplicate-keys-order.yaml");
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     Map<String, String> testMap = yaml.load(input);
 
     assertThat("Number of keys in map", testMap.size(), is(4));

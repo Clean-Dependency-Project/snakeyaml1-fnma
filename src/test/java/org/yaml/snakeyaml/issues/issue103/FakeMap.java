@@ -13,11 +13,7 @@
  */
 package org.yaml.snakeyaml.issues.issue103;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Implements map interface, but behaves like collection. It just collects whatever you put(...) in

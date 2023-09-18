@@ -13,10 +13,11 @@
  */
 package org.yaml.snakeyaml;
 
-import java.util.LinkedHashMap;
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.constructor.Constructor;
 import org.yaml.snakeyaml.introspector.PropertySubstitute;
+
+import java.util.LinkedHashMap;
 
 public class EnumBeanGenTest extends TestCase {
 
@@ -41,7 +42,7 @@ public class EnumBeanGenTest extends TestCase {
 
   // Loading
   public void testLoadEnumBeanExplicitTags() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new LoaderOptions());
     @SuppressWarnings("unchecked")
     EnumBeanGen<Suit> bean = yaml.load(
         "!!org.yaml.snakeyaml.EnumBeanGen\nid: 174\nmap:\n  !!org.yaml.snakeyaml.Suit 'CLUBS': 1\n  !!org.yaml.snakeyaml.Suit 'DIAMONDS': 2\nsuit: !!org.yaml.snakeyaml.Suit 'CLUBS'");

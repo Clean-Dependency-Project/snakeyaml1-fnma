@@ -16,6 +16,7 @@ package org.yaml.snakeyaml.constructor;
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.Yaml;
 
+
 public class CustomClassLoaderConstructorTest extends TestCase {
 
   public void testGetClassForNameNull() {

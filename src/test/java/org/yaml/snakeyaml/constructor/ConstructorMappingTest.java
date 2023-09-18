@@ -13,9 +13,6 @@
  */
 package org.yaml.snakeyaml.constructor;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.TreeMap;
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.composer.Composer;
@@ -23,6 +20,10 @@ import org.yaml.snakeyaml.parser.Parser;
 import org.yaml.snakeyaml.parser.ParserImpl;
 import org.yaml.snakeyaml.reader.StreamReader;
 import org.yaml.snakeyaml.resolver.Resolver;
+
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.TreeMap;
 
 public class ConstructorMappingTest extends TestCase {
 

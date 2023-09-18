@@ -13,10 +13,13 @@
  */
 package org.yaml.snakeyaml.issues.issue142;
 
+import junit.framework.TestCase;
+import org.yaml.snakeyaml.DumperOptions;
+import org.yaml.snakeyaml.Yaml;
+
 import java.util.LinkedHashMap;
 import java.util.Map;
-import junit.framework.TestCase;
-import org.yaml.snakeyaml.Yaml;
+
 
 public class DerivedMapTest extends TestCase {
 
@@ -61,7 +64,7 @@ public class DerivedMapTest extends TestCase {
     o.setName("Mickey");
     o.getFeatures().put("Address", "Disney");
     o.getMoreFeatures().put("Address", "Disney");
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new DumperOptions());
     String asYaml = yaml.dump(o);
     // System.out.println(asYaml);
     MyObject o2 = yaml.load(asYaml);

@@ -16,8 +16,12 @@ package examples;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
+import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.TypeDescription;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
 
 public class KeyIsNotTheSameAsFieldTest {
 
@@ -94,7 +98,7 @@ public class KeyIsNotTheSameAsFieldTest {
      */
     paramDesc.setExcludes("inputPart", "more");
 
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new LoaderOptions());
     yaml.addTypeDescription(paramDesc);
     return yaml;
   }

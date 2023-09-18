@@ -13,8 +13,11 @@
  */
 package org.yaml.snakeyaml.issues.issue318;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.yaml.snakeyaml.LoaderOptions;
+import org.yaml.snakeyaml.Yaml;
 
 import java.io.File;
 import java.io.IOException;
@@ -25,10 +28,10 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.Properties;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-import org.yaml.snakeyaml.Yaml;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
+
 
 public class ContextClassLoaderTest {
 
@@ -133,7 +136,7 @@ public class ContextClassLoaderTest {
     DomainBean bean = new DomainBean();
     bean.setValue(13);
 
-    Object yaml = yamlClass.newInstance();
+    Object yaml = new Yaml(new LoaderOptions());
 
     Method dumpMethod = yaml.getClass().getMethod("dump", Object.class);
     String dump = dumpMethod.invoke(yaml, bean).toString();

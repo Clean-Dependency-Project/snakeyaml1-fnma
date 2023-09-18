@@ -14,8 +14,10 @@
 package org.yaml.snakeyaml.issues.issue24;
 
 import junit.framework.TestCase;
+import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.Util;
 import org.yaml.snakeyaml.Yaml;
+
 
 /**
  * to test http://code.google.com/p/snakeyaml/issues/detail?id=24
@@ -25,7 +27,7 @@ public class LineNumberTest extends TestCase {
   public void test1() {
     String resource = Util.getLocalResource("issues/issue24-1.yaml");
     // System.out.println(resource);
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new LoaderOptions());
     try {
       yaml.load(resource);
       fail();

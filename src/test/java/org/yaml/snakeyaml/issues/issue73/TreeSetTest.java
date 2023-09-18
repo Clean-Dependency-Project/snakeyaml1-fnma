@@ -13,9 +13,12 @@
  */
 package org.yaml.snakeyaml.issues.issue73;
 
-import java.util.TreeSet;
 import junit.framework.TestCase;
+import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.Yaml;
+
+import java.util.TreeSet;
+
 
 /**
  * Test bean when the implementation is defined: TreeSet instead of just the interface Set
@@ -30,7 +33,7 @@ public class TreeSetTest extends TestCase {
     list.add("xxx");
     list.add("ccc");
     bean.setSet(list);
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new LoaderOptions());
     String doc = yaml.dump(bean);
     // System.out.println(doc);
     //

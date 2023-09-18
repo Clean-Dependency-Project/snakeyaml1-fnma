@@ -18,13 +18,14 @@ import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.DumperOptions.ScalarStyle;
 import org.yaml.snakeyaml.Yaml;
 
+
 /**
  * @see <a href="http://code.google.com/p/snakeyaml/issues/detail?id=51">Issue</a>
  */
 public class UnicodeStyleTest extends TestCase {
 
   public void testFoldedStyle() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new DumperOptions());
     String output = yaml.dump("í");
     // System.out.println(output);
     assertEquals("í\n", output);

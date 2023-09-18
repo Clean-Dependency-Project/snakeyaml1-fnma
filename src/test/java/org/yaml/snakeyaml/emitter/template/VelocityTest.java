@@ -13,9 +13,6 @@
  */
 package org.yaml.snakeyaml.emitter.template;
 
-import java.io.StringWriter;
-import java.util.ArrayList;
-import java.util.List;
 import junit.framework.TestCase;
 import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
@@ -25,6 +22,10 @@ import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.Util;
 import org.yaml.snakeyaml.Yaml;
 import org.yaml.snakeyaml.immutable.Point;
+
+import java.io.StringWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 public class VelocityTest extends TestCase {
 
@@ -41,7 +42,7 @@ public class VelocityTest extends TestCase {
     VelocityContext context = new VelocityContext();
     MyBean bean = createBean();
     context.put("bean", bean);
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new DumperOptions());
     context.put("list", yaml.dump(bean.getList()));
     VelocityEngine ve = new VelocityEngine();
     ve.setProperty("file.resource.loader.class", ClasspathResourceLoader.class.getName());
@@ -55,7 +56,7 @@ public class VelocityTest extends TestCase {
     assertEquals(etalon.length(), output.length());
     assertEquals(etalon, output);
     // parse the YAML document
-    Yaml loader = new Yaml();
+    Yaml loader = new Yaml(new DumperOptions());
     MyBean parsedBean = loader.loadAs(output, MyBean.class);
     assertEquals(bean, parsedBean);
   }
