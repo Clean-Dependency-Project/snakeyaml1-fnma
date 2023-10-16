@@ -13,7 +13,6 @@
  */
 package org.pyyaml;
 
-import java.util.ArrayList;
 import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.DumperOptions.Version;
 import org.yaml.snakeyaml.events.AliasEvent;
@@ -35,6 +34,8 @@ import org.yaml.snakeyaml.tokens.AnchorToken;
 import org.yaml.snakeyaml.tokens.ScalarToken;
 import org.yaml.snakeyaml.tokens.TagToken;
 import org.yaml.snakeyaml.tokens.Token;
+
+import java.util.ArrayList;
 
 public class CanonicalParser implements Parser {
 

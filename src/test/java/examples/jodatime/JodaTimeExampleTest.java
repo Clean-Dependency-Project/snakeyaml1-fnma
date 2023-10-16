@@ -13,22 +13,21 @@
  */
 package examples.jodatime;
 
-import java.util.Date;
 import junit.framework.TestCase;
 import org.joda.time.DateMidnight;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.Yaml;
-import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
-import org.yaml.snakeyaml.constructor.SafeConstructor;
-
 import org.yaml.snakeyaml.constructor.AbstractConstruct;
 import org.yaml.snakeyaml.constructor.Construct;
 import org.yaml.snakeyaml.constructor.Constructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
 import org.yaml.snakeyaml.nodes.Node;
 import org.yaml.snakeyaml.nodes.NodeId;
 import org.yaml.snakeyaml.nodes.Tag;
+
+import java.util.Date;
 
 public class JodaTimeExampleTest extends TestCase {
 

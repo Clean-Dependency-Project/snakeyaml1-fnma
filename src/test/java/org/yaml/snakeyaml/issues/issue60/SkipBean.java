@@ -14,7 +14,11 @@
 package org.yaml.snakeyaml.issues.issue60;
 
 import java.io.File;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class SkipBean {
 

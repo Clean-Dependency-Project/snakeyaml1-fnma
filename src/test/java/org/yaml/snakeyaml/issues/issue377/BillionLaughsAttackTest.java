@@ -20,7 +20,10 @@ import org.yaml.snakeyaml.error.YAMLException;
 
 import java.util.Map;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 /**
  * https://en.wikipedia.org/wiki/Billion_laughs_attack#Variations

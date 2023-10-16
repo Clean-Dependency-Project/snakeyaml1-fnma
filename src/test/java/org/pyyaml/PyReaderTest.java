@@ -13,14 +13,15 @@
  */
 package org.pyyaml;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import org.yaml.snakeyaml.error.YAMLException;
 import org.yaml.snakeyaml.reader.ReaderException;
 import org.yaml.snakeyaml.reader.StreamReader;
 import org.yaml.snakeyaml.reader.UnicodeReader;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 
 /**
  * imported from PyYAML

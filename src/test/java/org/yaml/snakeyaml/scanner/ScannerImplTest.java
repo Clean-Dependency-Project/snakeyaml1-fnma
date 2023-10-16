@@ -20,7 +20,14 @@ import org.yaml.snakeyaml.Yaml;
 import org.yaml.snakeyaml.constructor.SafeConstructor;
 import org.yaml.snakeyaml.error.Mark;
 import org.yaml.snakeyaml.reader.StreamReader;
-import org.yaml.snakeyaml.tokens.*;
+import org.yaml.snakeyaml.tokens.BlockEndToken;
+import org.yaml.snakeyaml.tokens.BlockMappingStartToken;
+import org.yaml.snakeyaml.tokens.KeyToken;
+import org.yaml.snakeyaml.tokens.ScalarToken;
+import org.yaml.snakeyaml.tokens.StreamEndToken;
+import org.yaml.snakeyaml.tokens.StreamStartToken;
+import org.yaml.snakeyaml.tokens.Token;
+import org.yaml.snakeyaml.tokens.ValueToken;
 
 import java.util.LinkedList;
 

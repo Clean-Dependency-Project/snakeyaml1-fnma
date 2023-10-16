@@ -13,15 +13,13 @@
  */
 package examples;
 
-import java.util.Map;
-import java.util.TreeMap;
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.Yaml;
-import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
-import org.yaml.snakeyaml.constructor.SafeConstructor;
-
 import org.yaml.snakeyaml.constructor.Constructor;
+
+import java.util.Map;
+import java.util.TreeMap;
 
 public class CustomMapExampleTest extends TestCase {
 

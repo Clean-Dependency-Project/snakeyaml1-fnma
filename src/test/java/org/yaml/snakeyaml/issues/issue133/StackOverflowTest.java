@@ -23,7 +23,9 @@ import org.yaml.snakeyaml.representer.Representer;
 
 import java.awt.*;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 /**
  * to test http://code.google.com/p/snakeyaml/issues/detail?id=133

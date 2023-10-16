@@ -13,8 +13,6 @@
  */
 package examples.jodatime;
 
-import java.util.Date;
-import java.util.List;
 import junit.framework.TestCase;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
@@ -22,9 +20,6 @@ import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.DumperOptions.FlowStyle;
 import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.Yaml;
-import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
-import org.yaml.snakeyaml.constructor.SafeConstructor;
-
 import org.yaml.snakeyaml.constructor.Construct;
 import org.yaml.snakeyaml.constructor.Constructor;
 import org.yaml.snakeyaml.events.Event;
@@ -32,6 +27,9 @@ import org.yaml.snakeyaml.events.ScalarEvent;
 import org.yaml.snakeyaml.nodes.Node;
 import org.yaml.snakeyaml.nodes.NodeId;
 import org.yaml.snakeyaml.nodes.Tag;
+
+import java.util.Date;
+import java.util.List;
 
 public class JodaTimeFlowStylesTest extends TestCase {
 

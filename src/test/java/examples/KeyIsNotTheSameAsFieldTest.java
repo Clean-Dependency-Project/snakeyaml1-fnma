@@ -13,14 +13,12 @@
  */
 package examples;
 
-import static org.junit.Assert.assertEquals;
-
 import org.junit.Test;
 import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.TypeDescription;
 import org.yaml.snakeyaml.Yaml;
-import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
-import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import static org.junit.Assert.assertEquals;
 
 
 public class KeyIsNotTheSameAsFieldTest {

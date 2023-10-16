@@ -16,7 +16,6 @@ package examples;
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.Yaml;
-import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
 import org.yaml.snakeyaml.constructor.SafeConstructor;
 
 

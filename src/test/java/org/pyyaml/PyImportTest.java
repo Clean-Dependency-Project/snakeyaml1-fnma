@@ -13,25 +13,24 @@
  */
 package org.pyyaml;
 
+import junit.framework.TestCase;
+import org.yaml.snakeyaml.LoaderOptions;
+import org.yaml.snakeyaml.Util;
+import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.constructor.Constructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+import org.yaml.snakeyaml.events.Event;
+import org.yaml.snakeyaml.parser.Parser;
+import org.yaml.snakeyaml.parser.ParserImpl;
+import org.yaml.snakeyaml.reader.StreamReader;
+import org.yaml.snakeyaml.reader.UnicodeReader;
+
 import java.io.File;
 import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
-import junit.framework.TestCase;
-import org.yaml.snakeyaml.LoaderOptions;
-import org.yaml.snakeyaml.Util;
-import org.yaml.snakeyaml.Yaml;
-import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
-import org.yaml.snakeyaml.constructor.SafeConstructor;
-
-import org.yaml.snakeyaml.constructor.Constructor;
-import org.yaml.snakeyaml.events.Event;
-import org.yaml.snakeyaml.parser.Parser;
-import org.yaml.snakeyaml.parser.ParserImpl;
-import org.yaml.snakeyaml.reader.StreamReader;
-import org.yaml.snakeyaml.reader.UnicodeReader;
 
 public abstract class PyImportTest extends TestCase {
 

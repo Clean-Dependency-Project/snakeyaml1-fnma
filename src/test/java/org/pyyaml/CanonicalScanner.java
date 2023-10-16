@@ -13,9 +13,6 @@
  */
 package org.pyyaml;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 import org.yaml.snakeyaml.error.Mark;
 import org.yaml.snakeyaml.nodes.Tag;
 import org.yaml.snakeyaml.scanner.Scanner;
@@ -37,6 +34,10 @@ import org.yaml.snakeyaml.tokens.TagToken;
 import org.yaml.snakeyaml.tokens.TagTuple;
 import org.yaml.snakeyaml.tokens.Token;
 import org.yaml.snakeyaml.tokens.ValueToken;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 public class CanonicalScanner implements Scanner {
 

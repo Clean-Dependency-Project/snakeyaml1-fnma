@@ -13,6 +13,15 @@
  */
 package org.pyyaml;
 
+import org.yaml.snakeyaml.LoaderOptions;
+import org.yaml.snakeyaml.reader.StreamReader;
+import org.yaml.snakeyaml.reader.UnicodeReader;
+import org.yaml.snakeyaml.scanner.Scanner;
+import org.yaml.snakeyaml.scanner.ScannerImpl;
+import org.yaml.snakeyaml.tokens.StreamEndToken;
+import org.yaml.snakeyaml.tokens.StreamStartToken;
+import org.yaml.snakeyaml.tokens.Token;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -23,14 +32,6 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import org.yaml.snakeyaml.LoaderOptions;
-import org.yaml.snakeyaml.reader.StreamReader;
-import org.yaml.snakeyaml.reader.UnicodeReader;
-import org.yaml.snakeyaml.scanner.Scanner;
-import org.yaml.snakeyaml.scanner.ScannerImpl;
-import org.yaml.snakeyaml.tokens.StreamEndToken;
-import org.yaml.snakeyaml.tokens.StreamStartToken;
-import org.yaml.snakeyaml.tokens.Token;
 
 /**
  * imported from PyYAML

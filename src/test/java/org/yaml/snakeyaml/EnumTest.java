@@ -16,7 +16,12 @@ package org.yaml.snakeyaml;
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.constructor.Constructor;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.EnumMap;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 
 public class EnumTest extends TestCase {
 

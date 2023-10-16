@@ -16,7 +16,11 @@ package org.yaml.snakeyaml.stress;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
-import org.yaml.snakeyaml.*;
+import org.yaml.snakeyaml.DumperOptions;
+import org.yaml.snakeyaml.Invoice;
+import org.yaml.snakeyaml.LoaderOptions;
+import org.yaml.snakeyaml.Util;
+import org.yaml.snakeyaml.Yaml;
 import org.yaml.snakeyaml.constructor.SafeConstructor;
 
 

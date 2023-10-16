@@ -13,7 +13,11 @@
  */
 package org.yaml.snakeyaml.types;
 
-import java.util.*;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.TimeZone;
 
 /**
  * @see <a href="http://yaml.org/type/timestamp.html">timestamp</a>

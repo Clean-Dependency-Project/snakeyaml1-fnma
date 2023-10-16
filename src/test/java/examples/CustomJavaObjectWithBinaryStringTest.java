@@ -13,12 +13,11 @@
  */
 package examples;
 
-import java.io.StringReader;
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.Yaml;
-import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
-import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import java.io.StringReader;
 
 
 public class CustomJavaObjectWithBinaryStringTest extends TestCase {

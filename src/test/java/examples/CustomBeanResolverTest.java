@@ -13,17 +13,15 @@
  */
 package examples;
 
-import java.math.BigDecimal;
-import java.util.regex.Pattern;
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.Yaml;
-import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
-import org.yaml.snakeyaml.constructor.SafeConstructor;
-
 import org.yaml.snakeyaml.constructor.Constructor;
 import org.yaml.snakeyaml.nodes.Node;
 import org.yaml.snakeyaml.nodes.NodeId;
 import org.yaml.snakeyaml.nodes.ScalarNode;
+
+import java.math.BigDecimal;
+import java.util.regex.Pattern;
 
 /**
  * http://code.google.com/p/snakeyaml/issues/detail?id=75

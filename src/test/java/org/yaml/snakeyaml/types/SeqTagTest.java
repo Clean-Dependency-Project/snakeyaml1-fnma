@@ -15,7 +15,11 @@ package org.yaml.snakeyaml.types;
 
 import org.yaml.snakeyaml.YamlDocument;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @see <a href="http://yaml.org/type/seq.html">seq</a>

@@ -13,15 +13,15 @@
  */
 package examples.enumset;
 
-import java.util.EnumSet;
 import org.junit.Assert;
 import org.junit.Test;
 import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.TypeDescription;
 import org.yaml.snakeyaml.Yaml;
-
 import org.yaml.snakeyaml.error.YAMLException;
 import org.yaml.snakeyaml.nodes.Node;
+
+import java.util.EnumSet;
 
 public class YamlEnumSetTest {
 
