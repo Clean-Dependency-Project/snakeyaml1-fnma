@@ -10,7 +10,7 @@
 ## Overview ##
 [YAML](http://yaml.org) is a data serialization format designed for human readability and interaction with scripting languages.
 
-SnakeYAML is a YAML 1.1 processor for the Java Virtual Machine version 7.
+SnakeYAML is a YAML 1.1 processor for the Java Virtual Machine version 8.
 For YAML 1.2 (which is a superset of JSON) you may have a look at [SnakeYAML Engine](https://bitbucket.org/snakeyaml/snakeyaml-engine)
 
 ## SnakeYAML features ##
@@ -24,14 +24,8 @@ For YAML 1.2 (which is a superset of JSON) you may have a look at [SnakeYAML Eng
 
 
 ## Info ##
- * [Changes](https://bitbucket.org/snakeyaml/snakeyaml/wiki/Changes)
  * [Documentation](https://bitbucket.org/snakeyaml/snakeyaml/wiki/Documentation)
- * [CVE and untrusted data](https://bitbucket.org/snakeyaml/snakeyaml/wiki/CVE%20&%20NIST.md)
 
 ## Contribute ##
-* GIT [is now used](https://bitbucket.org/snakeyaml/snakeyaml/wiki/Migration%20to%20Git) to dance with the [source code](https://bitbucket.org/snakeyaml/snakeyaml/src).
-* If you find a bug in SnakeYAML, please [file a bug report](https://bitbucket.org/snakeyaml/snakeyaml/issues?status=new&status=open).
-* You may discuss SnakeYAML at
-[the mailing list](http://groups.google.com/group/snakeyaml-core).
-* Telegram group is removed because of the spam
+* If you find a bug in snakeyaml1-fnma, please [file a bug report](https://github.com/Clean-Dependency-Project/snakeyaml1-fnma/issues/new/choose).
 * [YAML community](https://matrix.to/#/%23chat:yaml.io)

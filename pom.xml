@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>org.yaml</groupId>
-    <artifactId>snakeyaml</artifactId>
+    <groupId>org.cleandependency.java</groupId>
+    <artifactId>snakeyaml1-fnma</artifactId>
     <version>1.33-SNAPSHOT</version>
     <packaging>bundle</packaging>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.scm.id>bitbucket</project.scm.id>
-        <release.repo.url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</release.repo.url>
-        <snapshot.repo.url>https://oss.sonatype.org/content/repositories/snapshots/</snapshot.repo.url>
-        <maven.compiler.source>7</maven.compiler.source>
-        <maven.compiler.target>7</maven.compiler.target>
+        <project.scm.id>github</project.scm.id>
+        <release.repo.url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</release.repo.url>
+        <snapshot.repo.url>https://s01.oss.sonatype.org/content/repositories/snapshots/</snapshot.repo.url>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
         <maven.compiler.testSource>8</maven.compiler.testSource>
         <maven.compiler.testTarget>8</maven.compiler.testTarget>
         <maven.javadoc.failOnError>false</maven.javadoc.failOnError>
@@ -23,24 +23,23 @@
         <jdk9-illegal-access-level>deny</jdk9-illegal-access-level>
     </properties>
     <name>SnakeYAML</name>
-    <description>YAML 1.1 parser and emitter for Java</description>
-    <inceptionYear>2008</inceptionYear>
-    <url>https://bitbucket.org/snakeyaml/snakeyaml</url>
+    <description>Cleaner version of YAML 1.1 parser and emitter for Java fixing security vulnerabilities as part of Clean Dependency Project.</description>
+    <inceptionYear>2022</inceptionYear>
+    <url>https://github.com/Clean-Dependency-Project/snakeyaml1-fnma</url>
     <issueManagement>
-        <system>Bitbucket</system>
-        <url>https://bitbucket.org/snakeyaml/snakeyaml/issues</url>
+        <system>Github</system>
+        <url>https://github.com/Clean-Dependency-Project/snakeyaml1-fnma/issues</url>
     </issueManagement>
     <mailingLists>
         <mailingList>
-            <name>SnakeYAML developers and users List</name>
-            <post>snakeyaml-core@googlegroups.com</post>
+            <name>Clean Dependency developers and users List</name>
+            <post>support@cleandependency.org</post>
         </mailingList>
     </mailingLists>
     <scm>
-        <connection>scm:git:http://bitbucket.org/snakeyaml/snakeyaml</connection>
-        <developerConnection>scm:git:ssh://git@bitbucket.org/snakeyaml/snakeyaml</developerConnection>
-        <url>https://bitbucket.org/snakeyaml/snakeyaml/src</url>
-        <tag>snakeyaml-1.33</tag>
+        <connection>scm:git:git://github.com/Clean-Dependency-Project/snakeyaml1-fnma.git</connection>
+        <developerConnection>scm:git:ssh://github.com:Clean-Dependency-Project/snakeyaml1-fnma.git</developerConnection>
+        <url>https://github.com/Clean-Dependency-Project/snakeyaml1-fnma/tree/main</url>
     </scm>
     <licenses>
         <license>
@@ -59,6 +58,10 @@
             <id>maslovalex</id>
             <name>Alexander Maslov</name>
             <email>alexander.maslov@gmail.com</email>
+        </developer>
+        <developer>
+            <id>rvema</id>
+            <name>Ragha Vema</name>
         </developer>
     </developers>
     <dependencies>
@@ -88,17 +91,14 @@
         </dependency>
     </dependencies>
     <distributionManagement>
-        <repository>
-            <id>sonatype-nexus-staging</id>
-            <name>Nexus Release Repository</name>
-            <url>${release.repo.url}</url>
-        </repository>
-        <snapshotRepository>
-            <id>sonatype-nexus-staging</id>
-            <name>Sonatype Nexus Snapshots</name>
-            <url>${snapshot.repo.url}</url>
-            <uniqueVersion>false</uniqueVersion>
-        </snapshotRepository>
+          <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
+          </snapshotRepository>
+          <repository>
+            <id>ossrh</id>
+            <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+          </repository>
     </distributionManagement>
     <build>
         <testResources>
@@ -329,9 +329,9 @@
                 <version>1.6.8</version>
                 <extensions>true</extensions>
                 <configuration>
-                    <serverId>sonatype-nexus-staging</serverId>
-                    <nexusUrl>https://oss.sonatype.org/</nexusUrl>
-                    <autoReleaseAfterClose>false</autoReleaseAfterClose>
+                    <serverId>ossrh</serverId>
+                    <nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>
+                    <autoReleaseAfterClose>true</autoReleaseAfterClose>
                     <keepStagingRepositoryOnFailure>true</keepStagingRepositoryOnFailure>
                     <keepStagingRepositoryOnCloseRuleFailure>true</keepStagingRepositoryOnCloseRuleFailure>
                 </configuration>
@@ -345,7 +345,7 @@
                 <artifactId>maven-changes-plugin</artifactId>
                 <version>2.12.1</version>
                 <configuration>
-                    <issueLinkTemplate>https://bitbucket.org/snakeyaml/snakeyaml/issues/%ISSUE%</issueLinkTemplate>
+                    <issueLinkTemplate>https://github.com/Clean-Dependency-Project/snakeyaml1-fnma/issues/%ISSUE%</issueLinkTemplate>
                 </configuration>
                 <reportSets>
                     <reportSet>
