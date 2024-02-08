@@ -41,7 +41,10 @@ public abstract class CollectionNode<T> extends Node {
   /**
    * Existed in older versions but replaced with {@link DumperOptions.FlowStyle}-based constructor.
    * Restored in v1.22 for backwards compatibility.
-   *
+   * @param tag - it's a tag
+   * @param startMark - start
+   * @Param endMark - end
+   * @Param flowStyle - flowstyle
    * @deprecated Since restored in v1.22. Use
    *             {@link CollectionNode#CollectionNode(Tag, Mark, Mark, org.yaml.snakeyaml.DumperOptions.FlowStyle) }.
    */
