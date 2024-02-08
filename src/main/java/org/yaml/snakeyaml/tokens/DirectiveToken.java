@@ -20,7 +20,7 @@ import org.yaml.snakeyaml.error.YAMLException;
 /**
  * Token
  *
- * @param <T>
+ * @param <T> the class of the instance to be created
  */
 public final class DirectiveToken<T> extends Token {
 
