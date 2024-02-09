@@ -141,8 +141,8 @@ public class DumperOptions {
      *
      * @deprecated Since restored in v1.22. Use the {@link FlowStyle} constants in your code
      *             instead.
-     * @param flowStyle - style
-     * @param FlowStyle object
+     * @param flowStyle boolean
+     * @return FlowStyle Object
      */
     @Deprecated
     public static FlowStyle fromBoolean(Boolean flowStyle) {
