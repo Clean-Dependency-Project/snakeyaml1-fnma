@@ -219,7 +219,7 @@ public final class ScannerImpl implements Scanner {
   /**
    * Create
    *
-   * @param reader
+   * @param reader - reader
    * @deprecated use options instead
    */
   @Deprecated
@@ -243,6 +243,7 @@ public final class ScannerImpl implements Scanner {
    * <code>CommentToken</code>.
    *
    * @param parseComments <code>true</code> to parse; <code>false</code> to ignore
+   * @return ScannerImpl this
    */
   @Deprecated
   public ScannerImpl setParseComments(boolean parseComments) {

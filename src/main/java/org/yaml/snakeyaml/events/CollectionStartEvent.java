@@ -52,7 +52,12 @@ public abstract class CollectionStartEvent extends NodeEvent {
   /**
    * Existed in older versions but replaced with {@link DumperOptions.FlowStyle}-based constructor.
    * Restored in v1.22 for backwards compatibility.
-   *
+   * @param anchor - its anchor
+   * @param tag - its tag
+   * @param implicit - thue when the tag is implicitly resolved
+   * @param startMark - start
+   * @param endMark - end
+   * @param flowStyle - style
    * @deprecated Since restored in v1.22. Use
    *             {@link CollectionStartEvent#CollectionStartEvent(String, String, boolean, Mark, Mark, org.yaml.snakeyaml.DumperOptions.FlowStyle) }.
    */
