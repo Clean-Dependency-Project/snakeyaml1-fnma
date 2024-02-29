@@ -63,6 +63,10 @@
             <id>rvema</id>
             <name>Ragha Vema</name>
         </developer>
+        <developer>
+            <id>sdevanab</id>
+            <name>Srikanth D</name>
+        </developer>
     </developers>
     <dependencies>
         <dependency>
