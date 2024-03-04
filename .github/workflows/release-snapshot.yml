@@ -1,7 +1,7 @@
 name: Release Snapshot
 on:
   push:
-    branches: [main]
+    branches: [main, fix]
     paths-ignore:
       - '**/*.md'
 jobs:
