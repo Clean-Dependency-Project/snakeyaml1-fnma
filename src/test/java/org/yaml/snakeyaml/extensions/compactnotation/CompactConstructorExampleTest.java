@@ -13,13 +13,14 @@
  */
 package org.yaml.snakeyaml.extensions.compactnotation;
 
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.Util;
 import org.yaml.snakeyaml.Yaml;
 import org.yaml.snakeyaml.constructor.Constructor;
+
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 public class CompactConstructorExampleTest extends TestCase {
 

@@ -13,9 +13,6 @@
  */
 package examples.staticstate;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.LoaderOptions;
@@ -29,6 +26,10 @@ import org.yaml.snakeyaml.nodes.ScalarNode;
 import org.yaml.snakeyaml.nodes.Tag;
 import org.yaml.snakeyaml.representer.Representer;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+
 /**
  * Example with static fields
  */
@@ -40,7 +41,7 @@ public class StaticFieldsTest extends TestCase {
     bean.setAge(-47);
     JavaBeanWithStaticState.setType("Represent");
     JavaBeanWithStaticState.color = "Black";
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new DumperOptions());
     String output = yaml.dump(bean);
     // System.out.println(output);
     assertEquals("!!examples.staticstate.JavaBeanWithStaticState {age: -47, name: Bahrack}\n",

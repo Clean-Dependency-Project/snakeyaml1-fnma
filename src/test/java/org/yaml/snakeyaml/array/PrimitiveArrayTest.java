@@ -13,13 +13,16 @@
  */
 package org.yaml.snakeyaml.array;
 
-import java.util.Arrays;
-import java.util.List;
 import junit.framework.TestCase;
 import org.junit.Assert;
+import org.yaml.snakeyaml.DumperOptions;
+import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.Yaml;
 import org.yaml.snakeyaml.constructor.ConstructorException;
 import org.yaml.snakeyaml.error.YAMLException;
+
+import java.util.Arrays;
+import java.util.List;
 
 public class PrimitiveArrayTest extends TestCase {
 
@@ -43,7 +46,7 @@ public class PrimitiveArrayTest extends TestCase {
         + Arrays.toString(chars) + " ]\n" + "- " + pkg + ".BooleanArr [ " + Arrays.toString(bools)
         + " ]\n";
 
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new LoaderOptions());
     List<Object> wrappers = yaml.load(testInput);
 
     Assert.assertArrayEquals(bytes, ((ByteArr) wrappers.get(0)).getBytes());
@@ -71,7 +74,7 @@ public class PrimitiveArrayTest extends TestCase {
   }
 
   private void tryInvalid(String t, Class<?> expectedException) {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new LoaderOptions());
     try {
       Object loaded = yaml.load(t);
       fail("Expected " + expectedException.getCanonicalName() + " but loaded = \"" + loaded + "\"");
@@ -113,7 +116,7 @@ public class PrimitiveArrayTest extends TestCase {
   }
 
   public void testPromotion() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new LoaderOptions());
 
     // Loading integer numbers as floating-point types is allowed...
     Assert.assertArrayEquals(new float[] {3, 5},
@@ -124,7 +127,7 @@ public class PrimitiveArrayTest extends TestCase {
   }
 
   public void testStringCharArray() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new LoaderOptions());
 
     try {
       yaml.load(pkg + ".CharArr [ [ abcd ] ]");
@@ -136,7 +139,7 @@ public class PrimitiveArrayTest extends TestCase {
   }
 
   private static Object cycle(Object in) {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new DumperOptions());
     String dumped = yaml.dump(in);
     // System.out.println ( dumped );
     return yaml.load(dumped);

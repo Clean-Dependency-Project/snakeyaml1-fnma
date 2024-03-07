@@ -13,9 +13,10 @@
  */
 package org.yaml.snakeyaml.nodes;
 
-import java.util.ArrayList;
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.DumperOptions;
+
+import java.util.ArrayList;
 
 public class SequenceNodeTest extends TestCase {
 

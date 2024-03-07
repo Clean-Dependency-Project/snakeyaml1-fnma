@@ -13,7 +13,6 @@
  */
 package org.yaml.snakeyaml.parser;
 
-import java.util.LinkedList;
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.LoaderOptions;
@@ -30,6 +29,8 @@ import org.yaml.snakeyaml.events.SequenceStartEvent;
 import org.yaml.snakeyaml.events.StreamEndEvent;
 import org.yaml.snakeyaml.events.StreamStartEvent;
 import org.yaml.snakeyaml.reader.StreamReader;
+
+import java.util.LinkedList;
 
 public class ParserImplTest extends TestCase {
 

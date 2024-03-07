@@ -13,8 +13,6 @@
  */
 package examples;
 
-import java.util.List;
-import java.util.Map;
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.Util;
@@ -25,6 +23,9 @@ import org.yaml.snakeyaml.constructor.Constructor;
 import org.yaml.snakeyaml.error.YAMLException;
 import org.yaml.snakeyaml.nodes.Node;
 import org.yaml.snakeyaml.nodes.Tag;
+
+import java.util.List;
+import java.util.Map;
 
 public class IgnoreTagsExampleTest extends TestCase {
 

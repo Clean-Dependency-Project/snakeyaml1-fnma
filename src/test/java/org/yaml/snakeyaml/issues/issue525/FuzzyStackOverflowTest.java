@@ -13,21 +13,22 @@
  */
 package org.yaml.snakeyaml.issues.issue525;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
-
 import org.junit.Test;
 import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.Util;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
 import org.yaml.snakeyaml.error.YAMLException;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 public class FuzzyStackOverflowTest {
 
   @Test
   public void parseOpenUnmatchedMappings() {
     try {
-      Yaml yaml = new Yaml();
+      Yaml yaml = new Yaml(new SafeConstructor());
       String strYaml = Util.getLocalResource("fuzzer/YamlFuzzer-4626423186325504");
       yaml.load(strYaml);
       fail("Should report invalid YAML");

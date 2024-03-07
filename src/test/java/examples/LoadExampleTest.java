@@ -13,6 +13,10 @@
  */
 package examples;
 
+import junit.framework.TestCase;
+import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -23,21 +27,20 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.NoSuchElementException;
-import junit.framework.TestCase;
-import org.yaml.snakeyaml.Yaml;
+
 
 public class LoadExampleTest extends TestCase {
 
   @SuppressWarnings("unchecked")
   public void testLoad() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     String document = "\n- Hesperiidae\n- Papilionidae\n- Apatelodidae\n- Epiplemidae";
     List<String> list = yaml.load(document);
     assertEquals("[Hesperiidae, Papilionidae, Apatelodidae, Epiplemidae]", list.toString());
   }
 
   public void testLoadFromString() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     String document = "hello: 25";
     @SuppressWarnings("unchecked")
     Map<String, Integer> map = yaml.load(document);
@@ -47,7 +50,7 @@ public class LoadExampleTest extends TestCase {
 
   public void testLoadFromStream() throws IOException {
     InputStream input = new FileInputStream(new File("src/test/resources/reader/utf-8.txt"));
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     Object data = yaml.load(input);
     assertEquals("test", data);
     //
@@ -59,7 +62,7 @@ public class LoadExampleTest extends TestCase {
   public void testLoadManyDocuments() throws IOException {
     InputStream input =
         new FileInputStream(new File("src/test/resources/specification/example2_28.yaml"));
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     int counter = 0;
     for (Object data : yaml.loadAll(input)) {
       assertNotNull(data);
@@ -73,7 +76,7 @@ public class LoadExampleTest extends TestCase {
   public void testLoadManyDocumentsWithIterator() throws IOException {
     InputStream input =
         new FileInputStream(new File("src/test/resources/specification/example2_28.yaml"));
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     int counter = 0;
     Iterator<Object> iter = yaml.loadAll(input).iterator();
     while (iter.hasNext()) {
@@ -89,7 +92,7 @@ public class LoadExampleTest extends TestCase {
   public void testLoadManyDocumentsWithIterator2() throws IOException {
     InputStream input =
         new FileInputStream(new File("src/test/resources/specification/example2_28.yaml"));
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     Iterator<Object> iter = yaml.loadAll(input).iterator();
     Object data = iter.next();
     assertNotNull(data);

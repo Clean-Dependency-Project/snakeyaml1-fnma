@@ -13,8 +13,6 @@
  */
 package org.yaml.snakeyaml.issues.issue311;
 
-import static org.junit.Assert.assertEquals;
-
 import org.junit.Test;
 import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.LoaderOptions;
@@ -26,6 +24,8 @@ import org.yaml.snakeyaml.nodes.ScalarNode;
 import org.yaml.snakeyaml.nodes.Tag;
 import org.yaml.snakeyaml.representer.Represent;
 import org.yaml.snakeyaml.representer.Representer;
+
+import static org.junit.Assert.assertEquals;
 
 public class BooleanEnumTest {
 

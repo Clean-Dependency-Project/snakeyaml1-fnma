@@ -13,10 +13,6 @@
  */
 package org.yaml.snakeyaml.types;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.DumperOptions.FlowStyle;
 import org.yaml.snakeyaml.Yaml;
@@ -24,6 +20,11 @@ import org.yaml.snakeyaml.nodes.Node;
 import org.yaml.snakeyaml.nodes.Tag;
 import org.yaml.snakeyaml.representer.Represent;
 import org.yaml.snakeyaml.representer.Representer;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @see <a href="http://yaml.org/type/null.html">null</a>
@@ -143,7 +144,7 @@ public class NullTagTest extends AbstractTest {
     list.add(null);
     list.add("value");
     list.add(null);
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new DumperOptions());
     String output = yaml.dump(list);
     assertEquals("Null values must not get anchors and aliases.", "[null, value, null]\n", output);
   }

@@ -13,7 +13,6 @@
  */
 package examples.jodatime;
 
-import java.util.Date;
 import junit.framework.TestCase;
 import org.joda.time.DateMidnight;
 import org.joda.time.DateTime;
@@ -23,9 +22,12 @@ import org.yaml.snakeyaml.Yaml;
 import org.yaml.snakeyaml.constructor.AbstractConstruct;
 import org.yaml.snakeyaml.constructor.Construct;
 import org.yaml.snakeyaml.constructor.Constructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
 import org.yaml.snakeyaml.nodes.Node;
 import org.yaml.snakeyaml.nodes.NodeId;
 import org.yaml.snakeyaml.nodes.Tag;
+
+import java.util.Date;
 
 public class JodaTimeExampleTest extends TestCase {
 
@@ -35,7 +37,7 @@ public class JodaTimeExampleTest extends TestCase {
     DateTime time = new DateTime(timestamp, DateTimeZone.UTC);
     Yaml yaml = new Yaml(new JodaTimeRepresenter());
     String joda = yaml.dump(time);
-    String date = new Yaml().dump(new Date(timestamp));
+    String date = new Yaml(new SafeConstructor()).dump(new Date(timestamp));
     assertEquals(date, joda);
     assertEquals("2001-09-09T01:46:40Z\n", joda);
   }
@@ -51,7 +53,7 @@ public class JodaTimeExampleTest extends TestCase {
    */
   public void test109() {
     Date someDate = new DateMidnight(9, 2, 21, DateTimeZone.forID("Europe/Amsterdam")).toDate();
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     String timestamp = yaml.dump(someDate);
     assertEquals("0009-02-22T23:40:28Z\n", timestamp);
     // System.out.println(timestamp);

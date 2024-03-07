@@ -13,15 +13,15 @@
  */
 package org.yaml.snakeyaml.immutable;
 
-import java.awt.Insets;
-import java.awt.Rectangle;
-import java.util.Arrays;
-import javax.swing.border.MatteBorder;
 import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.nodes.Node;
 import org.yaml.snakeyaml.nodes.Tag;
 import org.yaml.snakeyaml.representer.Represent;
 import org.yaml.snakeyaml.representer.Representer;
+
+import javax.swing.border.MatteBorder;
+import java.awt.*;
+import java.util.Arrays;
 
 public class ImmutablesRepresenter extends Representer {
 

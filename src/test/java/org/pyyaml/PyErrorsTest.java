@@ -13,6 +13,12 @@
  */
 package org.pyyaml;
 
+import org.yaml.snakeyaml.DumperOptions;
+import org.yaml.snakeyaml.emitter.Emitter;
+import org.yaml.snakeyaml.emitter.EventConstructor;
+import org.yaml.snakeyaml.error.YAMLException;
+import org.yaml.snakeyaml.events.Event;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -21,11 +27,6 @@ import java.io.StringWriter;
 import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
-import org.yaml.snakeyaml.DumperOptions;
-import org.yaml.snakeyaml.emitter.Emitter;
-import org.yaml.snakeyaml.emitter.EventConstructor;
-import org.yaml.snakeyaml.error.YAMLException;
-import org.yaml.snakeyaml.events.Event;
 
 /**
  * imported from PyYAML

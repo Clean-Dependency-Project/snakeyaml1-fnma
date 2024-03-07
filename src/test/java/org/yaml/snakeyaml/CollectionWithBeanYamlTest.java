@@ -13,11 +13,12 @@
  */
 package org.yaml.snakeyaml;
 
+import junit.framework.TestCase;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
-import junit.framework.TestCase;
 
 public class CollectionWithBeanYamlTest extends TestCase {
 
@@ -27,7 +28,7 @@ public class CollectionWithBeanYamlTest extends TestCase {
     data.put("gold1", new Bean());
     data.put("gold2", new Bean());
 
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new DumperOptions());
     String output = yaml.dump(data);
     assertEquals(
         "gold1: !!org.yaml.snakeyaml.CollectionWithBeanYamlTest$Bean {a: ''}\ngold2: !!org.yaml.snakeyaml.CollectionWithBeanYamlTest$Bean {a: ''}\n",
@@ -46,7 +47,7 @@ public class CollectionWithBeanYamlTest extends TestCase {
     data.add(new Bean("1"));
     data.add(new Bean("2"));
 
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new DumperOptions());
     String output = yaml.dump(data);
     assertEquals(
         "- !!org.yaml.snakeyaml.CollectionWithBeanYamlTest$Bean {a: '1'}\n- !!org.yaml.snakeyaml.CollectionWithBeanYamlTest$Bean {a: '2'}\n",

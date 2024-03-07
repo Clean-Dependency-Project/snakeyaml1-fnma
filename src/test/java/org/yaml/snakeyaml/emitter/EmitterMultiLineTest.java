@@ -13,19 +13,22 @@
  */
 package org.yaml.snakeyaml.emitter;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.DumperOptions.FlowStyle;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
 
 public class EmitterMultiLineTest extends TestCase {
 
   public void testWriteMultiLineLiteral() {
     String plain = "mama\nmila\nramu";
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     String output = yaml.dump(plain);
     // System.out.println(output);
     assertEquals("|-\n  mama\n  mila\n  ramu\n", output);
@@ -61,7 +64,7 @@ public class EmitterMultiLineTest extends TestCase {
   public void testWriteMultiLineLiteralWithClipChomping() {
     String source = "a: 1\nb: |\n  mama\n  mila\n  ramu\n";
     // System.out.println("Source:\n" + source);
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     @SuppressWarnings("unchecked")
     Map<String, Object> parsed = yaml.load(source);
     String value = (String) parsed.get("b");

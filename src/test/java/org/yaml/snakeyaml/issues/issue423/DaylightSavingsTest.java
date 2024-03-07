@@ -13,11 +13,13 @@
  */
 package org.yaml.snakeyaml.issues.issue423;
 
-import java.util.Calendar;
-import java.util.TimeZone;
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.Yaml;
+
+import java.util.Calendar;
+import java.util.TimeZone;
+
 
 public class DaylightSavingsTest extends TestCase {
 

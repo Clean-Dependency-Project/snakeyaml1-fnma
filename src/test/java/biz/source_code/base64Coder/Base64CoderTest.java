@@ -13,10 +13,11 @@
  */
 package biz.source_code.base64Coder;
 
-import java.io.UnsupportedEncodingException;
-import java.nio.charset.StandardCharsets;
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.external.biz.base64Coder.Base64Coder;
+
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 
 public class Base64CoderTest extends TestCase {
 

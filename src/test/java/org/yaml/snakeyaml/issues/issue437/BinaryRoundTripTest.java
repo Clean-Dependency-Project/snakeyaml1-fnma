@@ -13,14 +13,10 @@
  */
 package org.yaml.snakeyaml.issues.issue437;
 
-import java.io.UnsupportedEncodingException;
-import java.nio.charset.StandardCharsets;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
 import org.yaml.snakeyaml.events.Event;
 import org.yaml.snakeyaml.events.ImplicitTuple;
 import org.yaml.snakeyaml.events.ScalarEvent;
@@ -29,10 +25,16 @@ import org.yaml.snakeyaml.nodes.NodeId;
 import org.yaml.snakeyaml.nodes.ScalarNode;
 import org.yaml.snakeyaml.nodes.Tag;
 
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class BinaryRoundTripTest extends TestCase {
 
   public void testBinary() throws UnsupportedEncodingException {
-    Yaml underTest = new Yaml();
+    Yaml underTest = new Yaml(new SafeConstructor());
     String source = "\u0096";
     String serialized = underTest.dump(source);
     assertEquals("!!binary |-\n" + "  wpY=\n", serialized);
@@ -42,7 +44,7 @@ public class BinaryRoundTripTest extends TestCase {
   }
 
   public void testBinaryNode() {
-    Yaml underTest = new Yaml();
+    Yaml underTest = new Yaml(new SafeConstructor());
     String source = "\u0096";
     Node node = underTest.represent(source);
     // check Node

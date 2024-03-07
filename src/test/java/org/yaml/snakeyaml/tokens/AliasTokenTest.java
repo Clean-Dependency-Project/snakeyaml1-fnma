@@ -13,11 +13,11 @@
  */
 package org.yaml.snakeyaml.tokens;
 
-import static org.junit.Assert.assertNotEquals;
-
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.error.Mark;
 import org.yaml.snakeyaml.tokens.Token.ID;
+
+import static org.junit.Assert.assertNotEquals;
 
 public class AliasTokenTest extends TestCase {
 

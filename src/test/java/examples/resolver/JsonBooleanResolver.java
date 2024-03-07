@@ -13,9 +13,10 @@
  */
 package examples.resolver;
 
-import java.util.regex.Pattern;
 import org.yaml.snakeyaml.nodes.Tag;
 import org.yaml.snakeyaml.resolver.Resolver;
+
+import java.util.regex.Pattern;
 
 public class JsonBooleanResolver extends Resolver {
 

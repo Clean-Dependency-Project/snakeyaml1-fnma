@@ -13,14 +13,15 @@
  */
 package examples;
 
-import java.util.List;
-import java.util.Map;
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.Yaml;
 import org.yaml.snakeyaml.constructor.Constructor;
 import org.yaml.snakeyaml.nodes.MappingNode;
 import org.yaml.snakeyaml.nodes.NodeId;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * Example for http://code.google.com/p/snakeyaml/wiki/howto

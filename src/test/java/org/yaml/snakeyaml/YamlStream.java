@@ -13,6 +13,9 @@
  */
 package org.yaml.snakeyaml;
 
+import junit.framework.AssertionFailedError;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.OutputStreamWriter;
@@ -21,7 +24,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import junit.framework.AssertionFailedError;
 
 public class YamlStream {
 
@@ -30,7 +32,7 @@ public class YamlStream {
   public YamlStream(String sourceName) {
     InputStream input =
         YamlDocument.class.getClassLoader().getResourceAsStream(YamlDocument.ROOT + sourceName);
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     for (Object document : yaml.loadAll(input)) {
       nativeData.add(document);
     }

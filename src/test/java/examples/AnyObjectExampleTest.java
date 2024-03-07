@@ -13,18 +13,21 @@
  */
 package examples;
 
-import java.util.List;
-import java.util.Map;
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.Util;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import java.util.List;
+import java.util.Map;
+
 
 public class AnyObjectExampleTest extends TestCase {
 
   @SuppressWarnings("unchecked")
   public void testLoad() {
     String doc = Util.getLocalResource("examples/any-object-example.yaml");
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     Map<String, Object> object = yaml.load(doc);
     assertEquals(6, object.size());
     assertEquals("[null, null]", object.get("none").toString());

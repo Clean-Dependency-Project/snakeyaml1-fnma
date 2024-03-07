@@ -13,9 +13,12 @@
  */
 package org.yaml.snakeyaml.issues.issue155;
 
-import java.nio.charset.StandardCharsets;
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import java.nio.charset.StandardCharsets;
+
 
 public class BinaryTest extends TestCase {
 
@@ -23,7 +26,7 @@ public class BinaryTest extends TestCase {
     String data = "\u2666";
     byte[] bytes = data.getBytes(StandardCharsets.UTF_8);
     String inconsistentString = new String(bytes, StandardCharsets.ISO_8859_1);
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     String payload = yaml.dump(inconsistentString);
     // System.out.println("payload: '" + payload + "'");
     String loaded = new String((byte[]) yaml.load(payload), StandardCharsets.UTF_8);

@@ -15,11 +15,13 @@ package org.yaml.snakeyaml.issues.issue484;
 
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
 
 public class Base60FloatTest extends TestCase {
 
   public void test60Float() {
-    Yaml yamlProcessor = new Yaml();
+    Yaml yamlProcessor = new Yaml(new SafeConstructor());
     Double base60 = yamlProcessor.load("86:00.0");
     assertEquals(5160.0, base60);
   }

@@ -13,9 +13,10 @@
  */
 package org.yaml.snakeyaml;
 
+import junit.framework.TestCase;
+
 import java.util.List;
 import java.util.Map;
-import junit.framework.TestCase;
 
 /**
  * Test Chapter 2.1 from the YAML specification

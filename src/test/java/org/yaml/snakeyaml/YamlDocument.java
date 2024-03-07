@@ -13,13 +13,14 @@
  */
 package org.yaml.snakeyaml;
 
+import org.yaml.snakeyaml.constructor.Constructor;
+
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
-import org.yaml.snakeyaml.constructor.Constructor;
 
 public class YamlDocument {
 

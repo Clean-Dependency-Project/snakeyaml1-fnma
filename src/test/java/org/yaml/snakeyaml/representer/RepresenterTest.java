@@ -16,6 +16,8 @@ package org.yaml.snakeyaml.representer;
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
 
 public class RepresenterTest extends TestCase {
 
@@ -24,7 +26,7 @@ public class RepresenterTest extends TestCase {
     bean.setName("Gnome");
     bean.setValid(true);
     bean.setPrimitive(true);
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     assertEquals(
         "!!org.yaml.snakeyaml.representer.RepresenterTest$MyBean {name: Gnome, primitive: true}\n",
         yaml.dump(bean));
@@ -165,7 +167,7 @@ public class RepresenterTest extends TestCase {
 
   public void testRepresenterEmptyBean() {
     EmptyBean bean = new EmptyBean();
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     try {
       yaml.dump(bean);
       fail("EmptyBean has empty representation.");

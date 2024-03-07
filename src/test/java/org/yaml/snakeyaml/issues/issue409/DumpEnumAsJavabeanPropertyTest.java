@@ -39,7 +39,7 @@ public class DumpEnumAsJavabeanPropertyTest extends TestCase {
   }
 
   public void testDumpExtendedEnum() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new DumperOptions());
     String text = yaml.dumpAs(new Bean(), Tag.MAP, DumperOptions.FlowStyle.AUTO);
     assertEquals("{myEnum: B}\n", text);
     Bean actual = yaml.loadAs(text, Bean.class);

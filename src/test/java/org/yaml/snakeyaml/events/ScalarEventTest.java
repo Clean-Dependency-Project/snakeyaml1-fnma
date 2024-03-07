@@ -13,10 +13,10 @@
  */
 package org.yaml.snakeyaml.events;
 
-import static org.junit.Assert.assertNotEquals;
-
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.DumperOptions;
+
+import static org.junit.Assert.assertNotEquals;
 
 public class ScalarEventTest extends TestCase {
 

@@ -13,7 +13,6 @@
  */
 package org.yaml.snakeyaml.constructor;
 
-import java.util.List;
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.Yaml;
@@ -21,6 +20,8 @@ import org.yaml.snakeyaml.nodes.Node;
 import org.yaml.snakeyaml.nodes.ScalarNode;
 import org.yaml.snakeyaml.nodes.SequenceNode;
 import org.yaml.snakeyaml.nodes.Tag;
+
+import java.util.List;
 
 /**
  * Example to process a family of tags with the same prefix with one constructor (PrefixConstruct)

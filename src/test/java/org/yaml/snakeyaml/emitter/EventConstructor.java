@@ -13,9 +13,6 @@
  */
 package org.yaml.snakeyaml.emitter;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.DumperOptions.Version;
 import org.yaml.snakeyaml.LoaderOptions;
@@ -37,6 +34,10 @@ import org.yaml.snakeyaml.events.StreamStartEvent;
 import org.yaml.snakeyaml.nodes.MappingNode;
 import org.yaml.snakeyaml.nodes.Node;
 import org.yaml.snakeyaml.nodes.ScalarNode;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class EventConstructor extends Constructor {
 

@@ -13,14 +13,16 @@
  */
 package org.yaml.snakeyaml.issues.issue73;
 
-import java.util.HashSet;
-import java.util.Set;
-import java.util.TreeSet;
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.DumperOptions;
+import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.Util;
 import org.yaml.snakeyaml.Yaml;
 import org.yaml.snakeyaml.introspector.BeanAccess;
+
+import java.util.HashSet;
+import java.util.Set;
+import java.util.TreeSet;
 
 public class SetAsSequenceTest extends TestCase {
 
@@ -44,7 +46,7 @@ public class SetAsSequenceTest extends TestCase {
   }
 
   public void testLoad() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new LoaderOptions());
     yaml.setBeanAccess(BeanAccess.FIELD);
     String doc = Util.getLocalResource("issues/issue73-1.txt");
     Blog blog = yaml.load(doc);
@@ -60,7 +62,7 @@ public class SetAsSequenceTest extends TestCase {
   public void testYaml() {
     String serialized = Util.getLocalResource("issues/issue73-2.txt");
     // System.out.println(serialized);
-    Yaml beanLoader = new Yaml();
+    Yaml beanLoader = new Yaml(new LoaderOptions());
     beanLoader.setBeanAccess(BeanAccess.FIELD);
     Blog rehydrated = beanLoader.loadAs(serialized, Blog.class);
     checkTestBlog(rehydrated);
@@ -77,7 +79,7 @@ public class SetAsSequenceTest extends TestCase {
 
   @SuppressWarnings("unchecked")
   public void testLoadRootSet() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new LoaderOptions());
     String doc = Util.getLocalResource("issues/issue73-3.txt");
     Set<String> strings = yaml.load(doc);
     // System.out.println(strings);
@@ -90,7 +92,7 @@ public class SetAsSequenceTest extends TestCase {
 
   @SuppressWarnings("unchecked")
   public void testLoadRootSet2() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new LoaderOptions());
     String doc = "!!java.util.HashSet {aaa: null, bbb: null, ccc: null}";
     Set<String> strings = yaml.load(doc);
     // System.out.println(strings);
@@ -103,7 +105,7 @@ public class SetAsSequenceTest extends TestCase {
 
   @SuppressWarnings("unchecked")
   public void testLoadRootSet3() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new LoaderOptions());
     String doc = "!!java.util.TreeSet {aaa: null, bbb: null, ccc: null}";
     Set<String> strings = yaml.load(doc);
     // System.out.println(strings);
@@ -116,7 +118,7 @@ public class SetAsSequenceTest extends TestCase {
 
   @SuppressWarnings("unchecked")
   public void testLoadRootSet6() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new LoaderOptions());
     String doc = Util.getLocalResource("issues/issue73-6.txt");
     Set<String> strings = yaml.load(doc);
     // System.out.println(strings);

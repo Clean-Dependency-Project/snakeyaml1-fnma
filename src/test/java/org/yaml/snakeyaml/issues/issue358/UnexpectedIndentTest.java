@@ -13,17 +13,19 @@
  */
 package org.yaml.snakeyaml.issues.issue358;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
+import org.junit.Test;
+import org.yaml.snakeyaml.DumperOptions;
+import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+import org.yaml.snakeyaml.error.YAMLException;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import org.junit.Test;
-import org.yaml.snakeyaml.DumperOptions;
-import org.yaml.snakeyaml.Yaml;
-import org.yaml.snakeyaml.error.YAMLException;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 public class UnexpectedIndentTest {
 
@@ -53,7 +55,7 @@ public class UnexpectedIndentTest {
     Map<String, Object> map = create();
     String dumped = new Yaml(options).dump(map);
     // System.out.println(dumped);
-    Map<String, Object> parsed = new Yaml().load(dumped);
+    Map<String, Object> parsed = new Yaml(new SafeConstructor()).load(dumped);
     assertEquals(map, parsed);
   }
 

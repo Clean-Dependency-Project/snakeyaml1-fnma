@@ -13,8 +13,6 @@
  */
 package org.yaml.snakeyaml.issues.issue139;
 
-import java.util.List;
-import java.util.Map;
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.Yaml;
@@ -23,6 +21,9 @@ import org.yaml.snakeyaml.error.YAMLException;
 import org.yaml.snakeyaml.nodes.MappingNode;
 import org.yaml.snakeyaml.nodes.Node;
 import org.yaml.snakeyaml.nodes.NodeTuple;
+
+import java.util.List;
+import java.util.Map;
 
 public class UniqueKeyTest extends TestCase {
 

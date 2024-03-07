@@ -13,13 +13,14 @@
  */
 package examples.jodatime;
 
-import java.util.Date;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.constructor.Constructor;
 import org.yaml.snakeyaml.nodes.Node;
 import org.yaml.snakeyaml.nodes.Tag;
+
+import java.util.Date;
 
 /**
  * It works only when JodaTime is not a JavaBean property

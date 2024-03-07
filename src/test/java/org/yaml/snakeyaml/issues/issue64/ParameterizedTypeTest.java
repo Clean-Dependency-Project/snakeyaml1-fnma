@@ -13,8 +13,6 @@
  */
 package org.yaml.snakeyaml.issues.issue64;
 
-import java.util.LinkedList;
-import java.util.List;
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.LoaderOptions;
@@ -26,6 +24,9 @@ import org.yaml.snakeyaml.nodes.ScalarNode;
 import org.yaml.snakeyaml.nodes.Tag;
 import org.yaml.snakeyaml.representer.Represent;
 import org.yaml.snakeyaml.representer.Representer;
+
+import java.util.LinkedList;
+import java.util.List;
 
 public class ParameterizedTypeTest extends TestCase {
 

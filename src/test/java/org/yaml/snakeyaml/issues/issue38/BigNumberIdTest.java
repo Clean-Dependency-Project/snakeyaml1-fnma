@@ -13,11 +13,13 @@
  */
 package org.yaml.snakeyaml.issues.issue38;
 
-import java.util.ArrayList;
-import java.util.List;
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.Yaml;
+
+import java.util.ArrayList;
+import java.util.List;
+
 
 /**
  * to test http://code.google.com/p/snakeyaml/issues/detail?id=38

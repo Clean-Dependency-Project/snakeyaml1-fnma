@@ -13,9 +13,6 @@
  */
 package org.yaml.snakeyaml;
 
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.constructor.AbstractConstruct;
 import org.yaml.snakeyaml.constructor.Constructor;
@@ -25,6 +22,10 @@ import org.yaml.snakeyaml.nodes.SequenceNode;
 import org.yaml.snakeyaml.nodes.Tag;
 import org.yaml.snakeyaml.representer.Represent;
 import org.yaml.snakeyaml.representer.Representer;
+
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
 /**
  * Test Example 2.24 from the YAML specification

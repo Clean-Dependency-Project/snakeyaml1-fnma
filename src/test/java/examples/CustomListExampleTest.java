@@ -13,12 +13,13 @@
  */
 package examples;
 
-import java.util.LinkedList;
-import java.util.List;
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.Yaml;
 import org.yaml.snakeyaml.constructor.Constructor;
+
+import java.util.LinkedList;
+import java.util.List;
 
 public class CustomListExampleTest extends TestCase {
 

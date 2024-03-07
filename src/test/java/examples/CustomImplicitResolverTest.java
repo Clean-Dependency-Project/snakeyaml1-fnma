@@ -13,9 +13,6 @@
  */
 package examples;
 
-import java.math.BigDecimal;
-import java.util.Map;
-import java.util.regex.Pattern;
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.Yaml;
@@ -24,6 +21,10 @@ import org.yaml.snakeyaml.constructor.SafeConstructor;
 import org.yaml.snakeyaml.nodes.Node;
 import org.yaml.snakeyaml.nodes.ScalarNode;
 import org.yaml.snakeyaml.nodes.Tag;
+
+import java.math.BigDecimal;
+import java.util.Map;
+import java.util.regex.Pattern;
 
 /**
  * Use custom implicit resolver when the runtime class is not defined.

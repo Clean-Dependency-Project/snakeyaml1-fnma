@@ -13,15 +13,17 @@
  */
 package org.yaml.snakeyaml;
 
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
 import junit.framework.TestCase;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
 import org.yaml.snakeyaml.emitter.Emitter;
 import org.yaml.snakeyaml.error.YAMLException;
 import org.yaml.snakeyaml.nodes.Tag;
 import org.yaml.snakeyaml.representer.Representer;
+
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 
 public class DumperOptionsTest extends TestCase {
 
@@ -54,7 +56,7 @@ public class DumperOptionsTest extends TestCase {
   }
 
   public void testDefaultFlowStyle() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     List<Integer> list = new ArrayList<Integer>();
     list.add(1);
     list.add(2);
@@ -87,7 +89,7 @@ public class DumperOptionsTest extends TestCase {
   }
 
   public void testDefaultFlowStyleNested() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new DumperOptions());
     List<Integer> list = new ArrayList<Integer>();
     list.add(1);
     list.add(2);
@@ -118,7 +120,7 @@ public class DumperOptionsTest extends TestCase {
   }
 
   public void testCanonical() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new DumperOptions());
     assertEquals("123\n", yaml.dump(123));
     //
     DumperOptions options = new DumperOptions();
@@ -134,7 +136,7 @@ public class DumperOptionsTest extends TestCase {
   }
 
   public void testIndent() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     List<Integer> list = new ArrayList<Integer>();
     list.add(1);
     list.add(2);
@@ -172,7 +174,7 @@ public class DumperOptionsTest extends TestCase {
   }
 
   public void testLineBreak() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     List<Integer> list = new ArrayList<Integer>();
     list.add(1);
     list.add(2);
@@ -199,7 +201,7 @@ public class DumperOptionsTest extends TestCase {
     assertEquals("Line break must match platform's default.", System.getProperty("line.separator"),
         lineBreak.getString());
     //
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     List<Integer> list = new ArrayList<Integer>();
     list.add(1);
     list.add(2);
@@ -244,7 +246,7 @@ public class DumperOptionsTest extends TestCase {
   }
 
   public void testExplicitStart() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     List<Integer> list = new ArrayList<Integer>();
     list.add(1);
     list.add(2);
@@ -263,7 +265,7 @@ public class DumperOptionsTest extends TestCase {
   }
 
   public void testVersion() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     List<Integer> list = new ArrayList<Integer>();
     list.add(1);
     list.add(2);
@@ -284,7 +286,7 @@ public class DumperOptionsTest extends TestCase {
   }
 
   public void testTags() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     List<Integer> list = new ArrayList<Integer>();
     list.add(1);
     list.add(2);
@@ -306,7 +308,7 @@ public class DumperOptionsTest extends TestCase {
   }
 
   public void testAllowUnicode() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new DumperOptions());
     assertEquals("out: " + yaml.dump("\u00DCber"), "\u00DCber\n", yaml.dump("\u00DCber"));
     //
     DumperOptions options = new DumperOptions();
