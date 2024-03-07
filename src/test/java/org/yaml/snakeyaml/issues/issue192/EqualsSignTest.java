@@ -15,14 +15,15 @@ package org.yaml.snakeyaml.issues.issue192;
 
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
 
 public class EqualsSignTest extends TestCase {
 
   public void testMappingNode() {
-    new Yaml().load("part1: =");
+    new Yaml(new SafeConstructor()).load("part1: =");
   }
 
   public void testScalarNode() {
-    new Yaml().load("=");
+    new Yaml(new SafeConstructor()).load("=");
   }
 }

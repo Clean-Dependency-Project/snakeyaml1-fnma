@@ -20,6 +20,7 @@ import java.util.HashMap;
 import java.util.Map;
 import org.junit.Test;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
 
 /**
  * Redundant test - it does not test anything. It is here only to prove that SnakeYAML does what it
@@ -37,9 +38,8 @@ public class UnknownRepresenterTest {
     m.put(a, b);
     mv.setMapIntegerBigDecimal(m);
 
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     String str = yaml.dump(mv);
-    // System.out.println(str);
     assertTrue(str.contains("mapIntegerBigDecimal: {1: 0.01"));
   }
 }

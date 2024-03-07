@@ -15,7 +15,11 @@ package examples;
 
 import java.io.StringReader;
 import junit.framework.TestCase;
+import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
 
 public class CustomJavaObjectWithBinaryStringTest extends TestCase {
 
@@ -67,7 +71,7 @@ public class CustomJavaObjectWithBinaryStringTest extends TestCase {
   }
 
   public void testDump() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new DumperOptions());
     Pojo expected = new Pojo(new String(new byte[] {13, 14, 15, 16}));
     String output = yaml.dump(expected);
 

@@ -18,6 +18,7 @@ import java.util.List;
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
 import org.yaml.snakeyaml.nodes.Node;
 import org.yaml.snakeyaml.nodes.Tag;
 
@@ -33,7 +34,7 @@ public class AnchorGeneratorTest extends TestCase {
     List<Object> list = new ArrayList<Object>();
     list.add("data123");
     list.add(list);
-    Yaml yaml1 = new Yaml();
+    Yaml yaml1 = new Yaml(new SafeConstructor());
     String output = yaml1.dump(list);
     assertEquals("&id001\n" + "- data123\n" + "- *id001\n", output);
 

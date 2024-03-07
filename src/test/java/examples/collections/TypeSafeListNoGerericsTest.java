@@ -17,8 +17,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import junit.framework.TestCase;
+import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.Util;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
 
 /**
  * Test ListBean->List developers <br/>
@@ -36,7 +38,7 @@ public class TypeSafeListNoGerericsTest extends TestCase {
     developers.add(new Developer("Fred", "creator"));
     developers.add(new Developer("John", "committer"));
     bean.setDevelopers(developers);
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     String output = yaml.dumpAsMap(bean);
     // System.out.println(output);
     String etalon = Util.getLocalResource("examples/list-bean-4.yaml");
@@ -47,7 +49,7 @@ public class TypeSafeListNoGerericsTest extends TestCase {
   public void testLoadList() {
     String output = Util.getLocalResource("examples/list-bean-1.yaml");
     // System.out.println(output);
-    Yaml beanLoader = new Yaml();
+    Yaml beanLoader = new Yaml(new LoaderOptions());
     ListBean parsed = beanLoader.loadAs(output, ListBean.class);
     assertNotNull(parsed);
     List<String> list2 = parsed.getChildren();

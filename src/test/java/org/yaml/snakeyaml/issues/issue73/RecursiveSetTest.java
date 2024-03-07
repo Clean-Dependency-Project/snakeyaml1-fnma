@@ -20,6 +20,7 @@ import junit.framework.TestCase;
 import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.Util;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
 
 public class RecursiveSetTest extends TestCase {
 
@@ -28,7 +29,7 @@ public class RecursiveSetTest extends TestCase {
     Set<Object> set2 = new HashSet<Object>();
     set1.add(set2);
     set2.add(set1);
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     try {
       yaml.dump(set1);
       fail("Recursive sets are not supported.");
@@ -40,7 +41,7 @@ public class RecursiveSetTest extends TestCase {
   public void testLoadException() {
     String doc = Util.getLocalResource("issues/issue73-recursive4.txt");
     // System.out.println(doc);
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new LoaderOptions());
     try {
       yaml.load(doc);
       fail("Recursive sets are not supported.");

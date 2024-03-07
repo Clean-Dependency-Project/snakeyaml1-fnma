@@ -19,6 +19,7 @@ import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.Util;
 import org.yaml.snakeyaml.Yaml;
 import org.yaml.snakeyaml.constructor.Constructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
 import org.yaml.snakeyaml.representer.Representer;
 
 public class MergeKeyDeepMergeTest extends TestCase {
@@ -41,7 +42,7 @@ public class MergeKeyDeepMergeTest extends TestCase {
   }
 
   public void testMergeKeyDeepMerge() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
 
     InputStream inputStream =
         MergeKeyDeepMergeTest.class.getResourceAsStream("/issues/issue479.yaml");

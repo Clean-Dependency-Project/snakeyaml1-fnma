@@ -19,12 +19,13 @@ import java.io.Reader;
 import java.util.List;
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
 
 public class IoReaderTest extends TestCase {
 
   @SuppressWarnings("unchecked")
   public void testCheckPrintable() throws IOException {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     Reader reader = new FileReader("src/test/resources/specification/example2_1.yaml");
     List<String> list = yaml.load(reader);
     reader.close();
@@ -35,7 +36,7 @@ public class IoReaderTest extends TestCase {
    * test input which is longer then internal buffer - 1k
    */
   public void testBigInput() throws IOException {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     Reader reader = new FileReader("src/test/resources/reader/large.yaml");
     @SuppressWarnings("unchecked")
     List<Object> list = yaml.load(reader);

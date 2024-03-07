@@ -16,8 +16,10 @@ package examples.collections;
 import java.util.ArrayList;
 import java.util.List;
 import junit.framework.TestCase;
+import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.Util;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
 
 /**
  * Test public field ListBean->List<Developer> developers <br/>
@@ -36,7 +38,7 @@ public class ListFileldBeanTest extends TestCase {
     developers.add(new Developer("John", "committer"));
     bean.developers = developers;
     bean.setName("Bean123");
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     String output = yaml.dumpAsMap(bean);
     // System.out.println(output);
     String etalon = Util.getLocalResource("examples/list-bean-1.yaml");
@@ -46,7 +48,7 @@ public class ListFileldBeanTest extends TestCase {
   public void testLoadList() {
     String output = Util.getLocalResource("examples/list-bean-1.yaml");
     // System.out.println(output);
-    Yaml beanLoader = new Yaml();
+    Yaml beanLoader = new Yaml(new LoaderOptions());
     ListFieldBean parsed = beanLoader.loadAs(output, ListFieldBean.class);
     assertNotNull(parsed);
     List<String> list2 = parsed.getChildren();

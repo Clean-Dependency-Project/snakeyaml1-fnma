@@ -17,12 +17,13 @@ import java.util.Map;
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.Util;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
 
 public class MergeValueTest extends TestCase {
 
   public void testNotUniqueSimple() {
     String simple = "{key: 1, key: 2}";
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     @SuppressWarnings("unchecked")
     Map<String, Integer> map = yaml.load(simple);
     assertEquals(1, map.size());
@@ -37,7 +38,7 @@ public class MergeValueTest extends TestCase {
   private void check(String name) {
     String input = Util.getLocalResource(name);
     // System.out.println(input);
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     @SuppressWarnings("unchecked")
     Map<String, Object> map = yaml.load(input);
     assertEquals(2, map.size());
@@ -55,7 +56,7 @@ public class MergeValueTest extends TestCase {
   public void testMergeUnlessAlreadyExists() {
     String input = Util.getLocalResource("issues/issue139-3.yaml");
     // System.out.println(input);
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     Map<String, Object> map = yaml.load(input);
     assertEquals(2, map.size());
     Map<String, Integer> common = (Map<String, Integer>) map.get("common");
