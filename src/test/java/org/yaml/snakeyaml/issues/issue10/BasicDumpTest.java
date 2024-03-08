@@ -16,8 +16,11 @@ package org.yaml.snakeyaml.issues.issue10;
 import java.util.ArrayList;
 import java.util.Iterator;
 import junit.framework.TestCase;
+import org.yaml.snakeyaml.DumperOptions;
+import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.Util;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
 
 public class BasicDumpTest extends TestCase {
 
@@ -34,7 +37,7 @@ public class BasicDumpTest extends TestCase {
     DataSources ds = new DataSources();
     ds.setDataSources(dataSources);
 
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new DumperOptions());
     String output = yaml.dump(ds);
 
     String etalon = Util.getLocalResource("javabeans/issue10-1.yaml");
@@ -58,7 +61,7 @@ public class BasicDumpTest extends TestCase {
     DataSources ds = new DataSources();
     ds.setDataSources(dataSources);
 
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     String output = yaml.dumpAsMap(ds);
 
     String etalon = Util.getLocalResource("javabeans/issue10-2.yaml");
@@ -80,13 +83,13 @@ public class BasicDumpTest extends TestCase {
     DataSources ds = new DataSources();
     ds.setDataSources(dataSources);
 
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     String output = yaml.dumpAsMap(ds);
 
     String etalon = Util.getLocalResource("javabeans/issue10-3.yaml");
     assertEquals(etalon.trim(), output.trim());
     // load
-    Yaml beanLoader = new Yaml();
+    Yaml beanLoader = new Yaml(new LoaderOptions());
     DataSources bean = beanLoader.loadAs(output, DataSources.class);
     Iterator<DataSource> iter = bean.getDataSources().iterator();
     assertTrue(iter.next() instanceof JDBCDataSource);

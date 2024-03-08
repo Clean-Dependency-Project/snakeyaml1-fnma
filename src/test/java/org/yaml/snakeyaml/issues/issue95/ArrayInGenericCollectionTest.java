@@ -21,6 +21,7 @@ import java.util.Map.Entry;
 import java.util.Set;
 import junit.framework.TestCase;
 import org.junit.Assert;
+import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.DumperOptions.FlowStyle;
 import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.TypeDescription;
@@ -56,13 +57,13 @@ public class ArrayInGenericCollectionTest extends TestCase {
   }
 
   public void testArrayAsMapValue() {
-    Yaml yaml2dump = new Yaml();
+    Yaml yaml2dump = new Yaml(new DumperOptions());
     yaml2dump.setBeanAccess(BeanAccess.FIELD);
     A data = createA();
     String dump = yaml2dump.dump(data);
     // System.out.println(dump);
 
-    Yaml yaml2load = new Yaml();
+    Yaml yaml2load = new Yaml(new LoaderOptions());
     yaml2load.setBeanAccess(BeanAccess.FIELD);
     A loaded = yaml2load.load(dump);
 
@@ -75,7 +76,7 @@ public class ArrayInGenericCollectionTest extends TestCase {
   }
 
   public void testArrayAsMapValueWithTypeDespriptor() {
-    Yaml yaml2dump = new Yaml();
+    Yaml yaml2dump = new Yaml(new DumperOptions());
     yaml2dump.setBeanAccess(BeanAccess.FIELD);
     A data = createA();
     String dump = yaml2dump.dump(data);
@@ -100,13 +101,13 @@ public class ArrayInGenericCollectionTest extends TestCase {
   }
 
   public void testArrayAsListValue() {
-    Yaml yaml2dump = new Yaml();
+    Yaml yaml2dump = new Yaml(new DumperOptions());
     yaml2dump.setBeanAccess(BeanAccess.FIELD);
     B data = createB();
     String dump = yaml2dump.dump(data);
     // System.out.println(dump);
 
-    Yaml yaml2load = new Yaml();
+    Yaml yaml2load = new Yaml(new LoaderOptions());
     yaml2load.setBeanAccess(BeanAccess.FIELD);
     B loaded = yaml2load.load(dump);
 
@@ -114,7 +115,7 @@ public class ArrayInGenericCollectionTest extends TestCase {
   }
 
   public void testArrayAsListValueWithTypeDespriptor() {
-    Yaml yaml2dump = new Yaml();
+    Yaml yaml2dump = new Yaml(new DumperOptions());
     yaml2dump.setBeanAccess(BeanAccess.FIELD);
     B data = createB();
     String dump = yaml2dump.dump(data);
@@ -134,7 +135,7 @@ public class ArrayInGenericCollectionTest extends TestCase {
   }
 
   public void testNoTags() {
-    Yaml yaml2dump = new Yaml();
+    Yaml yaml2dump = new Yaml(new DumperOptions());
     yaml2dump.setBeanAccess(BeanAccess.FIELD);
     B data = createB();
     String dump = yaml2dump.dumpAs(data, Tag.MAP, FlowStyle.AUTO);

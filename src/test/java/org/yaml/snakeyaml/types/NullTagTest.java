@@ -143,7 +143,7 @@ public class NullTagTest extends AbstractTest {
     list.add(null);
     list.add("value");
     list.add(null);
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new DumperOptions());
     String output = yaml.dump(list);
     assertEquals("Null values must not get anchors and aliases.", "[null, value, null]\n", output);
   }

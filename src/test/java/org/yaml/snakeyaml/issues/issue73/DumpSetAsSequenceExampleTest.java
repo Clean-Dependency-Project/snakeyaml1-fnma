@@ -18,6 +18,7 @@ import java.util.TreeSet;
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.DumperOptions.FlowStyle;
+import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.Util;
 import org.yaml.snakeyaml.Yaml;
 import org.yaml.snakeyaml.introspector.BeanAccess;
@@ -84,7 +85,7 @@ public class DumpSetAsSequenceExampleTest extends TestCase {
   }
 
   private void check(String doc) {
-    Yaml yamlLoader = new Yaml();
+    Yaml yamlLoader = new Yaml(new LoaderOptions());
     yamlLoader.setBeanAccess(BeanAccess.FIELD);
     Blog blog = yamlLoader.load(doc);
     assertEquals("Test Me!", blog.getName());

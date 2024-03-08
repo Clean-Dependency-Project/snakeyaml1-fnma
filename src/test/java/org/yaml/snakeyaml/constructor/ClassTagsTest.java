@@ -37,7 +37,7 @@ public class ClassTagsTest extends TestCase {
       wheels.add(wheel);
     }
     car.setWheels(wheels);
-    assertEquals(Util.getLocalResource("constructor/car-with-tags.yaml"), new Yaml().dump(car));
+    assertEquals(Util.getLocalResource("constructor/car-with-tags.yaml"), new Yaml(new SafeConstructor()).dump(car));
   }
 
   public void testDumpClassTag() {
@@ -60,7 +60,7 @@ public class ClassTagsTest extends TestCase {
 
   public void testLoadUnknounClassTag() {
     try {
-      Yaml yaml = new Yaml();
+      Yaml yaml = new Yaml(new LoaderOptions());
       yaml.load(Util.getLocalResource("constructor/car-without-tags.yaml"));
       fail("Must fail because of unknown tag: !car");
     } catch (YAMLException e) {

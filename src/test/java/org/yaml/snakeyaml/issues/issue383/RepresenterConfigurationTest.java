@@ -24,6 +24,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
 import org.yaml.snakeyaml.introspector.PropertyUtils;
 import org.yaml.snakeyaml.nodes.MappingNode;
 import org.yaml.snakeyaml.nodes.ScalarNode;
@@ -82,7 +83,7 @@ public class RepresenterConfigurationTest {
 
   @Test
   public void testPlainStyleByDefault() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     ScalarNode node = (ScalarNode) yaml.represent("test");
     Assert.assertEquals(PLAIN, node.getScalarStyle());
     Assert.assertEquals(PLAIN.getChar(), node.getStyle());
@@ -123,7 +124,7 @@ public class RepresenterConfigurationTest {
 
   @Test
   public void testDefaultTimeZone() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
 
     Calendar calendar = Calendar.getInstance();
     calendar.setTimeInMillis(0);
@@ -160,7 +161,7 @@ public class RepresenterConfigurationTest {
 
   @Test
   public void testReadOnlyPropertiesNotAllowedByDefault() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     MappingNode mappingNode = (MappingNode) yaml.represent(new TestObject(27, "test"));
     Assert.assertEquals(1, mappingNode.getValue().size());
   }

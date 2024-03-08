@@ -16,8 +16,12 @@ package examples.collections;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import junit.framework.TestCase;
+import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.Util;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
 
 /**
  * Test MapBean->Map<String, Developer> developers <br/>
@@ -36,7 +40,7 @@ public class TypeSafeMapTest extends TestCase {
     developers.put("team1", new Developer2("Fred", "creator"));
     developers.put("team2", new Developer2("John", "committer"));
     bean.setDevelopers(developers);
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     String output = yaml.dumpAsMap(bean);
     // System.out.println(output);
     String etalon = Util.getLocalResource("examples/map-bean-10.yaml");
@@ -54,7 +58,7 @@ public class TypeSafeMapTest extends TestCase {
     developers.put("team2", new Developer2("John", "committer"));
     developers.put("team3", new Developer222("Bill", "head"));
     bean.setDevelopers(developers);
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     String output = yaml.dumpAsMap(bean);
     // System.out.println(output);
     String etalon = Util.getLocalResource("examples/map-bean-11.yaml");
@@ -64,7 +68,7 @@ public class TypeSafeMapTest extends TestCase {
   public void testLoadMap() {
     String output = Util.getLocalResource("examples/map-bean-10.yaml");
     // System.out.println(output);
-    Yaml beanLoader = new Yaml();
+    Yaml beanLoader = new Yaml(new LoaderOptions());
     MapBean parsed = beanLoader.loadAs(output, MapBean.class);
     assertNotNull(parsed);
     Map<String, Integer> data = parsed.getData();
@@ -163,7 +167,7 @@ public class TypeSafeMapTest extends TestCase {
   public void testLoadMapWithObject() {
     String output = Util.getLocalResource("examples/map-bean-10.yaml");
     // System.out.println(output);
-    Yaml beanLoader = new Yaml();
+    Yaml beanLoader = new Yaml(new LoaderOptions());
     MapBeanNoGenerics parsed = beanLoader.loadAs(output, MapBeanNoGenerics.class);
     assertNotNull(parsed);
     Map<String, Integer> data = parsed.getData();

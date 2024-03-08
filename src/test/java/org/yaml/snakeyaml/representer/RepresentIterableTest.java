@@ -16,6 +16,7 @@ package org.yaml.snakeyaml.representer;
 import java.util.Iterator;
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
 
 /**
  * Test @see <a href="http://code.google.com/p/snakeyaml/issues/detail?id=69">issue 69</a>
@@ -23,7 +24,7 @@ import org.yaml.snakeyaml.Yaml;
 public class RepresentIterableTest extends TestCase {
 
   public void testIterable() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     try {
       yaml.dump(new CounterFactory());
       fail("Iterable should not be treated as sequence by default.");
@@ -35,7 +36,7 @@ public class RepresentIterableTest extends TestCase {
   }
 
   public void testIterator() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     String output = yaml.dump(new Counter(7));
     assertEquals("[0, 1, 2, 3, 4, 5, 6]\n", output);
   }

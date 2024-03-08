@@ -17,6 +17,8 @@ import junit.framework.TestCase;
 import org.yaml.snakeyaml.Invoice;
 import org.yaml.snakeyaml.Util;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
 
 /**
  * Test that Yaml instances are independent and can be used in multiple threads.
@@ -54,7 +56,7 @@ public class ParallelTest extends TestCase {
 
     public void run() {
       System.out.println("Started: " + id);
-      Yaml loader = new Yaml();
+      Yaml loader = new Yaml(new SafeConstructor());
       long time1 = System.nanoTime();
       int cycles = 200;
       for (int i = 0; i < cycles; i++) {

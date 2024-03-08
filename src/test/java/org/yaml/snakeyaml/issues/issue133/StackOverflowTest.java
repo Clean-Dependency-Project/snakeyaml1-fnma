@@ -37,7 +37,7 @@ public class StackOverflowTest {
     org.junit.Assume.assumeTrue(System.getProperty("java.version").startsWith("1.6"));
 
     try {
-      Yaml yaml = new Yaml();
+      Yaml yaml = new Yaml(new DumperOptions());
       // by default it must fail with StackOverflow
       yaml.dump(new Point());
       fail("getLocation() is recursive.");

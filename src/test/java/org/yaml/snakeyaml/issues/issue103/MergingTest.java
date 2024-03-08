@@ -27,7 +27,7 @@ public class MergingTest extends TestCase {
   public void testMergeWithDefaultMap() {
     String input = Util.getLocalResource("issues/issue103.yaml");
     // System.out.println(input);
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new LoaderOptions());
 
     check((Map) yaml.load(input));
   }

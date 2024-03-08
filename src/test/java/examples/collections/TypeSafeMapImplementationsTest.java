@@ -20,8 +20,13 @@ import java.util.Properties;
 import java.util.SortedMap;
 import java.util.TreeMap;
 import junit.framework.TestCase;
+import org.yaml.snakeyaml.DumperOptions;
+import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.Util;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
 
 /**
  * Test different Map implementations as JavaBean properties
@@ -38,7 +43,7 @@ public class TypeSafeMapImplementationsTest extends TestCase {
     props.setProperty("key1", "value1");
     props.setProperty("key2", "value2");
     bean.setProperties(props);
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new DumperOptions());
     String output = yaml.dumpAsMap(bean);
     // System.out.println(output);
     String etalon = Util.getLocalResource("examples/map-bean-1.yaml");
@@ -49,7 +54,7 @@ public class TypeSafeMapImplementationsTest extends TestCase {
   public void testLoadMap() {
     String output = Util.getLocalResource("examples/map-bean-1.yaml");
     // System.out.println(output);
-    Yaml beanLoader = new Yaml();
+    Yaml beanLoader = new Yaml(new LoaderOptions());
     MapBean parsed = beanLoader.loadAs(output, MapBean.class);
     assertNotNull(parsed);
     SortedMap<String, String> sortedMap = parsed.getSorted();
@@ -112,7 +117,7 @@ public class TypeSafeMapImplementationsTest extends TestCase {
     props.setProperty("key2", "value2");
     list.add(props);
     list.add("aaa");
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new DumperOptions());
     String output = yaml.dump(list);
     // System.out.println(output);
     assertTrue("Row 1 expected: " + output, output.contains("- {'1': one, '2': two}"));
@@ -141,7 +146,7 @@ public class TypeSafeMapImplementationsTest extends TestCase {
     sortedMap.put("2", "two");
     sortedMap.put("1", "one");
     sortedMap.put("3", sortedMap);
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new DumperOptions());
     String output = yaml.dump(sortedMap);
     // System.out.println(output);
     String etalon = Util.getLocalResource("examples/map-recursive-1.yaml");
@@ -164,7 +169,7 @@ public class TypeSafeMapImplementationsTest extends TestCase {
     props.setProperty("key2", "value2");
     Map<Object, Object> map = props;
     map.put("key3", props);
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new DumperOptions());
     String output = yaml.dump(props);
     // System.out.println(output);
     String etalon = Util.getLocalResource("examples/map-recursive-2.yaml");
@@ -179,7 +184,7 @@ public class TypeSafeMapImplementationsTest extends TestCase {
   }
 
   public void testRecursiveNoJavaBeanMap3() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new LoaderOptions());
     String output = Util.getLocalResource("examples/map-recursive-3.yaml");
     // System.out.println(output);
     @SuppressWarnings("unchecked")
@@ -193,7 +198,7 @@ public class TypeSafeMapImplementationsTest extends TestCase {
   }
 
   public void testRecursiveProperties4() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new LoaderOptions());
     String output = Util.getLocalResource("examples/map-recursive-4.yaml");
     // System.out.println(output);
     Properties p = yaml.load(output);

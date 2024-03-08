@@ -16,9 +16,12 @@ package org.yaml.snakeyaml.stress;
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
+import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.Invoice;
+import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.Util;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
 
 public class StressEmitterTest extends TestCase {
 
@@ -31,10 +34,10 @@ public class StressEmitterTest extends TestCase {
   }
 
   public void testPerformance() {
-    Yaml loader = new Yaml();
+    Yaml loader = new Yaml(new LoaderOptions());
     Invoice invoice =
         loader.loadAs(Util.getLocalResource("specification/example2_27.yaml"), Invoice.class);
-    Yaml dumper = new Yaml();
+    Yaml dumper = new Yaml(new DumperOptions());
     long time1 = System.nanoTime();
     dumper.dumpAsMap(invoice);
     long time2 = System.nanoTime();
@@ -61,7 +64,7 @@ public class StressEmitterTest extends TestCase {
     for (int number : range) {
       time1 = System.nanoTime();
       for (int i = 0; i < number; i++) {
-        dumper = new Yaml();
+        dumper = new Yaml(new SafeConstructor());
         dumper.dumpAsMap(invoice);
       }
       time2 = System.nanoTime();

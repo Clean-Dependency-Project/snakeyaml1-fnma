@@ -44,7 +44,7 @@ public class ConstructorSequenceTest extends TestCase {
     List<Integer> l = new ArrayList<Integer>(2);
     l.add(1);
     l.add(2);
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     String result = yaml.dump(l);
     assertEquals("[1, 2]\n", result);
   }
@@ -53,7 +53,7 @@ public class ConstructorSequenceTest extends TestCase {
     List<Integer> l = new ArrayList<Integer>(2);
     l.add(1);
     l.add(1);
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     String result = yaml.dump(l);
     assertEquals("[1, 1]\n", result);
   }

@@ -40,10 +40,10 @@ public class ImplicitTagsTest extends TestCase {
     car1.setMap(map);
     car1.setPart(new Wheel(4));
     car1.setYear("2008");
-    String carYaml1 = new Yaml().dump(car1);
+    String carYaml1 = new Yaml(new DumperOptions()).dump(car1);
     assertEquals(Util.getLocalResource("constructor/carwheel-without-tags.yaml"), carYaml1);
-    CarWithWheel car2 = new Yaml().load(carYaml1);
-    String carYaml2 = new Yaml().dump(car2);
+    CarWithWheel car2 = new Yaml(new DumperOptions()).load(carYaml1);
+    String carYaml2 = new Yaml(new DumperOptions()).dump(car2);
     assertEquals(carYaml1, carYaml2);
   }
 
@@ -57,12 +57,12 @@ public class ImplicitTagsTest extends TestCase {
     map.put("id", 3);
     car1.setMap(map);
     car1.setYear("2008");
-    String carYaml1 = new Yaml().dumpAs(car1, Tag.MAP, FlowStyle.AUTO);
+    String carYaml1 = new Yaml(new DumperOptions()).dumpAs(car1, Tag.MAP, FlowStyle.AUTO);
     assertEquals(Util.getLocalResource("constructor/car-without-root-tag.yaml"), carYaml1);
     //
     Constructor contructor = new Constructor(CarWithWheel.class);
     CarWithWheel car2 = new Yaml(contructor).load(carYaml1);
-    String carYaml2 = new Yaml().dumpAs(car2, Tag.MAP, FlowStyle.AUTO);
+    String carYaml2 = new Yaml(new DumperOptions()).dumpAs(car2, Tag.MAP, FlowStyle.AUTO);
     assertEquals(carYaml1, carYaml2);
   }
 
@@ -78,11 +78,11 @@ public class ImplicitTagsTest extends TestCase {
     car1.put("map", map);
     car1.put("plate", "12-XP-F4");
 
-    String carYaml1 = new Yaml().dump(car1);
+    String carYaml1 = new Yaml(new DumperOptions()).dump(car1);
     assertEquals(Util.getLocalResource("constructor/carwheel-root-map.yaml"), carYaml1);
-    Map<Object, Object> car2 = new Yaml().load(carYaml1);
+    Map<Object, Object> car2 = new Yaml(new DumperOptions()).load(carYaml1);
     assertEquals(car1, car2);
-    assertEquals(carYaml1, new Yaml().dump(car2));
+    assertEquals(carYaml1, new Yaml(new DumperOptions()).dump(car2));
   }
 
   public void testLoadClassTag() {
@@ -97,7 +97,7 @@ public class ImplicitTagsTest extends TestCase {
     Wheel w1 = wheels.get(0);
     assertEquals(1, w1.getId());
     //
-    String carYaml1 = new Yaml().dump(car);
+    String carYaml1 = new Yaml(new DumperOptions()).dump(car);
     assertTrue(carYaml1.startsWith("!!org.yaml.snakeyaml.constructor.Car"));
     //
     Representer representer = new Representer(new DumperOptions());

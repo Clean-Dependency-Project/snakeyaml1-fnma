@@ -17,14 +17,16 @@ import static org.junit.Assert.assertEquals;
 
 import java.math.BigDecimal;
 import org.junit.Test;
+import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
 
 public class DataTest {
 
   @Test
   public void testGetUnit() throws Exception {
     Data data = new Data("Voltage", BigDecimal.TEN, "V");
-    assertEquals("!!org.yaml.snakeyaml.issues.issue332.Data {}", new Yaml().dump(data).trim());
+    assertEquals("!!org.yaml.snakeyaml.issues.issue332.Data {}", new Yaml(new SafeConstructor()).dump(data).trim());
     // TODO assertEquals("!!org.yaml.snakeyaml.issues.issue332.Data {label: Voltage, unit: V, value:
     // !!float '10'}", new Yaml().dump(data).trim());
   }
@@ -33,6 +35,6 @@ public class DataTest {
   public void testLoad() throws Exception {
     String doc = "!!org.yaml.snakeyaml.issues.issue332.Data [Voltage, 10, volts]";
     assertEquals("Data{label='Voltage', unit='volts', value=10}",
-        (new Yaml().load(doc)).toString());
+        (new Yaml(new LoaderOptions()).load(doc)).toString());
   }
 }

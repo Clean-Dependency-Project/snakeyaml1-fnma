@@ -15,12 +15,13 @@ package org.yaml.snakeyaml.issues.issue485;
 
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
 
 public class RestrictAliasNamesTest extends TestCase {
 
   public void testAliasFromRuby() {
     try {
-      Yaml yamlProcessor = new Yaml();
+      Yaml yamlProcessor = new Yaml(new SafeConstructor());
       yamlProcessor.load("Exclude: **/*_old.rb");
       fail("Should not accept Alias **/*_old.rb");
     } catch (Exception e) {

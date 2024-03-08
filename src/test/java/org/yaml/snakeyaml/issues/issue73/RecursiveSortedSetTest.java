@@ -20,6 +20,12 @@ import junit.framework.TestCase;
 import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.Util;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import java.util.Set;
+import java.util.SortedSet;
+import java.util.TreeSet;
+
 
 public class RecursiveSortedSetTest extends TestCase {
 
@@ -31,7 +37,7 @@ public class RecursiveSortedSetTest extends TestCase {
     set.add("ggg");
     set.add("hhh");
     set.add(bean);
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     String doc = yaml.dump(bean);
     // System.out.println(doc);
     assertEquals(Util.getLocalResource("issues/issue73-recursive9.txt"), doc);
@@ -40,7 +46,7 @@ public class RecursiveSortedSetTest extends TestCase {
   public void testLoadException() {
     String doc = Util.getLocalResource("issues/issue73-recursive10.txt");
     // System.out.println(doc);
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new LoaderOptions());
     try {
       yaml.load(doc);
       fail("Recursive sets are not supported.");

@@ -25,14 +25,16 @@ import java.nio.charset.CodingErrorAction;
 import java.nio.charset.StandardCharsets;
 import java.util.Map;
 import junit.framework.TestCase;
+import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.Yaml;
 import org.yaml.snakeyaml.YamlDocument;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
 
 public class NonAsciiCharacterTest extends TestCase {
 
   @SuppressWarnings("unchecked")
   public void testLoad() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new LoaderOptions());
     Map<String, Map<String, String>> obj = yaml.load("test.string: {en: И}");
     assertEquals(1, obj.size());
     assertEquals("Map: " + obj, "И", obj.get("test.string").get("en"));
@@ -40,7 +42,7 @@ public class NonAsciiCharacterTest extends TestCase {
 
   public void testLoadFromFileWithWrongEncoding() {
     try {
-      Yaml yaml = new Yaml();
+      Yaml yaml = new Yaml(new SafeConstructor());
       InputStream input = new FileInputStream("src/test/resources/issues/issue68.txt");
       CharsetDecoder decoder = Charset.forName("Cp1252").newDecoder();
       decoder.onUnmappableCharacter(CodingErrorAction.REPORT);
@@ -53,7 +55,7 @@ public class NonAsciiCharacterTest extends TestCase {
   }
 
   public void testLoadFromFile() throws UnsupportedEncodingException, FileNotFoundException {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new LoaderOptions());
     InputStream input = new FileInputStream("src/test/resources/issues/issue68.txt");
     String text = yaml.load(new InputStreamReader(input, StandardCharsets.UTF_8));
     assertEquals("И жить торопится и чувствовать спешит...", text);
@@ -65,7 +67,7 @@ public class NonAsciiCharacterTest extends TestCase {
     if (input == null) {
       throw new RuntimeException("Can not find issues/issue68.txt");
     }
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new LoaderOptions());
     String text = yaml.load(input);// UTF-8 by default
     assertEquals("И жить торопится и чувствовать спешит...", text);
     input.close();

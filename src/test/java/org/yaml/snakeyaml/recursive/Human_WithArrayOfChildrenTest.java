@@ -19,6 +19,7 @@ import org.yaml.snakeyaml.TypeDescription;
 import org.yaml.snakeyaml.Util;
 import org.yaml.snakeyaml.Yaml;
 import org.yaml.snakeyaml.constructor.Constructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
 
 public class Human_WithArrayOfChildrenTest extends TestCase {
 
@@ -156,7 +157,7 @@ public class Human_WithArrayOfChildrenTest extends TestCase {
   }
 
   public void testDumpChildrenArrayWithoutRootTag() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     Human_WithArrayOfChildren son = createSon();
     String output = yaml.dumpAsMap(son);
     // System.out.println(output);

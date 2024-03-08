@@ -23,6 +23,7 @@ import java.util.Map;
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
 import org.yaml.snakeyaml.reader.StreamReader;
 
 public class SafeRepresenterTest extends TestCase {
@@ -46,7 +47,7 @@ public class SafeRepresenterTest extends TestCase {
     list.add(Double.POSITIVE_INFINITY);
     list.add(Double.NEGATIVE_INFINITY);
     list.add(Double.NaN);
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     String output = yaml.dump(list);
     assertEquals("[3, 4, 5, 6, 7, .inf, -.inf, .NaN]\n", output);
   }
@@ -70,7 +71,7 @@ public class SafeRepresenterTest extends TestCase {
   }
 
   public void testEmptyArray() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     String output = yaml.dump(new String[0]);
     assertEquals("[]\n", output);
   }

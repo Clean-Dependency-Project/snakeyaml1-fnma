@@ -17,8 +17,10 @@ import java.util.Collection;
 import java.util.Map;
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.DumperOptions;
+import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.Util;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
 import org.yaml.snakeyaml.introspector.BeanAccess;
 import org.yaml.snakeyaml.representer.Representer;
 
@@ -30,7 +32,7 @@ public class YamlFieldAccessCollectionTest extends TestCase {
     String serialized = yamlDumper.dumpAsMap(original);
     // System.out.println(serialized);
     assertEquals(Util.getLocalResource("issues/issue55_1.txt"), serialized);
-    Yaml blogLoader = new Yaml();
+    Yaml blogLoader = new Yaml(new LoaderOptions());
     blogLoader.setBeanAccess(BeanAccess.FIELD);
     Blog rehydrated = blogLoader.loadAs(serialized, Blog.class);
     checkTestBlog(rehydrated);
@@ -38,13 +40,13 @@ public class YamlFieldAccessCollectionTest extends TestCase {
 
   @SuppressWarnings("unchecked")
   public void testYamlWithoutConfiguration() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new LoaderOptions());
     Map<String, Object> map = yaml.load(Util.getLocalResource("issues/issue55_1.txt"));
     assertEquals(1, map.size());
   }
 
   public void testYamlFailure() {
-    Yaml beanLoader = new Yaml();
+    Yaml beanLoader = new Yaml(new LoaderOptions());
     try {
       beanLoader.loadAs(Util.getLocalResource("issues/issue55_1.txt"), Blog.class);
       fail("BeanAccess.FIELD is required.");
@@ -54,7 +56,7 @@ public class YamlFieldAccessCollectionTest extends TestCase {
   }
 
   public void testYamlDefaultWithFeildAccess() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new DumperOptions());
     yaml.setBeanAccess(BeanAccess.FIELD);
     Blog original = createTestBlog();
     String serialized = yaml.dump(original);
@@ -71,7 +73,7 @@ public class YamlFieldAccessCollectionTest extends TestCase {
   }
 
   protected Yaml constructYamlParser() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     yaml.setBeanAccess(BeanAccess.FIELD);
     return yaml;
   }

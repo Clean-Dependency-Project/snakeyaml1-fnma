@@ -59,13 +59,6 @@ public class Yaml {
 
   /**
    * Create Yaml instance.
-   */
-  public Yaml() {
-    this(new Constructor(new LoaderOptions()), new Representer(new DumperOptions()));
-  }
-
-  /**
-   * Create Yaml instance.
    *
    * @param dumperOptions DumperOptions to configure outgoing objects
    */

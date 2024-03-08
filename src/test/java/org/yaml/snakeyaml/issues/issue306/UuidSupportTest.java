@@ -20,8 +20,10 @@ import java.util.UUID;
 import java.util.regex.Pattern;
 import org.junit.Test;
 import org.yaml.snakeyaml.DumperOptions;
+import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.Util;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
 import org.yaml.snakeyaml.nodes.Tag;
 
 public class UuidSupportTest {
@@ -40,7 +42,7 @@ public class UuidSupportTest {
   public void dumpAsString() {
     UUID uuid = UUID.randomUUID();
     String str = uuid.toString();
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new DumperOptions());
     yaml.addImplicitResolver(UUID_TAG, UUID_PATTERN, null);
     String output = yaml.dump(str);
     assertEquals("'" + str + "'\n", output);
@@ -49,7 +51,7 @@ public class UuidSupportTest {
 
   @Test
   public void loadAsUuid() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new LoaderOptions());
     yaml.addImplicitResolver(UUID_TAG, UUID_PATTERN, null);
     UUID uuid = yaml.load("7f511847-781a-45df-9c8d-1e32e028b9b3");
     assertEquals("7f511847-781a-45df-9c8d-1e32e028b9b3", uuid.toString());
@@ -58,7 +60,7 @@ public class UuidSupportTest {
   @Test
   public void loadFromBean() {
     String input = Util.getLocalResource("issues/issue306-1.yaml");
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new LoaderOptions());
     BeanWithId bean = yaml.loadAs(input, BeanWithId.class);
     assertEquals("7f511847-781a-45df-9c8d-1e32e028b9b3", bean.getId().toString());
   }
@@ -66,7 +68,7 @@ public class UuidSupportTest {
   @Test
   public void dumpUuid() {
     UUID uuid = UUID.randomUUID();
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     String output = yaml.dump(uuid);
     assertEquals("!!java.util.UUID '" + uuid + "'\n", output);
   }
@@ -77,7 +79,7 @@ public class UuidSupportTest {
     bean.setValue(3);
     UUID uuid = UUID.fromString("ac4877be-0c31-4458-a86e-0272efe1aaa8");
     bean.setId(uuid);
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     String output = yaml.dumpAs(bean, Tag.MAP, DumperOptions.FlowStyle.BLOCK);
     String expected = Util.getLocalResource("issues/issue306-2.yaml");
     assertEquals(expected, output);

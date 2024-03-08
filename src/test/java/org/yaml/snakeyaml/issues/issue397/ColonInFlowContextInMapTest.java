@@ -16,10 +16,11 @@ package org.yaml.snakeyaml.issues.issue397;
 import java.util.Map;
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
 
 public class ColonInFlowContextInMapTest extends TestCase {
 
-  private final Yaml loader = new Yaml();
+  private final Yaml loader = new Yaml(new SafeConstructor());
 
   public void test1() {
     Map<String, Integer> map = loader.load("{a: 1}");

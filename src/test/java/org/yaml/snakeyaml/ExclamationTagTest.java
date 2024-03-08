@@ -25,7 +25,7 @@ public class ExclamationTagTest {
 
   @Test
   public void testImplicitTag() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new LoaderOptions());
     Object result = yaml.load("! 12");
     assertEquals("It works the same way as PyYAML", 12, result);
     // It might be changed -> assertEquals("12", yaml.load("! 12"));
@@ -33,7 +33,7 @@ public class ExclamationTagTest {
 
   @Test
   public void testNoImplicitTag() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new LoaderOptions());
     Object result = yaml.load("12");
     assertEquals(12, result);
   }

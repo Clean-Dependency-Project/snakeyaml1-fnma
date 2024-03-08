@@ -23,6 +23,9 @@ import org.yaml.snakeyaml.error.YAMLException;
 
 public class CanonicalLoader extends Yaml {
 
+  public CanonicalLoader(){
+    super(new LoaderOptions());
+  }
   @Override
   public Object load(Reader yaml) {
     try {

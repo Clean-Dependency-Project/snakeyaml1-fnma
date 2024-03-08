@@ -19,6 +19,7 @@ import junit.framework.TestCase;
 import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.TypeDescription;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
 import org.yaml.snakeyaml.introspector.Property;
 
 public class FilterPropertyToDumpTest extends TestCase {
@@ -27,7 +28,7 @@ public class FilterPropertyToDumpTest extends TestCase {
     BeanToRemoveProperty bean = new BeanToRemoveProperty();
     bean.setNumber(24);
     bean.setId("ID124");
-    Yaml d = new Yaml();
+    Yaml d = new Yaml(new SafeConstructor());
     String dump = d.dumpAsMap(bean);
     // System.out.println(dump);
     assertEquals("id: ID124\nnumber: 24\n", dump);
@@ -61,7 +62,7 @@ public class FilterPropertyToDumpTest extends TestCase {
     BeanToRemoveProperty bean = new BeanToRemoveProperty();
     bean.setNumber(27);
     bean.setId("ID127");
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     TypeDescription td = new TypeDescription(BeanToRemoveProperty.class);
     td.setIncludes("number");
     yaml.addTypeDescription(td);
@@ -76,7 +77,7 @@ public class FilterPropertyToDumpTest extends TestCase {
     BeanToRemoveProperty bean = new BeanToRemoveProperty();
     bean.setNumber(28);
     bean.setId("ID128");
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     TypeDescription td = new TypeDescription(BeanToRemoveProperty.class);
     td.setExcludes("id");
     yaml.addTypeDescription(td);

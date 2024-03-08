@@ -19,8 +19,13 @@ import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
 import junit.framework.TestCase;
+import org.yaml.snakeyaml.DumperOptions;
+import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.Util;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
 
 /**
  * Test different Map implementations as JavaBean properties
@@ -38,7 +43,7 @@ public class TypeSafeSetImplementationsTest extends TestCase {
     developers.add(new Developer("John", "founder"));
     developers.add(new Developer("Karl", "user"));
     bean.setDevelopers(developers);
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     String output = yaml.dumpAsMap(bean);
     // System.out.println(output);
     String etalon = Util.getLocalResource("examples/set-bean-1.yaml");
@@ -57,7 +62,7 @@ public class TypeSafeSetImplementationsTest extends TestCase {
     developers.add(new Developer("Karl", "user"));
     developers.add(new SuperDeveloper("Bill", "super"));
     bean.setDevelopers(developers);
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     String output = yaml.dumpAsMap(bean);
     // System.out.println(output);
     String etalon = Util.getLocalResource("examples/set-bean-6.yaml");
@@ -67,7 +72,7 @@ public class TypeSafeSetImplementationsTest extends TestCase {
   public void testLoadSet() {
     String output = Util.getLocalResource("examples/set-bean-1.yaml");
     // System.out.println(output);
-    Yaml beanLoader = new Yaml();
+    Yaml beanLoader = new Yaml(new LoaderOptions());
     SetBean parsed = beanLoader.loadAs(output, SetBean.class);
     assertNotNull(parsed);
     SortedSet<String> sortedMap = parsed.getSorted();
@@ -87,7 +92,7 @@ public class TypeSafeSetImplementationsTest extends TestCase {
   public void testLoadSetReversed() {
     String output = Util.getLocalResource("examples/set-bean-2.yaml");
     // System.out.println(output);
-    Yaml beanLoader = new Yaml();
+    Yaml beanLoader = new Yaml(new LoaderOptions());
     SetBean parsed = beanLoader.loadAs(output, SetBean.class);
     assertNotNull(parsed);
     SortedSet<String> sortedMap = parsed.getSorted();
@@ -194,7 +199,7 @@ public class TypeSafeSetImplementationsTest extends TestCase {
     box.setId("id123");
     box.setSet(set);
     set.add(box);
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new DumperOptions());
     String output = yaml.dump(set);
     // System.out.println(output);
     // the order may differ on different JVMs
@@ -235,7 +240,7 @@ public class TypeSafeSetImplementationsTest extends TestCase {
 
   @SuppressWarnings("unchecked")
   public void testNoJavaBeanSet() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new LoaderOptions());
     String output = Util.getLocalResource("examples/set-bean-4.yaml");
     // System.out.println(output);
     // load
@@ -252,7 +257,7 @@ public class TypeSafeSetImplementationsTest extends TestCase {
 
   @SuppressWarnings("unchecked")
   public void testNoJavaBeanSet2() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new LoaderOptions());
     String output = Util.getLocalResource("examples/set-bean-5.yaml");
     // System.out.println(output);
     // load and sort

@@ -14,6 +14,7 @@
 package org.yaml.snakeyaml.issues.issue116;
 
 import junit.framework.TestCase;
+import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.Yaml;
 import org.yaml.snakeyaml.error.YAMLException;
 
@@ -21,7 +22,7 @@ public class NoFieldsTest extends TestCase {
 
   public void testEmptyClass() {
     Empty empty = new Empty();
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new DumperOptions());
     String result = yaml.dump(empty);
     assertEquals("!!org.yaml.snakeyaml.issues.issue116.Empty {}\n", result);
     Object emptyParsed = yaml.load(result);
@@ -30,7 +31,7 @@ public class NoFieldsTest extends TestCase {
 
   public void testHiddenParameter() {
     Hidden hidden = new Hidden();
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new DumperOptions());
     try {
       yaml.dump(hidden);
       fail("an exception should have been thrown");
@@ -44,7 +45,7 @@ public class NoFieldsTest extends TestCase {
 
   public void testSpecialHiddenParameter() {
     HiddenSpecial hidden = new HiddenSpecial("qwerty");
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new DumperOptions());
     try {
       yaml.dump(hidden);
       fail("an exception should have been thrown");

@@ -19,6 +19,9 @@ import junit.framework.TestCase;
 import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
 import org.yaml.snakeyaml.constructor.Constructor;
 import org.yaml.snakeyaml.representer.Representer;
 
@@ -32,7 +35,7 @@ public class CustomResolverTest extends TestCase {
     String output = yaml.dump(map);
     assertEquals("{1.0: 2009-01-01}\n", output);
     assertEquals("Float and Date must be escaped.", "{'1.0': '2009-01-01'}\n",
-        new Yaml().dump(map));
+        new Yaml(new SafeConstructor()).dump(map));
   }
 
   @SuppressWarnings("unchecked")
@@ -44,7 +47,7 @@ public class CustomResolverTest extends TestCase {
     assertEquals("2009-01-01", map.get("1.0"));
     // the default Resolver shall create Date and Double from the same YAML
     // document
-    Yaml yaml2 = new Yaml();
+    Yaml yaml2 = new Yaml(new SafeConstructor());
     Map<Object, Object> map2 = yaml2.load("1.0: 2009-01-01");
     assertEquals(1, map2.size());
     assertFalse(map2.containsKey("1.0"));

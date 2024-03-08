@@ -17,6 +17,7 @@ import java.io.StringReader;
 import java.util.HashMap;
 import java.util.Iterator;
 import junit.framework.TestCase;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
 import org.yaml.snakeyaml.events.DocumentEndEvent;
 import org.yaml.snakeyaml.events.DocumentStartEvent;
 import org.yaml.snakeyaml.events.Event;
@@ -28,7 +29,7 @@ import org.yaml.snakeyaml.events.StreamStartEvent;
 public class YamlParseTest extends TestCase {
 
   public void testParse() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     Event e = null;
     int counter = 0;
     for (Event event : yaml.parse(new StringReader("abc: 56"))) {
@@ -43,7 +44,7 @@ public class YamlParseTest extends TestCase {
   }
 
   public void testParseEvents() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     Iterator<Event> events = yaml.parse(new StringReader("%YAML 1.1\n---\na")).iterator();
     assertTrue(events.next() instanceof StreamStartEvent);
     DocumentStartEvent documentStartEvent = (DocumentStartEvent) events.next();
@@ -61,7 +62,7 @@ public class YamlParseTest extends TestCase {
   }
 
   public void testParseManyDocuments() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     Event e = null;
     int counter = 0;
     for (Event event : yaml.parse(new StringReader("abc: 56\n---\n4\n---\nqwe\n"))) {

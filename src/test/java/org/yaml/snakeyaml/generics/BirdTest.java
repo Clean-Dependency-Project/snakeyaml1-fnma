@@ -15,6 +15,7 @@ package org.yaml.snakeyaml.generics;
 
 import java.beans.IntrospectionException;
 import junit.framework.TestCase;
+import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.Yaml;
 
 public class BirdTest extends TestCase {
@@ -26,11 +27,11 @@ public class BirdTest extends TestCase {
     home = new Nest();
     home.setHeight(3);
     bird.setHome(home);
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new DumperOptions());
     String output = yaml.dumpAsMap(bird);
     Bird parsed;
     String javaVendor = System.getProperty("java.vm.name");
-    Yaml loader = new Yaml();
+    Yaml loader = new Yaml(new DumperOptions());
     // no global tags
     System.out.println("java.vm.name: " + javaVendor);
     assertEquals("no global tags must be emitted.", "home:\n  height: 3\nname: Eagle\n", output);

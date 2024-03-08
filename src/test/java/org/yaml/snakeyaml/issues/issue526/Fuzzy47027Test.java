@@ -20,6 +20,7 @@ import org.junit.Test;
 import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.Util;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
 import org.yaml.snakeyaml.error.YAMLException;
 
 // OSS-Fuzz - 47027
@@ -28,7 +29,7 @@ public class Fuzzy47027Test {
   @Test
   public void parseOpenUnmatchedSequences_47027() {
     try {
-      Yaml yaml = new Yaml();
+      Yaml yaml = new Yaml(new SafeConstructor());
       String strYaml = Util.getLocalResource("fuzzer/YamlFuzzer-5427149240139776");
       yaml.load(strYaml);
       fail("Should report invalid YAML");

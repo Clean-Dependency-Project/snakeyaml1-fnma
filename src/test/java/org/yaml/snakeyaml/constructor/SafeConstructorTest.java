@@ -20,7 +20,7 @@ import org.yaml.snakeyaml.Yaml;
 public class SafeConstructorTest extends TestCase {
 
   public void testConstructFloat() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     assertEquals(3.1416, yaml.load("+3.1416"));
     assertEquals(Double.POSITIVE_INFINITY, yaml.load("+.inf"));
     assertEquals(Double.POSITIVE_INFINITY, yaml.load(".inf"));

@@ -23,7 +23,7 @@ import org.yaml.snakeyaml.Yaml;
 public class PrattleRepresenterTest extends TestCase {
 
   public void test() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new DumperOptions());
     Person person = new Person("Alan", "Gutierrez", 9);
     String etalon =
         "!!org.yaml.snakeyaml.issues.issue8.Person {firstName: Alan, hatSize: 9, lastName: Gutierrez}\n";

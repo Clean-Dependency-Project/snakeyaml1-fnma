@@ -163,7 +163,7 @@ public class StrTagTest extends AbstractTest {
   public void testDumpUtf16() throws UnsupportedEncodingException {
     String str = "xxx";
     assertEquals(3, str.length());
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new DumperOptions());
     Charset charset = StandardCharsets.UTF_16;
     ByteArrayOutputStream stream = new ByteArrayOutputStream();
     Writer writer = new OutputStreamWriter(stream, charset);

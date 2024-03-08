@@ -117,7 +117,7 @@ public class YamlEnumSetTest {
   }
 
   private Yaml createYaml(LoaderOptions loaderOptions) {
-    Yaml yaml = loaderOptions != null ? new Yaml(loaderOptions) : new Yaml();
+    Yaml yaml =  new Yaml((loaderOptions != null) ? loaderOptions : new LoaderOptions());
 
     TypeDescription yamlEnumSetTD = new TypeDescription(YamlEnumSetTest.class) {
 
