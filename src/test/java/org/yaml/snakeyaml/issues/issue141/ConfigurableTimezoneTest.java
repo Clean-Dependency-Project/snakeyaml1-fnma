@@ -18,11 +18,12 @@ import java.util.TimeZone;
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
 
 public class ConfigurableTimezoneTest extends TestCase {
 
   public void testNoTimezone() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     String output = yaml.dump(new Date());
     assertTrue(output, output.endsWith("Z\n"));
   }

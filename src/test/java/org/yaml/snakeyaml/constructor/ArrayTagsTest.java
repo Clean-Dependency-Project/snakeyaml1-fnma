@@ -35,7 +35,7 @@ public class ArrayTagsTest extends TestCase {
     }
     car.setWheels(wheels);
     assertEquals(Util.getLocalResource("constructor/cararray-with-tags-flow-auto.yaml"),
-        new Yaml().dump(car));
+        new Yaml(new SafeConstructor()).dump(car));
   }
 
   public void testFlowBlock() {

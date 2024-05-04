@@ -16,6 +16,7 @@ package org.yaml.snakeyaml.issues.issue100;
 import java.util.List;
 import java.util.Map;
 import junit.framework.TestCase;
+import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.Util;
 import org.yaml.snakeyaml.Yaml;
 
@@ -25,7 +26,7 @@ public class MergeMapsTest extends TestCase {
   public void testExplicitMergeTag() {
     String input = Util.getLocalResource("issues/issue100-2.yaml");
     // System.out.println(input);
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new LoaderOptions());
     Map<String, ?> list = yaml.load(input);
     List<Map<?, ?>> result = (List<Map<?, ?>>) list.get("result");
     Map<?, ?> first = result.iterator().next();

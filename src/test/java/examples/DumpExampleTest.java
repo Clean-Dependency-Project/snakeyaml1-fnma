@@ -21,6 +21,8 @@ import java.util.Map;
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
 
 public class DumpExampleTest extends TestCase {
 
@@ -29,7 +31,7 @@ public class DumpExampleTest extends TestCase {
     data.put("name", "Silenthand Olleander");
     data.put("race", "Human");
     data.put("traits", new String[] {"ONE_HAND", "ONE_EYE"});
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     String output = yaml.dump(data);
     assertTrue(output.contains("name: Silenthand Olleander"));
     assertTrue(output.contains("race: Human"));
@@ -41,7 +43,7 @@ public class DumpExampleTest extends TestCase {
     data.put("name", "Silenthand Olleander");
     data.put("race", "Human");
     data.put("traits", new String[] {"ONE_HAND", "ONE_EYE"});
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     StringWriter writer = new StringWriter();
     yaml.dump(data, writer);
     assertTrue(writer.toString().contains("name: Silenthand Olleander"));
@@ -76,7 +78,7 @@ public class DumpExampleTest extends TestCase {
     for (int i = 0; i < 50; i++) {
       data.add(i);
     }
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     String output = yaml.dump(data);
     assertTrue(output.contains("[0, 1, 2, 3, 4, 5, 6, 7, 8"));
     //

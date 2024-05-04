@@ -18,6 +18,7 @@ import java.util.Map;
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
 import org.yaml.snakeyaml.representer.Representer;
 
 public class RecursiveAnchorTest extends TestCase {
@@ -27,7 +28,7 @@ public class RecursiveAnchorTest extends TestCase {
     Map<String, Object> enclosedMap = new HashMap<String, Object>();
     enclosedMap.put("world", "test");
     rootMap.put("test", enclosedMap);
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     String output = yaml.dump(rootMap);
     assertEquals("test: {world: test}\n", output);
   }

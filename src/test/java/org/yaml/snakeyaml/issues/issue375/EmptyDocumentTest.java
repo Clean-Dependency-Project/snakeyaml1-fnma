@@ -16,12 +16,13 @@ package org.yaml.snakeyaml.issues.issue375;
 import org.junit.Assert;
 import org.junit.Test;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
 
 public class EmptyDocumentTest {
 
   @Test
   public void returnNullForEmptyDocument() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     Assert.assertNull(yaml.loadAs("", TestObject.class));
     Assert.assertNull(yaml.loadAs("\n  \n", TestObject.class));
     Assert.assertNull(yaml.loadAs("---\n", TestObject.class));

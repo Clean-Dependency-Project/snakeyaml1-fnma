@@ -19,7 +19,9 @@ import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Map;
 import junit.framework.TestCase;
+import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
 
 /**
  * http://java.sun.com/developer/technicalArticles/Intl/Supplementary/
@@ -33,14 +35,14 @@ public class SupplementaryCharactersTest extends TestCase {
   }
 
   public void testSupplementaryCharacter() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     String parsed = yaml.load("\"\\U0001f648\"");
     assertEquals("\ud83d\ude48", parsed);
     // System.out.println(data);
   }
 
   public void testBasicMultilingualPlane() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     String parsed = yaml.load("\"\\U00000041\"");
     assertEquals("A", parsed);
   }
@@ -50,7 +52,7 @@ public class SupplementaryCharactersTest extends TestCase {
    */
   public void testDumpSupplementaryCodePoint() throws UnsupportedEncodingException {
     String supplementary = "\ud83d\ude48";
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     String output = yaml.dump(supplementary);
     assertEquals("\ud83d\ude48\n", output);
     String binString = yaml.load(output);
@@ -62,7 +64,7 @@ public class SupplementaryCharactersTest extends TestCase {
    */
   public void testDumpNonPrintableCharacter() throws UnsupportedEncodingException {
     String supplementary = "\u0001";
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     String output = yaml.dump(supplementary);
     assertEquals("!!binary |-\n  AQ==\n", output);
     byte[] binary = yaml.load(output);
@@ -72,7 +74,7 @@ public class SupplementaryCharactersTest extends TestCase {
 
   public void testDumpSurrogateCharacter() throws UnsupportedEncodingException {
     String supplementary = "\ud83d";
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     try {
       yaml.dump(supplementary);
       fail("dumping half code point without other half should fail");
@@ -83,12 +85,12 @@ public class SupplementaryCharactersTest extends TestCase {
   }
 
   public void testLoadSupplementaryCodePoint() {
-    new Yaml().load("\"\ud83d\ude48\"\n");
+    new Yaml(new SafeConstructor()).load("\"\ud83d\ude48\"\n");
   }
 
   public void testLoadSurrogateCharacter() {
     try {
-      new Yaml().load("\"\ud83d\"\n");
+      new Yaml(new SafeConstructor()).load("\"\ud83d\"\n");
       fail("separate surrogate characters are not printable");
     } catch (Exception e) {
       assertEquals("special characters are not allowed", e.getMessage());
@@ -102,7 +104,7 @@ public class SupplementaryCharactersTest extends TestCase {
    */
   public void testLoadingEmoji() {
     InputStream input = this.getClass().getClassLoader().getResourceAsStream("issues/emoji.yaml");
-    EmojiContainer emoji = new Yaml().loadAs(input, EmojiContainer.class);
+    EmojiContainer emoji = new Yaml(new LoaderOptions()).loadAs(input, EmojiContainer.class);
 
     assertEquals(emoji.sizes.keySet(), emoji.values.keySet());
 

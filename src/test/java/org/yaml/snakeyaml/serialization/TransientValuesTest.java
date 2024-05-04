@@ -22,6 +22,7 @@ import java.beans.Transient;
 import org.junit.Test;
 import org.yaml.snakeyaml.Yaml;
 import org.yaml.snakeyaml.constructor.Constructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
 
 public class TransientValuesTest {
 
@@ -35,7 +36,7 @@ public class TransientValuesTest {
     entity.transientField = "gamma";
     entity.nonTransientField = "delta";
 
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     String dumpedInstance = yaml.dump(entity);
     yaml = new Yaml(new Constructor(ClassWithTransientFields.class.getName()));
     ClassWithTransientFields deserializedEntity = yaml.load(dumpedInstance);

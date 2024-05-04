@@ -20,6 +20,7 @@ import java.util.List;
 import java.util.Map;
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
 import org.yaml.snakeyaml.events.Event;
 import org.yaml.snakeyaml.events.ScalarEvent;
 import org.yaml.snakeyaml.nodes.Node;
@@ -34,7 +35,7 @@ public class LowLevelApiTest extends TestCase {
     map.put("name", "Tolstoy");
     map.put("book", "War and People");
     list.add(map);
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     String etalon = yaml.dump(list);
     // System.out.println(etalon);
     //

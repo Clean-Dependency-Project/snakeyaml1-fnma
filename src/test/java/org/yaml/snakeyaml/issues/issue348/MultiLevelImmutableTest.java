@@ -20,6 +20,7 @@ import static org.junit.Assert.assertThat;
 import java.util.List;
 import java.util.Map;
 import org.junit.Test;
+import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.Util;
 import org.yaml.snakeyaml.Yaml;
 import org.yaml.snakeyaml.issues.issue348.model.Bar;
@@ -30,7 +31,7 @@ public class MultiLevelImmutableTest {
 
   @Test
   public void testUnexpectedRecursive() {
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new LoaderOptions());
     String data = Util.getLocalResource("issues/issue348.yaml");
     Map<?, ?> loadedMap = yaml.loadAs(data, Map.class);
 

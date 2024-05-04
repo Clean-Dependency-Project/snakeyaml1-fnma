@@ -18,6 +18,7 @@ import static org.junit.Assert.assertArrayEquals;
 import java.util.HashMap;
 import java.util.Map;
 import junit.framework.TestCase;
+import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.Yaml;
 
 public class ObjectValuesTest extends TestCase {
@@ -41,9 +42,9 @@ public class ObjectValuesTest extends TestCase {
     ov.setValues(prop2values);
     ov.setPossible(props);
 
-    Yaml dumper = new Yaml();
+    Yaml dumper = new Yaml(new DumperOptions());
     String dumpedStr = dumper.dumpAsMap(ov);
-    Yaml loader = new Yaml();
+    Yaml loader = new Yaml(new DumperOptions());
     ObjectValues ov2 = loader.loadAs(dumpedStr, ObjectValues.class);
 
     assertEquals(ov.getObject(), ov2.getObject());
@@ -72,9 +73,9 @@ public class ObjectValuesTest extends TestCase {
     ov.setValues(prop2values);
     ov.setPossible(props);
 
-    Yaml dumper = new Yaml();
+    Yaml dumper = new Yaml(new DumperOptions());
     String dumpedStr = dumper.dumpAsMap(ov);
-    Yaml loader = new Yaml();
+    Yaml loader = new Yaml(new DumperOptions());
     ObjectValuesWithParam<String, Integer> ov2 =
         loader.loadAs(dumpedStr, new ObjectValuesWithParam<String, Integer>().getClass());
 

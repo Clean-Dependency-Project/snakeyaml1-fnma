@@ -17,8 +17,12 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import junit.framework.TestCase;
+import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.Util;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.extensions.compactnotation.CompactConstructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
 
 /**
  * Test MapBean->Map<Enum, Developer> developers <br/>
@@ -36,7 +40,7 @@ public class TypeSafeMap2Test extends TestCase {
     developers.put(Color.WHITE, new Developer2("Fred", "creator"));
     developers.put(Color.BLACK, new Developer2("John", "committer"));
     bean.setDevelopers(developers);
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     String output = yaml.dumpAsMap(bean);
     // System.out.println(output);
     String etalon = Util.getLocalResource("examples/map-bean-12.yaml");
@@ -55,13 +59,13 @@ public class TypeSafeMap2Test extends TestCase {
     developers.put(Color.RED, new SuperMan("Jason", "contributor", true));
     developers.put(Color.BLACK, new Developer2("John", "committer"));
     bean.setDevelopers(developers);
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     String output = yaml.dumpAsMap(bean);
     // System.out.println(output);
     String etalon = Util.getLocalResource("examples/map-bean-13.yaml");
     assertEquals(etalon, output);
     // load
-    Yaml beanLoader = new Yaml();
+    Yaml beanLoader = new Yaml(new LoaderOptions());
     MapBean2 parsed = beanLoader.loadAs(etalon, MapBean2.class);
     assertNotNull(parsed);
     Map<Developer2, Color> parsedData = parsed.getData();
@@ -77,7 +81,7 @@ public class TypeSafeMap2Test extends TestCase {
   public void testLoadMap() {
     String output = Util.getLocalResource("examples/map-bean-12.yaml");
     // System.out.println(output);
-    Yaml beanLoader = new Yaml();
+    Yaml beanLoader = new Yaml(new LoaderOptions());
     MapBean2 parsed = beanLoader.loadAs(output, MapBean2.class);
     assertNotNull(parsed);
     Map<Developer2, Color> data = parsed.getData();

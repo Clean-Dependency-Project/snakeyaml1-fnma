@@ -16,8 +16,14 @@ package org.yaml.snakeyaml.issues.issue74;
 import java.util.ArrayList;
 import java.util.List;
 import junit.framework.TestCase;
+import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.Util;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
+
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class ArrayBeanTest extends TestCase {
 
@@ -36,11 +42,11 @@ public class ArrayBeanTest extends TestCase {
     list.add(new ArrayMember("John", 111));
     list.add(new ArrayMember("Tony", 222));
     bean.setList(list);
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new SafeConstructor());
     String output = yaml.dumpAsMap(bean);
     // System.out.println(output);
     assertEquals(Util.getLocalResource("issues/issue74-array1.txt"), output);
-    Yaml beanLoader = new Yaml();
+    Yaml beanLoader = new Yaml(new LoaderOptions());
     ArrayBean parsed = beanLoader.loadAs(output, ArrayBean.class);
     // System.out.println(parsed);
     assertEquals(3, parsed.getMembers().length);

@@ -16,12 +16,13 @@ package org.yaml.snakeyaml.issues.issue500;
 import java.util.Iterator;
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
 
 public class FailIteratorOnlyWhenErrorFoundTest extends TestCase {
 
   public void testFailure() {
     try {
-      Yaml yamlProcessor = new Yaml();
+      Yaml yamlProcessor = new Yaml(new SafeConstructor());
       String data =
           "a: 1\n" + "---\n" + "Some comment \n" + "\n" + "\n" + "b: 2\n" + "\n" + "c: 3\n" + "---";
       Iterable<Object> parsed = yamlProcessor.loadAll(data);

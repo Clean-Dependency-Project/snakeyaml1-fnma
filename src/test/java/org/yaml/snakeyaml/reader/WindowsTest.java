@@ -15,6 +15,7 @@ package org.yaml.snakeyaml.reader;
 
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
 import org.yaml.snakeyaml.parser.ParserException;
 
 /**
@@ -25,7 +26,7 @@ public class WindowsTest extends TestCase {
   // test windows style
   public void testCRLF() {
     try {
-      Yaml yaml = new Yaml();
+      Yaml yaml = new Yaml(new SafeConstructor());
       yaml.load("\r\n[");
     } catch (ParserException e) {
       assertTrue(e.getMessage().contains("line 2,"));
@@ -34,7 +35,7 @@ public class WindowsTest extends TestCase {
 
   public void testCRCR() {
     try {
-      Yaml yaml = new Yaml();
+      Yaml yaml = new Yaml(new SafeConstructor());
       yaml.load("\r\r[");
     } catch (ParserException e) {
       assertTrue(e.getMessage().contains("line 3,"));
@@ -44,7 +45,7 @@ public class WindowsTest extends TestCase {
   // test UNIX style
   public void testLFLF() {
     try {
-      Yaml yaml = new Yaml();
+      Yaml yaml = new Yaml(new SafeConstructor());
       yaml.load("\n\n[");
     } catch (ParserException e) {
       assertTrue(e.getMessage().contains("line 3,"));

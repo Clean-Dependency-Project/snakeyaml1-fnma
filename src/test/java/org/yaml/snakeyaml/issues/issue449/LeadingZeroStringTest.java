@@ -16,12 +16,13 @@ package org.yaml.snakeyaml.issues.issue449;
 import java.util.regex.Pattern;
 import junit.framework.TestCase;
 import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
 import org.yaml.snakeyaml.resolver.Resolver;
 
 public class LeadingZeroStringTest extends TestCase {
 
   public void testString() {
-    Yaml loader = new Yaml();
+    Yaml loader = new Yaml(new SafeConstructor());
     // this almost looks like an octal, but it contains digits greater than 7, so it's a string
     Object result = loader.load("0123456789");
     assertEquals("0123456789", result);

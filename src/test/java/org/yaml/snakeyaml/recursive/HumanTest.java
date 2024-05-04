@@ -30,6 +30,7 @@ import org.yaml.snakeyaml.TypeDescription;
 import org.yaml.snakeyaml.Util;
 import org.yaml.snakeyaml.Yaml;
 import org.yaml.snakeyaml.constructor.Constructor;
+import org.yaml.snakeyaml.constructor.SafeConstructor;
 import org.yaml.snakeyaml.representer.Representer;
 
 public class HumanTest extends TestCase {
@@ -47,7 +48,7 @@ public class HumanTest extends TestCase {
     father.setPartner(mother);
     mother.setPartner(father);
     mother.setBankAccountOwner(father);
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new DumperOptions());
     String output = yaml.dump(father);
     String etalon = Util.getLocalResource("recursive/no-children-1.yaml");
     assertEquals(etalon, output);
@@ -126,7 +127,7 @@ public class HumanTest extends TestCase {
     father.setChildren(children);
     mother.setChildren(children);
     //
-    Yaml beanDumper = new Yaml();
+    Yaml beanDumper = new Yaml(new SafeConstructor());
     String output = beanDumper.dumpAsMap(son);
     // System.out.println(output);
     String etalon = Util.getLocalResource("recursive/with-children.yaml");
@@ -530,7 +531,7 @@ public class HumanTest extends TestCase {
     man2.setBankAccountOwner(man3);
     man3.setBankAccountOwner(man1);
     //
-    Yaml yaml = new Yaml();
+    Yaml yaml = new Yaml(new DumperOptions());
     String output = yaml.dump(man1);
     // System.out.println(output);
     String etalon = Util.getLocalResource("recursive/beanring-3.yaml");
@@ -625,7 +626,7 @@ public class HumanTest extends TestCase {
     father.setChildren(children);
     mother.setChildren(children);
     //
-    Yaml beanDumper = new Yaml();
+    Yaml beanDumper = new Yaml(new SafeConstructor());
     String output = beanDumper.dumpAsMap(son);
     // System.out.println(output);
     String etalon = Util.getLocalResource("recursive/with-children-no-root-tag.yaml");
