@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.cleandependency.java</groupId>
     <artifactId>snakeyaml1-fnma</artifactId>
-    <version>1.33-SNAPSHOT</version>
+    <version>1.33.ALPHA</version>
     <packaging>bundle</packaging>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -52,12 +52,10 @@
         <developer>
             <id>asomov</id>
             <name>Andrey Somov</name>
-            <email>public.somov@gmail.com</email>
         </developer>
         <developer>
             <id>maslovalex</id>
             <name>Alexander Maslov</name>
-            <email>alexander.maslov@gmail.com</email>
         </developer>
         <developer>
             <id>rvema</id>
