@@ -19,7 +19,7 @@
         <maven-resources-plugin.version>3.1.0</maven-resources-plugin.version><!-- for Github CI -->
         <cobertura-maven-plugin.version>2.7</cobertura-maven-plugin.version>
         <maven-site-plugin.version>3.12.1</maven-site-plugin.version>
-        <maven-surefire-plugin.version>3.0.0-M7</maven-surefire-plugin.version>
+        <maven-surefire-plugin.version>3.3.1</maven-surefire-plugin.version>
         <jdk9-illegal-access-level>deny</jdk9-illegal-access-level>
     </properties>
     <name>SnakeYAML</name>
