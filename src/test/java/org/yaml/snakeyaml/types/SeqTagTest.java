@@ -69,7 +69,7 @@ public class SeqTagTest extends AbstractTest {
     Collection<Integer> obj = (Collection<Integer>) load(output);
     // System.out.println(obj);
     assertEquals(3, obj.size());
-    assertTrue("Create ArrayList by default: " + obj.getClass().toString(),
+    assertTrue("Create ArrayList by default: " + obj.getClass(),
         obj instanceof ArrayList);
   }
 

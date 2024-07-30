@@ -45,7 +45,7 @@ public class ConstructorTest extends TestCase {
     String data = "--- !!org.yaml.snakeyaml.constructor.Person\nfirstName: Andrey\nage: 99";
     Object obj = construct(data);
     assertNotNull(obj);
-    assertTrue("Unexpected: " + obj.getClass().toString(), obj instanceof Person);
+    assertTrue("Unexpected: " + obj.getClass(), obj instanceof Person);
     Person person = (Person) obj;
     assertEquals("Andrey", person.getFirstName());
     assertNull(person.getLastName());

@@ -83,12 +83,12 @@ public class ProblematicYamlTest {
 
   @Test
   public void testParseProblematicYaml1() {
-    final String yamlString1 = "" + //
+    //
+    final String yamlString1 = //
         "key: value\n" + //
         "  # Comment 1\n" + // s.b BLOCK, classified as INLINE
         "\n" + //
-        "  # Comment 2\n" + //
-        "";
+        "  # Comment 2\n";
 
     List<ID> expectedEventIdList = Arrays.asList(//
         ID.StreamStart, //
@@ -112,13 +112,13 @@ public class ProblematicYamlTest {
 
   @Test
   public void testParseProblematicYaml2() {
-    final String yamlString2 = "" + //
+    //
+    final String yamlString2 = //
         "key: value\n" + //
         "\n" + //
         "  # Comment 1\n" + // s.b BLOCK, classified as INLINE
         "\n" + //
-        "  # Comment 2\n" + //
-        "";
+        "  # Comment 2\n";
     List<ID> expectedEventIdList = Arrays.asList(//
         ID.StreamStart, //
         ID.DocumentStart, //
@@ -142,11 +142,11 @@ public class ProblematicYamlTest {
 
   @Test
   public void testParseProblematicYaml3() {
-    final String yamlString3 = "" + //
+    //
+    final String yamlString3 = //
         "key: value\n" + //
         "\n" + //
-        "key: value\n" + //
-        "";
+        "key: value\n";
     List<ID> expectedEventIdList = Arrays.asList(//
         ID.StreamStart, //
         ID.DocumentStart, //
@@ -168,7 +168,8 @@ public class ProblematicYamlTest {
 
   @Test
   public void testParseProblematicYaml4() {
-    String yamlString4 = "" + //
+    //
+    String yamlString4 = //
         "---\n" + //
         "in the block context:\n" + //
         "    indentation should be kept: { \n" + //
@@ -185,8 +186,7 @@ public class ProblematicYamlTest {
         "---\n" + //
         "foo:\n" + //
         "    bar: 'quoted scalars\n" + //
-        "may not adhere indentation'\n" + //
-        "";
+        "may not adhere indentation'\n";
     List<ID> expectedEventIdList = Arrays.asList(//
         ID.StreamStart, //
         ID.DocumentStart, //

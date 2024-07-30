@@ -53,7 +53,7 @@ public class Resolver {
   public static final Pattern VALUE = Pattern.compile("^(?:=)$");
   public static final Pattern YAML = Pattern.compile("^(?:!|&|\\*)$");
 
-  protected Map<Character, List<ResolverTuple>> yamlImplicitResolvers =
+  Map<Character, List<ResolverTuple>> yamlImplicitResolvers =
       new HashMap<Character, List<ResolverTuple>>();
 
   protected void addImplicitResolvers() {

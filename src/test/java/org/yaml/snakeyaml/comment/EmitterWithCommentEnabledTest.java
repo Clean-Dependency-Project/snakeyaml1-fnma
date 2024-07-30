@@ -95,7 +95,7 @@ public class EmitterWithCommentEnabledTest {
 
   @Test
   public void testCommentEndingALine() throws Exception {
-    String data = "" + //
+    String data = //
         "key: # Comment\n" + //
         "  value\n";
 
@@ -105,7 +105,7 @@ public class EmitterWithCommentEnabledTest {
 
   @Test
   public void testMultiLineComment() throws Exception {
-    String data = "" + //
+    String data = //
         "key: # Comment\n" + //
         "     # lines\n" + //
         "  value\n";
@@ -116,8 +116,8 @@ public class EmitterWithCommentEnabledTest {
 
   @Test
   public void testBlankLine() throws Exception {
-    String data = "" + //
-        "\n";
+    //
+    String data = "\n";
 
     String result = runEmitterWithCommentsEnabled(data);
     assertEquals(data, result);
@@ -125,7 +125,7 @@ public class EmitterWithCommentEnabledTest {
 
   @Test
   public void testBlankLineComments() throws Exception {
-    String data = "" + //
+    String data = //
         "\n" + //
         "abc: def # comment\n" + //
         "\n" + //
@@ -137,7 +137,7 @@ public class EmitterWithCommentEnabledTest {
 
   @Test
   public void testBlockScalar() throws Exception {
-    String data = "" + //
+    String data = //
         "abc: | # Comment\n" + //
         "  def\n" + //
         "  hij\n";
@@ -157,7 +157,7 @@ public class EmitterWithCommentEnabledTest {
 
   @Test
   public void testSequence() throws Exception {
-    String data = "" + //
+    String data = //
         "# Comment\n" + //
         "list: # InlineComment1\n" + //
         "  - # Block Comment\n" + //
@@ -170,7 +170,8 @@ public class EmitterWithCommentEnabledTest {
 
   @Test
   public void testAllComments1() throws Exception {
-    String data = "" + //
+    //
+    String data = //
         "# Block Comment1\n" + //
         "# Block Comment2\n" + //
         "key: # Inline Comment1a\n" + //
@@ -187,8 +188,7 @@ public class EmitterWithCommentEnabledTest {
         "  - item3: {key3a: [value3a1, value3a2], key3b: value3b} # InlineComment6\n" + //
         "# Block Comment6\n" + //
         "---\n" + //
-        "# Block Comment7\n" + //
-        "";
+        "# Block Comment7\n";
 
     String result = runEmitterWithCommentsEnabled(data);
     assertEquals(data, result);
@@ -196,13 +196,13 @@ public class EmitterWithCommentEnabledTest {
 
   @Test
   public void testMultiDoc() throws Exception {
-    String data = "" + //
+    //
+    String data = //
         "key: value\n" + //
         "# Block Comment\n" + //
         "---\n" + //
         "# Block Comment\n" + //
-        "key: value\n" + //
-        "";
+        "key: value\n";
 
     String result = runEmitterWithCommentsEnabled(data);
     assertEquals(data, result);
@@ -210,7 +210,8 @@ public class EmitterWithCommentEnabledTest {
 
   @Test
   public void testAllComments2() throws Exception {
-    String data = "" + //
+    //
+    String data = //
         "key:\n" + "  key:\n" + "    key:\n" + "    - # Block Comment1\n" + "      item1a\n"
         + "    - # Block Comment2\n" + "    - item1b\n" + "    - # Block Comment3\n"
         + "      MapKey_1: MapValue1\n" + "      MapKey_2: MapValue2\n" + "key2:\n"
@@ -221,8 +222,7 @@ public class EmitterWithCommentEnabledTest {
         "- # Block Comment6a\n" + //
         "  # Block Comment6b\n" + //
         "  item2: value # Inline Comment2\n" + //
-        "# Block Comment7\n" + //
-        "";
+        "# Block Comment7\n";
 
     String result = runEmitterWithCommentsEnabled(data);
     assertEquals(data, result);
@@ -230,11 +230,11 @@ public class EmitterWithCommentEnabledTest {
 
   @Test
   public void testAllComments3() throws Exception {
-    String data = "" + //
+    //
+    String data = //
         "# Block Comment1\n" + //
         "[item1, {item2: value2}, {item3: value3}] # Inline Comment1\n" + //
-        "# Block Comment2\n" + //
-        "";
+        "# Block Comment2\n";
 
     String result = runEmitterWithCommentsEnabled(data);
     assertEquals(data, result);
@@ -242,13 +242,13 @@ public class EmitterWithCommentEnabledTest {
 
   @Test
   public void testKeepingNewLineInsideSequence() throws Exception {
-    String data = "" + "\n" + "key:\n" +
+    String data = "\n" + "key:\n" +
     // " \n" + // only supported in a sequence right now
         "- item1\n" +
         // "\n" + // Per Spec this is part of plain scalar above
         "- item2\n" +
         // "\n" + // Per Spec this is part of plain scalar above
-        "- item3\n" + "\n" + "key2: value2\n" + "\n" + "key3: value3\n" + "\n" + "";
+        "- item3\n" + "\n" + "key2: value2\n" + "\n" + "key3: value3\n" + "\n";
 
     String result = runEmitterWithCommentsEnabled(data);
     assertEquals(data, result);
@@ -256,7 +256,7 @@ public class EmitterWithCommentEnabledTest {
 
   @Test
   public void testKeepingNewLineInsideSequence2() throws Exception {
-    String data = "" + "apiVersion: kustomize.config.k8s.io/v1beta1\n" + "kind: Kustomization\n"
+    String data = "apiVersion: kustomize.config.k8s.io/v1beta1\n" + "kind: Kustomization\n"
         + "\n" + "namePrefix: acquisition-gateway-\n" + "\n" + "bases:\n" +
         /**
          * Not supported right now " \n" + "#-
@@ -276,7 +276,7 @@ public class EmitterWithCommentEnabledTest {
         "- Hpa-patch.yaml\n" + "#- SignalSciences-patch.yaml\n" + "\n"
         + "# Uncomment HPA-patch when you need to enable HPA\n" + "#- Hpa-patch.yaml\n"
         + "# Uncomment SignalSciences-patch when you need to enable Signal Sciences\n"
-        + "#- SignalSciences-patch.yaml\n" + "";
+        + "#- SignalSciences-patch.yaml\n";
 
     String result = runEmitterWithCommentsEnabled(data);
     assertEquals(data, result);
@@ -310,7 +310,7 @@ public class EmitterWithCommentEnabledTest {
     for (int i = 0; i < 100; i++) {
       commentBuilder.append("# Comment ").append(i).append("\n");
     }
-    final String data = "" + commentBuilder + "simpleKey: simpleValue\n" + "\n";
+    final String data = commentBuilder + "simpleKey: simpleValue\n" + "\n";
 
     String result = runEmitterWithCommentsEnabled(data);
     assertEquals(data, result);

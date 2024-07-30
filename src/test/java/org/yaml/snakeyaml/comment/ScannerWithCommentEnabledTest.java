@@ -103,7 +103,7 @@ public class ScannerWithCommentEnabledTest {
         ID.Comment, //
         ID.StreamEnd);
 
-    Scanner sut = constructScanner("" + //
+    Scanner sut = constructScanner(//
         "# This stream contains no\n" + //
         "# documents, only comments.");
 
@@ -121,7 +121,7 @@ public class ScannerWithCommentEnabledTest {
     List<String> expectedScalarValue = Arrays.asList(//
         "key", "value");
 
-    Scanner sut = constructScanner("" + //
+    Scanner sut = constructScanner(//
         "key: # Comment\n" + //
         "  value\n");
 
@@ -140,7 +140,7 @@ public class ScannerWithCommentEnabledTest {
     List<String> expectedScalarValue = Arrays.asList(//
         "key", "value");
 
-    Scanner sut = constructScanner("" + //
+    Scanner sut = constructScanner(//
         "key: # Comment\n" + //
         "     # lines\n" + //
         "  value\n" + //
@@ -155,8 +155,8 @@ public class ScannerWithCommentEnabledTest {
         ID.Comment, //
         ID.StreamEnd);
 
-    Scanner sut = constructScanner("" + //
-        "\n");
+    //
+    Scanner sut = constructScanner("\n");
 
     assertTokensEqual(expected, sut);
   }
@@ -172,7 +172,7 @@ public class ScannerWithCommentEnabledTest {
         ID.BlockEnd, //
         ID.StreamEnd);
 
-    Scanner sut = constructScanner("" + //
+    Scanner sut = constructScanner(//
         "\n" + //
         "abc: def # commment\n" + //
         "\n" + //

@@ -259,7 +259,7 @@ public class SafeConstructor extends BaseConstructor {
         throw new ConstructorException("while constructing an int", node.getStartMark(),
             "found empty value", node.getStartMark());
       }
-      int sign = +1;
+      int sign = 1;
       char first = value.charAt(0);
       if (first == '-') {
         sign = -1;
@@ -284,7 +284,7 @@ public class SafeConstructor extends BaseConstructor {
         int bes = 1;
         int val = 0;
         for (int i = 0, j = digits.length; i < j; i++) {
-          val += Long.parseLong(digits[j - i - 1]) * bes;
+          val += Integer.parseInt(digits[j - i - 1]) * bes;
           bes *= 60;
         }
         return createNumber(sign, String.valueOf(val), 10);
@@ -354,7 +354,7 @@ public class SafeConstructor extends BaseConstructor {
         throw new ConstructorException("while constructing a float", node.getStartMark(),
             "found empty value", node.getStartMark());
       }
-      int sign = +1;
+      int sign = 1;
       char first = value.charAt(0);
       if (first == '-') {
         sign = -1;
@@ -377,8 +377,8 @@ public class SafeConstructor extends BaseConstructor {
         }
         return Double.valueOf(sign * val);
       } else {
-        Double d = Double.valueOf(value);
-        return Double.valueOf(d.doubleValue() * sign);
+        double d = Double.parseDouble(value);
+        return Double.valueOf((double) d * sign);
       }
     }
   }

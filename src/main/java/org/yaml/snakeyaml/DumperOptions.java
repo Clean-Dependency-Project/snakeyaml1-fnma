@@ -13,6 +13,8 @@
  */
 package org.yaml.snakeyaml;
 
+import static java.lang.System.getProperty;
+
 import java.util.Map;
 import java.util.TimeZone;
 import org.yaml.snakeyaml.emitter.Emitter;
@@ -117,17 +119,17 @@ public class DumperOptions {
    */
   public enum FlowStyle {
     /**
-     * Flow style
+     * Auto (first block, than flow)
      */
-    FLOW(Boolean.TRUE),
+    AUTO(null),
     /**
      * Block style
      */
     BLOCK(Boolean.FALSE),
     /**
-     * Auto (first block, than flow)
+     * Flow style
      */
-    AUTO(null);
+    FLOW(Boolean.TRUE);
 
     private final Boolean styleBoolean;
 
@@ -219,7 +221,8 @@ public class DumperOptions {
      * @return detected line break
      */
     public static LineBreak getPlatformLineBreak() {
-      String platformLineBreak = System.getProperty("line.separator");
+      String platformLineBreak;
+      platformLineBreak = getProperty("line.separator");
       for (LineBreak lb : values()) {
         if (lb.lineBreak.equals(platformLineBreak)) {
           return lb;

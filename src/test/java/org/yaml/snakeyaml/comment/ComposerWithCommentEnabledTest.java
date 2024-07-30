@@ -197,7 +197,7 @@ public class ComposerWithCommentEnabledTest {
 
   @Test
   public void testCommentEndingALine() {
-    String data = "" + //
+    String data = //
         "key: # Comment\n" + //
         "  value\n";
 
@@ -218,7 +218,7 @@ public class ComposerWithCommentEnabledTest {
 
   @Test
   public void testMultiLineComment() {
-    String data = "" + //
+    String data = //
         "key: # Comment\n" + //
         "     # lines\n" + //
         "  value\n" + //
@@ -243,8 +243,8 @@ public class ComposerWithCommentEnabledTest {
 
   @Test
   public void testBlankLine() {
-    String data = "" + //
-        "\n";
+    //
+    String data = "\n";
 
     String[] expected = new String[] { //
         "Block Comment", //
@@ -260,7 +260,7 @@ public class ComposerWithCommentEnabledTest {
 
   @Test
   public void testBlankLineComments() {
-    String data = "" + //
+    String data = //
         "\n" + //
         "abc: def # commment\n" + //
         "\n" + //
@@ -286,7 +286,7 @@ public class ComposerWithCommentEnabledTest {
 
   @Test
   public void test_blockScalar() {
-    String data = "" + //
+    String data = //
         "abc: > # Comment\n" + //
         "    def\n" + //
         "    hij\n" + //
@@ -324,7 +324,7 @@ public class ComposerWithCommentEnabledTest {
 
   @Test
   public void testSequence() {
-    String data = "" + //
+    String data = //
         "# Comment\n" + //
         "list: # InlineComment1\n" + //
         "# Block Comment\n" + //
@@ -353,7 +353,8 @@ public class ComposerWithCommentEnabledTest {
 
   @Test
   public void testAllComments1() throws Exception {
-    String data = "" + //
+    //
+    String data = //
         "# Block Comment1\n" + //
         "# Block Comment2\n" + //
         "key: # Inline Comment1a\n" + //
@@ -370,8 +371,7 @@ public class ComposerWithCommentEnabledTest {
         "- item3: { key3a: [ value3a1, value3a2 ], key3b: value3b } # InlineComment6\n" + //
         "# Block Comment6\n" + //
         "---\n" + //
-        "# Block Comment7\n" + //
-        "";
+        "# Block Comment7\n";
 
     String[] expected = new String[] { //
         "MappingNode", //
@@ -429,7 +429,8 @@ public class ComposerWithCommentEnabledTest {
 
   @Test
   public void testAllComments2() throws Exception {
-    String data = "" + //
+    //
+    String data = //
         "# Block Comment1\n" + //
         "# Block Comment2\n" + //
         "- item1 # Inline Comment1a\n" + //
@@ -437,8 +438,7 @@ public class ComposerWithCommentEnabledTest {
         "# Block Comment3a\n" + //
         "# Block Comment3b\n" + //
         "- item2: value # Inline Comment2\n" + //
-        "# Block Comment4\n" + //
-        "";
+        "# Block Comment4\n";
 
     String[] expected = new String[] { //
         "SequenceNode", //
@@ -466,11 +466,11 @@ public class ComposerWithCommentEnabledTest {
 
   @Test
   public void testAllComments3() throws Exception {
-    String data = "" + //
+    //
+    String data = //
         "# Block Comment1\n" + //
         "[ item1, item2: value2, {item3: value3} ] # Inline Comment1\n" + //
-        "# Block Comment2\n" + //
-        "";
+        "# Block Comment2\n";
 
     String[] expected = new String[] { //
         "Block Comment", //
@@ -497,7 +497,7 @@ public class ComposerWithCommentEnabledTest {
 
   @Test
   public void testGetSingleNode() {
-    String data = "" + //
+    String data = //
         "\n" + //
         "abc: def # commment\n" + //
         "\n" + //
@@ -521,7 +521,7 @@ public class ComposerWithCommentEnabledTest {
 
   @Test
   public void testGetSingleNodeHeaderComment() {
-    String data = "" + //
+    String data = //
         "\n" + //
         "# Block Comment1\n" + //
         "# Block Comment2\n" + //
@@ -550,7 +550,7 @@ public class ComposerWithCommentEnabledTest {
 
   @Test
   public void testBaseConstructorGetData() {
-    String data = "" + //
+    String data = //
         "\n" + //
         "abc: def # commment\n" + //
         "\n" + //

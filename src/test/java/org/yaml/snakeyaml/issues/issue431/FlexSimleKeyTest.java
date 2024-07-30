@@ -70,7 +70,7 @@ public class FlexSimleKeyTest extends TestCase {
     }
     String prefix = String.valueOf(length);
     String result =
-        prefix + "_" + outputBuffer.toString().substring(0, length - prefix.length() - 1);
+        prefix + "_" + outputBuffer.substring(0, length - prefix.length() - 1);
     if (result.length() != length) {
       throw new RuntimeException("It was: " + result.length());
     }

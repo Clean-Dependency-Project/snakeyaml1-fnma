@@ -547,10 +547,7 @@ public final class ScannerImpl implements Scanner {
     // the current indentation level is the same as the last indent-level.
     boolean required = (this.flowLevel == 0) && (this.indent == this.reader.getColumn());
 
-    if (allowSimpleKey || !required) {
-      // A simple key is required only if it is the first token in the
-      // current line. Therefore it is always allowed.
-    } else {
+    if (!allowSimpleKey && required) {
       throw new YAMLException(
           "A simple key is required only if it is the first token in the current line");
     }
@@ -841,9 +838,6 @@ public final class ScannerImpl implements Scanner {
         Mark mark = reader.getMark();
         addToken(new BlockSequenceStartToken(mark, mark));
       }
-    } else {
-      // It's an error for the block entry to occur in the flow
-      // context,but we let the parser detect this.
     }
     // Simple keys are allowed after '-'.
     this.allowSimpleKey = true;
@@ -1576,7 +1570,7 @@ public final class ScannerImpl implements Scanner {
     // encountered
     int c = reader.peek(1);
     String handle = null;
-    String suffix = null;
+    String suffix;
     // Verbatim tag! (c-verbatim-tag)
     if (c == '<') {
       // Skip the exclamation mark and &gt;, then read the tag suffix (as
@@ -1860,7 +1854,7 @@ public final class ScannerImpl implements Scanner {
 
     // Consume one or more line breaks followed by any amount of spaces,
     // until we find something that isn't a line-break.
-    String lineBreak = null;
+    String lineBreak;
     while ((lineBreak = scanLineBreak()).length() != 0) {
       chunks.append(lineBreak);
       endMark = reader.getMark();
