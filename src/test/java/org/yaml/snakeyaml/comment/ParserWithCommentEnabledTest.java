@@ -91,7 +91,7 @@ public class ParserWithCommentEnabledTest {
 
   @Test
   public void testCommentEndingALine() {
-    String data = "" + //
+    String data = //
         "key: # Comment\n" + //
         "  value\n";
 
@@ -108,7 +108,7 @@ public class ParserWithCommentEnabledTest {
 
   @Test
   public void testMultiLineComment() {
-    String data = "" + //
+    String data = //
         "key: # Comment\n" + //
         "     # lines\n" + //
         "  value\n" + //
@@ -127,8 +127,8 @@ public class ParserWithCommentEnabledTest {
 
   @Test
   public void testBlankLine() {
-    String data = "" + //
-        "\n";
+    //
+    String data = "\n";
     List<ID> expectedEventIdList = Arrays.asList(ID.StreamStart, //
         ID.Comment, //
         ID.StreamEnd);
@@ -138,7 +138,7 @@ public class ParserWithCommentEnabledTest {
 
   @Test
   public void testBlankLineComments() {
-    String data = "" + //
+    String data = //
         "\n" + //
         "abc: def # commment\n" + //
         "\n" + //
@@ -160,7 +160,7 @@ public class ParserWithCommentEnabledTest {
 
   @Test
   public void test_blockScalar() {
-    String data = "" + //
+    String data = //
         "abc: > # Comment\n" + //
         "    def\n" + //
         "    hij\n" + //
@@ -193,7 +193,7 @@ public class ParserWithCommentEnabledTest {
 
   @Test
   public void testSequence() {
-    String data = "" + //
+    String data = //
         "# Comment\n" + //
         "list: # InlineComment1\n" + //
         "# Block Comment\n" + //
@@ -220,7 +220,8 @@ public class ParserWithCommentEnabledTest {
 
   @Test
   public void testAllComments1() throws Exception {
-    String data = "" + //
+    //
+    String data = //
         "# Block Comment1\n" + //
         "# Block Comment2\n" + //
         "key: # Inline Comment1a\n" + //
@@ -237,8 +238,7 @@ public class ParserWithCommentEnabledTest {
         "- item3: { key3a: [ value3a1, value3a2 ], key3b: value3b } # InlineComment6\n" + //
         "# Block Comment6\n" + //
         "---\n" + //
-        "# Block Comment7\n" + //
-        "";
+        "# Block Comment7\n";
 
     List<ID> expectedEventIdList = Arrays.asList(//
         ID.StreamStart, //
@@ -291,7 +291,8 @@ public class ParserWithCommentEnabledTest {
 
   @Test
   public void testAllComments2() throws Exception {
-    String data = "" + //
+    //
+    String data = //
         "# Block Comment1\n" + //
         "# Block Comment2\n" + //
         "- item1 # Inline Comment1a\n" + //
@@ -299,8 +300,7 @@ public class ParserWithCommentEnabledTest {
         "# Block Comment3a\n" + //
         "# Block Comment3b\n" + //
         "- item2: value # Inline Comment2\n" + //
-        "# Block Comment4\n" + //
-        "";
+        "# Block Comment4\n";
 
     List<ID> expectedEventIdList = Arrays.asList(//
         ID.StreamStart, //
@@ -325,11 +325,11 @@ public class ParserWithCommentEnabledTest {
 
   @Test
   public void testAllComments3() throws Exception {
-    String data = "" + //
+    //
+    String data = //
         "# Block Comment1\n" + //
         "[ item1, item2: value2, {item3: value3} ] # Inline Comment1\n" + //
-        "# Block Comment2\n" + //
-        "";
+        "# Block Comment2\n";
 
     List<ID> expectedEventIdList = Arrays.asList(//
         ID.StreamStart, //
@@ -355,13 +355,13 @@ public class ParserWithCommentEnabledTest {
 
   @Test
   public void testKeepingNewLineInsideSequence() throws Exception {
-    String data = "" + "\n" + "key:\n" + "\n" + "- item1\n" + "\n" + // Per Spec this is part of
+    // FIXME: ?Should be comment?
+    String data = "\n" + "key:\n" + "\n" + "- item1\n" + "\n" + // Per Spec this is part of
     // plain scalar above
         "- item2\n" + "\n" + // Per Spec this is part of plain scalar above
         "- item3\n" + "\n" + // FIXME: ?Should be comment?
         "key2: value2\n" + "\n" + // FIXME: ?Should be comment?
-        "key3: value3\n" + "\n" + // FIXME: ?Should be comment?
-        "";
+        "key3: value3\n" + "\n";
     List<ID> expectedEventIdList = Arrays.asList(//
         ID.StreamStart, //
         ID.Comment, //
@@ -393,7 +393,7 @@ public class ParserWithCommentEnabledTest {
 
   @Test
   public void testCommentsInFlowMapping() {
-    String data = "" + "# Beginning\n" + "{\n" + "    # Hello\n" + "    key1: meow,\n"
+    String data = "# Beginning\n" + "{\n" + "    # Hello\n" + "    key1: meow,\n"
         + "    # World\n" + "    key2: purr\n" + "}\n";
 
     List<ID> expectedEventIdList = Arrays.asList(ID.StreamStart, ID.Comment, ID.DocumentStart,

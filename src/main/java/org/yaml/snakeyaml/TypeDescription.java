@@ -206,6 +206,7 @@ public class TypeDescription {
       try {
         p.setDelegate(discoverProperty(p.getName()));
       } catch (YAMLException e) {
+        log.info(e.getLocalizedMessage());
       }
     }
     delegatesChecked = true;

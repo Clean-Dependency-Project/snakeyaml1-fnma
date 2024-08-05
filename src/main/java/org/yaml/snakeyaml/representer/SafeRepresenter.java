@@ -76,7 +76,7 @@ class SafeRepresenter extends BaseRepresenter {
     this.multiRepresenters.put(Map.class, new RepresentMap());
     this.multiRepresenters.put(Set.class, new RepresentSet());
     this.multiRepresenters.put(Iterator.class, new RepresentIterator());
-    this.multiRepresenters.put(new Object[0].getClass(), new RepresentArray());
+    this.multiRepresenters.put(Object[].class, new RepresentArray());
     this.multiRepresenters.put(Date.class, new RepresentDate());
     this.multiRepresenters.put(Enum.class, new RepresentEnum());
     this.multiRepresenters.put(Calendar.class, new RepresentDate());
