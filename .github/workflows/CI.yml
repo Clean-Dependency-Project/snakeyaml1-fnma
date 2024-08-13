@@ -33,11 +33,6 @@ jobs:
         uses: newrelic/repolinter-action@v1
         with:
           config_url: https://raw.githubusercontent.com/aperture-science-incorporated/.github/master/repolinter-newrelic-communityplus.json
-          output_type: issue
-          # Optionally you can customize the issue and label repolinter-action will create
-          output_name: '[Bot] My Issue Title'
-          label_name: 'my-repolinter-label'
-          label_color: 'ffffff'
   build:
     runs-on: ubuntu-latest
     strategy:
