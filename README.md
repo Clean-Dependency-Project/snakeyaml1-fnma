@@ -4,7 +4,7 @@
 [![OpenSSF Best Practices](https://bestpractices.coreinfrastructure.org/projects/7554/badge)](https://bestpractices.coreinfrastructure.org/projects/7554)
 ![build](https://github.com/Clean-Dependency-Project/snakeyaml1-fnma/workflows/verify/badge.svg?branch=main)
 ![CodeQL](https://github.com/Clean-Dependency-Project/snakeyaml1-fnma/workflows/CodeQL/badge.svg?branch=main)
-
+[![Community Plus header](https://github.com/newrelic/opensource-website/raw/master/src/images/categories/Community_Plus.png)](https://opensource.newrelic.com/oss-category/#community-plus)
 ***The art of simplicity is a puzzle of complexity.***
 
 ## Overview ##
