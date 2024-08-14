@@ -32,7 +32,7 @@ jobs:
         jdk: [ '8', '11' ]
         include: 
           - jdk: '8'
-            profile: -Pwith-java8-tests
+            profile: -Pwith-java8-tests -Pwith-coverage
           - jdk: '11'
             profile: -Pwith-java11-tests
 
