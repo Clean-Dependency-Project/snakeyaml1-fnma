@@ -25,3 +25,7 @@ jobs:
         java-version: '8'
     - name: Release to snapshots repository
       run: mvn deploy -q --file pom.xml --settings src/devops/.release.settings.xml -Denv.OSSRH_USERNAME=${{ secrets.OSSRH_USERNAME }} -Denv.OSSRH_PASSWORD=${{ secrets.OSSRH_PASSWORD }}
+    - name: Upload coverage reports to Codecov
+      uses: codecov/codecov-action@e28ff129e5465c2c0dcc6f003fc735cb6ae0c673 # v4.5.0
+      env:    
+        CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
