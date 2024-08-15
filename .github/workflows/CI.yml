@@ -22,17 +22,27 @@ on:
 
 permissions:
   contents: read
+  issues: write
 
 jobs:
   repolinter-action:
     runs-on: ubuntu-latest
     steps:
+      - name: Harden Runner
+        uses: step-security/harden-runner@5c7944e73c4c2a096b17a9cb74d65b6c2bbafbde # v2.9.1
+        with:
+          egress-policy: audit
       - name: Checkout Repo
         uses: actions/checkout@v2
       - name: 'Run Repolinter'
         uses: newrelic/repolinter-action@v1
         with:
           config_url: https://raw.githubusercontent.com/aperture-science-incorporated/.github/master/repolinter-newrelic-communityplus.json
+          output_type: issue
+          # Optionally you can customize the issue and label repolinter-action will create
+          output_name: '[Bot] Repo Linter Issues'
+          label_name: 'cdp-repolinter'
+          label_color: 'ffffff'
   build:
     runs-on: ubuntu-latest
     strategy:
